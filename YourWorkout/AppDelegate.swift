@@ -7,15 +7,25 @@
 //
 
 import UIKit
+import Alamofire
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let foodList = FoodListModel.sharedInstance
+        Alamofire.request("http://31.40.98.127:5694/food/getfoodlist").responseJSON{ responce in
+            if let json = responce.result.value{
+                print(json)
+                foodList.initFoodListWithResponce(responce: json as! [[String : Any]])
+            }
+            
+        }
+        
         return true
     }
 

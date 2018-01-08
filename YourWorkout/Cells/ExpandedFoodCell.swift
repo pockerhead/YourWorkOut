@@ -10,6 +10,9 @@ import UIKit
 
 class ExpandedFoodCell: UITableViewCell {
 
+    @IBOutlet weak var uglevodsLabel: UILabel!
+    @IBOutlet weak var fatsLabel: UILabel!
+    @IBOutlet weak var proteinsLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

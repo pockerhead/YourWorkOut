@@ -8,6 +8,20 @@
 
 import UIKit
 
-class FoodListModel: NSObject {
+class FoodListModel {
 
+    static let sharedInstance = FoodListModel()
+    
+    var foodList : [FoodModel]
+    
+    private init(){
+        self.foodList = []
+    }
+    
+    func initFoodListWithResponce(responce:[[String:Any]]){
+        for item in responce {
+            foodList.append(FoodModel.init(item: item))
+        }
+    }
+    
 }

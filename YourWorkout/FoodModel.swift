@@ -10,37 +10,19 @@ import UIKit
 import Alamofire
 
 
-class FoodListModel {
-
-    static let sharedInstance = FoodListModel()
-    private init(){
-        
-    }
-    
-    var foodList = [FoodListModel]()
+class FoodModel {
 
     var name : String?
-    var protein : Float?
-    var water : Float?
-    
-    
-    
-    func initFoodListWithResponce(responce:[[String:Any]]){
-        var tempFood = FoodListModel()
-        print(responce)
-        for item in responce {
-            print("\(item)\n")
-            tempFood.name = (item["name"] as? String)!
-            tempFood.protein = (item["protein"] as? Float)!
-            tempFood.water = (item["water"] as? Float)!
-            print(tempFood.name ?? "nil")
-            self.foodList.append(tempFood)
-        }
+//    var protein : Float?
+//    var water : Float?
+    var calories : Float?
+    init(item:[String:Any]){
+        self.name = (item["name"] as? String)!
+        self.calories = (item["calories"] as? Float)!
+//        self.protein = (item["protein"] as? Float)!
+//        self.water = (item["water"] as? Float)!
     }
     
-    
-    
-    
-    
+
     
 }
