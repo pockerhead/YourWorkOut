@@ -8,6 +8,8 @@ target 'YourWorkout' do
   # Pods for YourWorkout
 	pod 'Alamofire'
     pod 'ExpandableCell'
+    pod 'ValueStepper'
+
   target 'YourWorkoutTests' do
     inherit! :search_paths
     # Pods for testing

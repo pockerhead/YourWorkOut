@@ -31,10 +31,12 @@ class FoodListVC: UIViewController {
         let cellNib = UINib(nibName: "FoodItemCell", bundle: nil)
         let expandedCellNib = UINib(nibName: "ExpandedFoodCell", bundle: nil)
         let expandedDetailCellNib = UINib(nibName: "ExpandedDetailsCell", bundle: nil)
-
+        let epandedEditPortionCellNib = UINib(nibName: "EditPortionCell", bundle: nil)
+        
         tableView.register(cellNib, forCellReuseIdentifier: "FoodItemCell")
         tableView.register(expandedCellNib, forCellReuseIdentifier: "ExpandedFoodCell")
         tableView.register(expandedDetailCellNib, forCellReuseIdentifier: "ExpandedDetailsCell")
+        tableView.register(epandedEditPortionCellNib, forCellReuseIdentifier: "EditPortionCell")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -92,7 +94,8 @@ extension FoodListVC: ExpandableDelegate{
        
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "ExpandedFoodCell") as! ExpandedFoodCell
             let cell2 = tableView.dequeueReusableCell(withIdentifier: "ExpandedDetailsCell") as! ExpandedDetailsCell
-            
+            let cell3 = tableView.dequeueReusableCell(withIdentifier: "EditPortionCell") as! EditPortionCell
+
             let foodItem : FoodModel
             
             foodItem = foodData.foodList[indexPath.row]
@@ -101,16 +104,19 @@ extension FoodListVC: ExpandableDelegate{
             cell1.proteinsLabel.text = String(describing: foodItem.protein!)
             cell1.fatsLabel.text = String(describing: foodItem.fat!)
             cell1.uglevodsLabel.text = String(describing: foodItem.carbonhydrate!)
-            cell2.caloriesLabel.text = String(describing: foodItem.calories!)
+            cell1.selectionStyle = .none
             
-            return [cell1,cell2]
+            cell2.caloriesLabel.text = String(describing: foodItem.calories!)
+            cell2.selectionStyle = .none
+
+            return [cell1,cell2,cell3]
         
         
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, heightsForExpandedRowAt indexPath: IndexPath) -> [CGFloat]? {
         
-        return [44,44]
+        return [44,44,44]
         
     }
     

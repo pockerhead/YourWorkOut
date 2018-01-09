@@ -25,6 +25,8 @@
 		74EF98393941B8A1FEEAFD90 /* Pods_YourWorkoutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 562AFD5BCC8F0114693CD4A5 /* Pods_YourWorkoutUITests.framework */; };
 		CE04B9EE2004A907004EABE2 /* ExpandedDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE04B9EC2004A907004EABE2 /* ExpandedDetailsCell.swift */; };
 		CE04B9EF2004A908004EABE2 /* ExpandedDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE04B9ED2004A907004EABE2 /* ExpandedDetailsCell.xib */; };
+		CE04B9F32004B085004EABE2 /* EditPortionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE04B9F12004B085004EABE2 /* EditPortionCell.swift */; };
+		CE04B9F42004B085004EABE2 /* EditPortionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE04B9F22004B085004EABE2 /* EditPortionCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		A1EC514A0597A50111B36FDF /* Pods-YourWorkoutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourWorkoutTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YourWorkoutTests/Pods-YourWorkoutTests.release.xcconfig"; sourceTree = "<group>"; };
 		CE04B9EC2004A907004EABE2 /* ExpandedDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedDetailsCell.swift; sourceTree = "<group>"; };
 		CE04B9ED2004A907004EABE2 /* ExpandedDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandedDetailsCell.xib; sourceTree = "<group>"; };
+		CE04B9F12004B085004EABE2 /* EditPortionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPortionCell.swift; sourceTree = "<group>"; };
+		CE04B9F22004B085004EABE2 /* EditPortionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPortionCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +192,8 @@
 				06B3BDEB2004000D00AD5B49 /* ExpandedFoodCell.xib */,
 				CE04B9EC2004A907004EABE2 /* ExpandedDetailsCell.swift */,
 				CE04B9ED2004A907004EABE2 /* ExpandedDetailsCell.xib */,
+				CE04B9F12004B085004EABE2 /* EditPortionCell.swift */,
+				CE04B9F22004B085004EABE2 /* EditPortionCell.xib */,
 			);
 			path = ForFoodListVC;
 			sourceTree = "<group>";
@@ -327,6 +333,7 @@
 				0636E5EA20037E4D005E9282 /* Assets.xcassets in Resources */,
 				0636E5E820037E4D005E9282 /* Main.storyboard in Resources */,
 				CE04B9EF2004A908004EABE2 /* ExpandedDetailsCell.xib in Resources */,
+				CE04B9F42004B085004EABE2 /* EditPortionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,11 +411,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-YourWorkout/Pods-YourWorkout-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ExpandableCell/ExpandableCell.framework",
+				"${BUILT_PRODUCTS_DIR}/ValueStepper/ValueStepper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpandableCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ValueStepper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -504,6 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0636E5DF20037E4D005E9282 /* AppDelegate.swift in Sources */,
+				CE04B9F32004B085004EABE2 /* EditPortionCell.swift in Sources */,
 				06B3BDEF2004034A00AD5B49 /* FoodListVC.swift in Sources */,
 				CE04B9EE2004A907004EABE2 /* ExpandedDetailsCell.swift in Sources */,
 				06917D792003879900C1F624 /* FoodModel.swift in Sources */,
