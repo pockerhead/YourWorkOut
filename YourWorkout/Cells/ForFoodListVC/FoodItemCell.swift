@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import ExpandableCell
 
-class FoodItemCell: UITableViewCell {
+class FoodItemCell: ExpandableCell {
 
     @IBOutlet weak var foodName: UILabel!
     override func awakeFromNib() {
