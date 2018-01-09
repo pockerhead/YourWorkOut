@@ -23,6 +23,8 @@
 		0E11E9ADD2D57D1570CBE8CC /* Pods_YourWorkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FFD4313F8A8B38F08246A85 /* Pods_YourWorkout.framework */; };
 		65FF2DBA1386D83F500C5906 /* Pods_YourWorkoutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 802B52A4CCC937F1BDA03EE4 /* Pods_YourWorkoutTests.framework */; };
 		74EF98393941B8A1FEEAFD90 /* Pods_YourWorkoutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 562AFD5BCC8F0114693CD4A5 /* Pods_YourWorkoutUITests.framework */; };
+		CE04B9EE2004A907004EABE2 /* ExpandedDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE04B9EC2004A907004EABE2 /* ExpandedDetailsCell.swift */; };
+		CE04B9EF2004A908004EABE2 /* ExpandedDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE04B9ED2004A907004EABE2 /* ExpandedDetailsCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		82AD7DD7C8A0C81F43A7486B /* Pods-YourWorkoutUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourWorkoutUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YourWorkoutUITests/Pods-YourWorkoutUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		937950208CE6F9F2CAF10418 /* Pods-YourWorkoutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourWorkoutTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YourWorkoutTests/Pods-YourWorkoutTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1EC514A0597A50111B36FDF /* Pods-YourWorkoutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourWorkoutTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YourWorkoutTests/Pods-YourWorkoutTests.release.xcconfig"; sourceTree = "<group>"; };
+		CE04B9EC2004A907004EABE2 /* ExpandedDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedDetailsCell.swift; sourceTree = "<group>"; };
+		CE04B9ED2004A907004EABE2 /* ExpandedDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandedDetailsCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,10 +164,7 @@
 		06B3BDE92003F61B00AD5B49 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				06B3BDE52003F60000AD5B49 /* FoodItemCell.swift */,
-				06B3BDE62003F60000AD5B49 /* FoodItemCell.xib */,
-				06B3BDEA2004000D00AD5B49 /* ExpandedFoodCell.swift */,
-				06B3BDEB2004000D00AD5B49 /* ExpandedFoodCell.xib */,
+				CE04B9F02004ADA6004EABE2 /* ForFoodListVC */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -176,6 +177,19 @@
 				562AFD5BCC8F0114693CD4A5 /* Pods_YourWorkoutUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE04B9F02004ADA6004EABE2 /* ForFoodListVC */ = {
+			isa = PBXGroup;
+			children = (
+				06B3BDE52003F60000AD5B49 /* FoodItemCell.swift */,
+				06B3BDE62003F60000AD5B49 /* FoodItemCell.xib */,
+				06B3BDEA2004000D00AD5B49 /* ExpandedFoodCell.swift */,
+				06B3BDEB2004000D00AD5B49 /* ExpandedFoodCell.xib */,
+				CE04B9EC2004A907004EABE2 /* ExpandedDetailsCell.swift */,
+				CE04B9ED2004A907004EABE2 /* ExpandedDetailsCell.xib */,
+			);
+			path = ForFoodListVC;
 			sourceTree = "<group>";
 		};
 		EAA7B82F793F0E8248A8C793 /* Pods */ = {
@@ -312,6 +326,7 @@
 				06B3BDED2004000D00AD5B49 /* ExpandedFoodCell.xib in Resources */,
 				0636E5EA20037E4D005E9282 /* Assets.xcassets in Resources */,
 				0636E5E820037E4D005E9282 /* Main.storyboard in Resources */,
+				CE04B9EF2004A908004EABE2 /* ExpandedDetailsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +505,7 @@
 			files = (
 				0636E5DF20037E4D005E9282 /* AppDelegate.swift in Sources */,
 				06B3BDEF2004034A00AD5B49 /* FoodListVC.swift in Sources */,
+				CE04B9EE2004A907004EABE2 /* ExpandedDetailsCell.swift in Sources */,
 				06917D792003879900C1F624 /* FoodModel.swift in Sources */,
 				06B3BDE72003F60000AD5B49 /* FoodItemCell.swift in Sources */,
 				06B3BDEC2004000D00AD5B49 /* ExpandedFoodCell.swift in Sources */,

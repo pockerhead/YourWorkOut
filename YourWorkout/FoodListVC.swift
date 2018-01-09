@@ -18,16 +18,24 @@ class FoodListVC: UIViewController {
     var filteredFood = [FoodModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Setup the Search Controller
-//        searchController.searchResultsUpdater = self
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        searchController.searchBar.placeholder = "Search Foods"
-//        navigationItem.searchController = searchController
-//        definesPresentationContext = true
+        tableView.expandableDelegate = self
+        tableView.animation = .automatic
+        
+        //Setup the Search Controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Foods"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
         let cellNib = UINib(nibName: "FoodItemCell", bundle: nil)
         let expandedCellNib = UINib(nibName: "ExpandedFoodCell", bundle: nil)
+        let expandedDetailCellNib = UINib(nibName: "ExpandedDetailsCell", bundle: nil)
+
         tableView.register(cellNib, forCellReuseIdentifier: "FoodItemCell")
         tableView.register(expandedCellNib, forCellReuseIdentifier: "ExpandedFoodCell")
+        tableView.register(expandedDetailCellNib, forCellReuseIdentifier: "ExpandedDetailsCell")
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -52,51 +60,57 @@ class FoodListVC: UIViewController {
     }
     */
 //    // MARK: - Search
-//    func searchBarIsEmpty() -> Bool {
-//        // Returns true if the text is empty or nil
-//        return searchController.searchBar.text?.isEmpty ?? true
-//    }
-//
-//    func isFiltering() -> Bool {
-//        return searchController.isActive && !searchBarIsEmpty()
-//    }
-//
-//    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-//        filteredFood = foodData.foodList.filter({( item : FoodModel) -> Bool in
-//            return (item.name?.lowercased().contains(searchText.lowercased()))!
-//        })
-//
-//        tableView.reloadData()
-//    }
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredFood = foodData.foodList.filter({( item : FoodModel) -> Bool in
+            return (item.name?.lowercased().contains(searchText.lowercased()))!
+        })
+
+        tableView.reloadData()
+    }
 }
-//extension FoodListTVC: UISearchResultsUpdating {
-//    // MARK: - UISearchResultsUpdating Delegate
-//    func updateSearchResults(for searchController: UISearchController) {
-//        filterContentForSearchText(searchController.searchBar.text!)
-//    }
-//}
+extension FoodListVC: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+}
 
 extension FoodListVC: ExpandableDelegate{
     
     // MARK: - ExpandableDelegate methods
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, expandedCellsForRowAt indexPath: IndexPath) -> [UITableViewCell]? {
+       
+            let cell1 = tableView.dequeueReusableCell(withIdentifier: "ExpandedFoodCell") as! ExpandedFoodCell
+            let cell2 = tableView.dequeueReusableCell(withIdentifier: "ExpandedDetailsCell") as! ExpandedDetailsCell
+            
+            let foodItem : FoodModel
+            
+            foodItem = foodData.foodList[indexPath.row]
+            
+            
+            cell1.proteinsLabel.text = String(describing: foodItem.protein!)
+            cell1.fatsLabel.text = String(describing: foodItem.fat!)
+            cell1.uglevodsLabel.text = String(describing: foodItem.carbonhydrate!)
+            cell2.caloriesLabel.text = String(describing: foodItem.calories!)
+            
+            return [cell1,cell2]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpandedFoodCell", for: indexPath) as! ExpandedFoodCell
-        let foodItem : FoodModel
-        
-        foodItem = foodData.foodList[indexPath.row]
-        
-        
-        cell.fatsLabel.text = "123"
-        
-        return [cell]
         
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, heightsForExpandedRowAt indexPath: IndexPath) -> [CGFloat]? {
         
-        return [CGFloat(integerLiteral: 44)]
+        return [44,44]
         
     }
     
@@ -109,11 +123,12 @@ extension FoodListVC: ExpandableDelegate{
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, didSelectRowAt indexPath: IndexPath) {
-        //        print("didSelectRow:\(indexPath)")
+//                tableView.closeAll()
+                print("didSelectRow:\(indexPath)")
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, didSelectExpandedRowAt indexPath: IndexPath) {
-        //        print("didSelectExpandedRowAt:\(indexPath)")
+                print("didSelectExpandedRowAt:\(indexPath)")
     }
     
     //    func expandableTableView(_ expandableTableView: ExpandableTableView, expandedCell: UITableViewCell, didSelectExpandedRowAt indexPath: IndexPath) {
@@ -133,12 +148,12 @@ extension FoodListVC: ExpandableDelegate{
         
         
         cell.foodName.text = "\(String(describing: foodItem.name!))"
-        
+        cell.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
         return cell
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 33.0
+        return 66.0
     }
     
     func expandableTableView(_ expandableTableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
@@ -157,13 +172,13 @@ extension FoodListVC: ExpandableDelegate{
         //        cell?.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
     }
     
-    //    func expandableTableView(_ expandableTableView: ExpandableTableView, titleForHeaderInSection section: Int) -> String? {
-    //        return "Section \(section)"
-    //    }
-    //
-    //    func expandableTableView(_ expandableTableView: ExpandableTableView, heightForHeaderInSection section: Int) -> CGFloat {
-    //        return 33
-    //    }
+        func expandableTableView(_ expandableTableView: ExpandableTableView, titleForHeaderInSection section: Int) -> String? {
+            return "Section \(section)"
+        }
+    
+        func expandableTableView(_ expandableTableView: ExpandableTableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return 33
+        }
     
     
 }
