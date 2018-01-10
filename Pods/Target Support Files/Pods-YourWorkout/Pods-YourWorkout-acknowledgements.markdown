@@ -24,11 +24,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-## ExpandableCell
+## CollapsibleTableSectionViewController
 
 MIT License
 
-Copyright (c) 2017 Seungyoun Yi
+Copyright (c) 2017 Yong Su @jeantimex
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

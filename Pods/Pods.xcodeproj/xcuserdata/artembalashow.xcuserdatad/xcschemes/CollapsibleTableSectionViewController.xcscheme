@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8D8CA33CED278A55C6B9E79BD3642E03'
-               BlueprintName = 'ExpandableCell'
+               BlueprintIdentifier = 'A55696F272FF688344C4A01C6393E2F7'
+               BlueprintName = 'CollapsibleTableSectionViewController'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'ExpandableCell.framework'>
+               BuildableName = 'CollapsibleTableSectionViewController.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

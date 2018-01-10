@@ -19,7 +19,16 @@ class EditPortionCell: UITableViewCell {
         // Initialization code
 portionStepper.valueLabel.text = "100"
     }
-
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+   
+    func initWithFood(calories:Float?){
+        
+        self.selectionStyle = .none
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

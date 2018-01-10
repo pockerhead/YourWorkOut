@@ -73,9 +73,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="carbonhydratesLabel" destination="nH6-g8-8xq" id="u7T-jd-GFW"/>
                 <outlet property="fatsLabel" destination="2he-CC-YOA" id="ooz-TC-hjk"/>
                 <outlet property="proteinsLabel" destination="PaI-0Y-qFx" id="2tP-i8-DVs"/>
-                <outlet property="uglevodsLabel" destination="nH6-g8-8xq" id="hhS-eW-HJm"/>
             </connections>
             <point key="canvasLocation" x="1954" y="264"/>
         </tableViewCell>

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ExpandableCell
 
 
 class FoodListVC: UIViewController {
@@ -23,13 +22,15 @@ class FoodListVC: UIViewController {
         tableView.expandableDelegate = self
         tableView.animation = .automatic
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapOnSearchBar))
-        searchController.searchBar.addGestureRecognizer(tap)
+        
+        
         //Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Foods"
         navigationItem.searchController = searchController
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapOnSearchBar))
+        searchController.searchBar.addGestureRecognizer(tap)
         definesPresentationContext = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
@@ -53,7 +54,7 @@ class FoodListVC: UIViewController {
         
     }
     @objc func keyBoardWillShow(notification: NSNotification) {
-        tableView.closeAll()
+//        tableView.closeAll()
     }
     
     
@@ -127,18 +128,12 @@ extension FoodListVC: ExpandableDelegate{
         
         foodItem = foodData.foodList[indexPath.row]
         
-        
-        cell1.proteinsLabel.text = String(describing: foodItem.protein!)
-        cell1.fatsLabel.text = String(describing: foodItem.fat!)
-        cell1.uglevodsLabel.text = String(describing: foodItem.carbonhydrate!)
-        cell1.selectionStyle = .none
-        
-        cell2.caloriesLabel.text = String(describing: foodItem.calories!)
-        cell2.selectionStyle = .none
+        cell1.initWithFood(protein: foodItem.protein, fat: foodItem.fat, carbonhydrates: foodItem.carbonhydrate)
+        cell2.initWithFood(calories: foodItem.calories)
+        cell3.selectionStyle = .none
         
         return [cell1,cell2,cell3]
-        
-        
+   
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, heightsForExpandedRowAt indexPath: IndexPath) -> [CGFloat]? {

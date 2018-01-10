@@ -19,7 +19,6 @@
 		06B3BDE82003F60000AD5B49 /* FoodItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B3BDE62003F60000AD5B49 /* FoodItemCell.xib */; };
 		06B3BDEC2004000D00AD5B49 /* ExpandedFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3BDEA2004000D00AD5B49 /* ExpandedFoodCell.swift */; };
 		06B3BDED2004000D00AD5B49 /* ExpandedFoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B3BDEB2004000D00AD5B49 /* ExpandedFoodCell.xib */; };
-		06B3BDEF2004034A00AD5B49 /* FoodListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3BDEE2004034A00AD5B49 /* FoodListVC.swift */; };
 		0E11E9ADD2D57D1570CBE8CC /* Pods_YourWorkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FFD4313F8A8B38F08246A85 /* Pods_YourWorkout.framework */; };
 		65FF2DBA1386D83F500C5906 /* Pods_YourWorkoutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 802B52A4CCC937F1BDA03EE4 /* Pods_YourWorkoutTests.framework */; };
 		74EF98393941B8A1FEEAFD90 /* Pods_YourWorkoutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 562AFD5BCC8F0114693CD4A5 /* Pods_YourWorkoutUITests.framework */; };
@@ -27,6 +26,11 @@
 		CE04B9EF2004A908004EABE2 /* ExpandedDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE04B9ED2004A907004EABE2 /* ExpandedDetailsCell.xib */; };
 		CE04B9F32004B085004EABE2 /* EditPortionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE04B9F12004B085004EABE2 /* EditPortionCell.swift */; };
 		CE04B9F42004B085004EABE2 /* EditPortionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE04B9F22004B085004EABE2 /* EditPortionCell.xib */; };
+		CE1C0F662006152600AE430A /* UIColor + hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F652006152600AE430A /* UIColor + hex.swift */; };
+		CE1C0F682006155500AE430A /* UIView + rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F672006155500AE430A /* UIView + rotate.swift */; };
+		CE1C0F6A200615A400AE430A /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F69200615A400AE430A /* CollapsibleTableViewHeader.swift */; };
+		CE1C0F6C2006161000AE430A /* FoodListHeaderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F6B2006161000AE430A /* FoodListHeaderTVC.swift */; };
+		CE1C0F6E2006292700AE430A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F6D2006292700AE430A /* CustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +69,6 @@
 		06B3BDE62003F60000AD5B49 /* FoodItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodItemCell.xib; sourceTree = "<group>"; };
 		06B3BDEA2004000D00AD5B49 /* ExpandedFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedFoodCell.swift; sourceTree = "<group>"; };
 		06B3BDEB2004000D00AD5B49 /* ExpandedFoodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandedFoodCell.xib; sourceTree = "<group>"; };
-		06B3BDEE2004034A00AD5B49 /* FoodListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListVC.swift; sourceTree = "<group>"; };
 		06FA78A772DA9E2FA32D7221 /* Pods-YourWorkoutUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourWorkoutUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YourWorkoutUITests/Pods-YourWorkoutUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3447CD47CCA7182E60A971B6 /* Pods-YourWorkout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourWorkout.release.xcconfig"; path = "Pods/Target Support Files/Pods-YourWorkout/Pods-YourWorkout.release.xcconfig"; sourceTree = "<group>"; };
 		3FFD4313F8A8B38F08246A85 /* Pods_YourWorkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourWorkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +82,11 @@
 		CE04B9ED2004A907004EABE2 /* ExpandedDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandedDetailsCell.xib; sourceTree = "<group>"; };
 		CE04B9F12004B085004EABE2 /* EditPortionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPortionCell.swift; sourceTree = "<group>"; };
 		CE04B9F22004B085004EABE2 /* EditPortionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPortionCell.xib; sourceTree = "<group>"; };
+		CE1C0F652006152600AE430A /* UIColor + hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + hex.swift"; sourceTree = "<group>"; };
+		CE1C0F672006155500AE430A /* UIView + rotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + rotate.swift"; sourceTree = "<group>"; };
+		CE1C0F69200615A400AE430A /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
+		CE1C0F6B2006161000AE430A /* FoodListHeaderTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListHeaderTVC.swift; sourceTree = "<group>"; };
+		CE1C0F6D2006292700AE430A /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,9 +144,11 @@
 			children = (
 				0636E5DE20037E4D005E9282 /* AppDelegate.swift */,
 				06B3BDE92003F61B00AD5B49 /* Cells */,
-				06B3BDEE2004034A00AD5B49 /* FoodListVC.swift */,
+				CE1C0F6B2006161000AE430A /* FoodListHeaderTVC.swift */,
 				06917D782003879900C1F624 /* FoodModel.swift */,
+				CE1C0F69200615A400AE430A /* CollapsibleTableViewHeader.swift */,
 				06917D7A20039A6300C1F624 /* FoodListModel.swift */,
+				CE1C0F642006151300AE430A /* Extensions */,
 				0636E5E620037E4D005E9282 /* Main.storyboard */,
 				0636E5E920037E4D005E9282 /* Assets.xcassets */,
 				0636E5EB20037E4D005E9282 /* LaunchScreen.storyboard */,
@@ -192,10 +202,20 @@
 				06B3BDEB2004000D00AD5B49 /* ExpandedFoodCell.xib */,
 				CE04B9EC2004A907004EABE2 /* ExpandedDetailsCell.swift */,
 				CE04B9ED2004A907004EABE2 /* ExpandedDetailsCell.xib */,
+				CE1C0F6D2006292700AE430A /* CustomCell.swift */,
 				CE04B9F12004B085004EABE2 /* EditPortionCell.swift */,
 				CE04B9F22004B085004EABE2 /* EditPortionCell.xib */,
 			);
 			path = ForFoodListVC;
+			sourceTree = "<group>";
+		};
+		CE1C0F642006151300AE430A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE1C0F652006152600AE430A /* UIColor + hex.swift */,
+				CE1C0F672006155500AE430A /* UIView + rotate.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EAA7B82F793F0E8248A8C793 /* Pods */ = {
@@ -410,13 +430,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-YourWorkout/Pods-YourWorkout-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/ExpandableCell/ExpandableCell.framework",
+				"${BUILT_PRODUCTS_DIR}/CollapsibleTableSectionViewController/CollapsibleTableSectionViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/ValueStepper/ValueStepper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpandableCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollapsibleTableSectionViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ValueStepper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,13 +533,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				0636E5DF20037E4D005E9282 /* AppDelegate.swift in Sources */,
+				CE1C0F6A200615A400AE430A /* CollapsibleTableViewHeader.swift in Sources */,
 				CE04B9F32004B085004EABE2 /* EditPortionCell.swift in Sources */,
-				06B3BDEF2004034A00AD5B49 /* FoodListVC.swift in Sources */,
+				CE1C0F6C2006161000AE430A /* FoodListHeaderTVC.swift in Sources */,
 				CE04B9EE2004A907004EABE2 /* ExpandedDetailsCell.swift in Sources */,
 				06917D792003879900C1F624 /* FoodModel.swift in Sources */,
 				06B3BDE72003F60000AD5B49 /* FoodItemCell.swift in Sources */,
 				06B3BDEC2004000D00AD5B49 /* ExpandedFoodCell.swift in Sources */,
+				CE1C0F662006152600AE430A /* UIColor + hex.swift in Sources */,
 				06917D7B20039A6300C1F624 /* FoodListModel.swift in Sources */,
+				CE1C0F6E2006292700AE430A /* CustomCell.swift in Sources */,
+				CE1C0F682006155500AE430A /* UIView + rotate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
