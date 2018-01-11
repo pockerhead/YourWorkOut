@@ -17,7 +17,7 @@ class EditPortionCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-portionStepper.valueLabel.text = "100"
+//        portionStepper.valueLabel.text = portionStepper.value > 100 ? String(describing: portionStepper.value) : "100"
     }
     
     override func prepareForReuse() {
@@ -35,7 +35,7 @@ portionStepper.valueLabel.text = "100"
         // Configure the view for the selected state
     }
     @IBAction func portionValueCahnged(_ sender: ValueStepper) {
-        print("value is \(portionStepper.value)")
+        
     }
     
 }

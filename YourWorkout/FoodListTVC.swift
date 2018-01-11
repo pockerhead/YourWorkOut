@@ -113,7 +113,6 @@ class FoodListTVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    // MARK: - Search
     func searchBarIsEmpty() -> Bool {
         // Returns true if the text is empty or nil
         return searchController.searchBar.text?.isEmpty ?? true

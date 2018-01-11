@@ -62,6 +62,7 @@ open class CollapsibleTableSectionViewController: UIViewController {
             // Update the sections that need to be redrawn
             sectionsNeedReload.append(contentsOf: sectionsNeedCollapse)
         }
+        
         return sectionsNeedReload
     }
     
@@ -108,7 +109,7 @@ extension CollapsibleTableSectionViewController: UITableViewDataSource, UITableV
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return 115
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -122,9 +123,8 @@ extension CollapsibleTableSectionViewController: UITableViewDataSource, UITableV
         let title = delegate?.collapsibleTableView?(tableView, titleForHeaderInSection: section) ?? ""
         
         header.titleLabel.text = title
-        header.arrowLabel.text = ">"
+//        header.arrowLabel.text = ">"
         header.setCollapsed(isSectionCollapsed(section))
-        
         header.section = section
         header.delegate = self
         
@@ -147,9 +147,10 @@ extension CollapsibleTableSectionViewController: UITableViewDataSource, UITableV
 extension CollapsibleTableSectionViewController: CollapsibleTableViewHeaderDelegate {
     
     func toggleSection(_ section: Int) {
+//        _tableView.reloadData()
         let sectionsNeedReload = getSectionsNeedReload(section)
-        print(sectionsNeedReload)
-        _tableView.reloadSections(IndexSet(sectionsNeedReload), with: .automatic)
+        _tableView.reloadSections(IndexSet(sectionsNeedReload), with: .fade)
+
     }
     
 }

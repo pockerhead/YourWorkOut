@@ -63,7 +63,6 @@ open class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
         guard let cell = gestureRecognizer.view as? CollapsibleTableViewHeader else {
             return
         }
-        
         _ = delegate?.toggleSection(cell.section)
     }
     

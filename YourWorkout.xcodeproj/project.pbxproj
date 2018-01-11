@@ -28,9 +28,9 @@
 		CE04B9F42004B085004EABE2 /* EditPortionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE04B9F22004B085004EABE2 /* EditPortionCell.xib */; };
 		CE1C0F662006152600AE430A /* UIColor + hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F652006152600AE430A /* UIColor + hex.swift */; };
 		CE1C0F682006155500AE430A /* UIView + rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F672006155500AE430A /* UIView + rotate.swift */; };
-		CE1C0F6A200615A400AE430A /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F69200615A400AE430A /* CollapsibleTableViewHeader.swift */; };
 		CE1C0F6C2006161000AE430A /* FoodListHeaderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F6B2006161000AE430A /* FoodListHeaderTVC.swift */; };
 		CE1C0F6E2006292700AE430A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F6D2006292700AE430A /* CustomCell.swift */; };
+		CEA64EDC20077A9B0002A87E /* FoodDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA64EDB20077A9B0002A87E /* FoodDetailsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,9 +84,9 @@
 		CE04B9F22004B085004EABE2 /* EditPortionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPortionCell.xib; sourceTree = "<group>"; };
 		CE1C0F652006152600AE430A /* UIColor + hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + hex.swift"; sourceTree = "<group>"; };
 		CE1C0F672006155500AE430A /* UIView + rotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + rotate.swift"; sourceTree = "<group>"; };
-		CE1C0F69200615A400AE430A /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
 		CE1C0F6B2006161000AE430A /* FoodListHeaderTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListHeaderTVC.swift; sourceTree = "<group>"; };
 		CE1C0F6D2006292700AE430A /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		CEA64EDB20077A9B0002A87E /* FoodDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,8 +145,8 @@
 				0636E5DE20037E4D005E9282 /* AppDelegate.swift */,
 				06B3BDE92003F61B00AD5B49 /* Cells */,
 				CE1C0F6B2006161000AE430A /* FoodListHeaderTVC.swift */,
+				CEA64EDB20077A9B0002A87E /* FoodDetailsVC.swift */,
 				06917D782003879900C1F624 /* FoodModel.swift */,
-				CE1C0F69200615A400AE430A /* CollapsibleTableViewHeader.swift */,
 				06917D7A20039A6300C1F624 /* FoodListModel.swift */,
 				CE1C0F642006151300AE430A /* Extensions */,
 				0636E5E620037E4D005E9282 /* Main.storyboard */,
@@ -533,7 +533,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0636E5DF20037E4D005E9282 /* AppDelegate.swift in Sources */,
-				CE1C0F6A200615A400AE430A /* CollapsibleTableViewHeader.swift in Sources */,
 				CE04B9F32004B085004EABE2 /* EditPortionCell.swift in Sources */,
 				CE1C0F6C2006161000AE430A /* FoodListHeaderTVC.swift in Sources */,
 				CE04B9EE2004A907004EABE2 /* ExpandedDetailsCell.swift in Sources */,
@@ -542,6 +541,7 @@
 				06B3BDEC2004000D00AD5B49 /* ExpandedFoodCell.swift in Sources */,
 				CE1C0F662006152600AE430A /* UIColor + hex.swift in Sources */,
 				06917D7B20039A6300C1F624 /* FoodListModel.swift in Sources */,
+				CEA64EDC20077A9B0002A87E /* FoodDetailsVC.swift in Sources */,
 				CE1C0F6E2006292700AE430A /* CustomCell.swift in Sources */,
 				CE1C0F682006155500AE430A /* UIView + rotate.swift in Sources */,
 			);
@@ -717,7 +717,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pockerhead.YourWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -734,7 +734,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pockerhead.YourWorkout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
