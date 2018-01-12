@@ -20,11 +20,14 @@ class FoodDetailsVC: UIViewController {
     @IBOutlet weak var carbonhydratesLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let labelsArray = [self.caloriesLabel,self.carbonhydratesLabel,self.fatsLabel,self.proteinsLabel]
         self.caloriesLabel.text = "\(String(describing: calories)) Ккал."
         self.carbonhydratesLabel.text = "\(String(describing: carbonhydrate)) гр."
         self.fatsLabel.text = "\(String(describing: fat)) гр."
         self.proteinsLabel.text = "\(String(describing: protein)) гр."
+        for label in labelsArray{
+            label?.sizeToFit()
+        }
     }
     
     override func didReceiveMemoryWarning() {

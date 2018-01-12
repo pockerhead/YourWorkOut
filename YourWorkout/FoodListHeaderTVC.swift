@@ -16,6 +16,8 @@ class FoodListHeaderTVC: CollapsibleTableSectionViewController {
     var foodData = FoodListModel.sharedInstance
     let searchController = UISearchController(searchResultsController: nil)
     var filteredFood = [FoodModel]()
+    var heightAtIndexPath = NSMutableDictionary()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -26,16 +28,15 @@ class FoodListHeaderTVC: CollapsibleTableSectionViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
+        self._tableView.rowHeight = UITableViewAutomaticDimension
+
         
-        let cellNib = UINib(nibName: "FoodItemCell", bundle: nil)
         let expandedCellNib = UINib(nibName: "ExpandedFoodCell", bundle: nil)
-        let expandedDetailCellNib = UINib(nibName: "ExpandedDetailsCell", bundle: nil)
-        let epandedEditPortionCellNib = UINib(nibName: "EditPortionCell", bundle: nil)
+       
         
-        self._tableView.register(cellNib, forCellReuseIdentifier: "FoodItemCell")
+ 
         self._tableView.register(expandedCellNib, forCellReuseIdentifier: "ExpandedFoodCell")
-        self._tableView.register(expandedDetailCellNib, forCellReuseIdentifier: "ExpandedDetailsCell")
-        self._tableView.register(epandedEditPortionCellNib, forCellReuseIdentifier: "EditPortionCell")
+       
 
     }
 
@@ -90,8 +91,7 @@ extension FoodListHeaderTVC: CollapsibleTableSectionDelegate {
     
     func collapsibleTableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell1 = self._tableView.dequeueReusableCell(withIdentifier: "ExpandedFoodCell") as! ExpandedFoodCell
-        let cell2 = self._tableView.dequeueReusableCell(withIdentifier: "ExpandedDetailsCell") as! ExpandedDetailsCell
-        let cell3 = self._tableView.dequeueReusableCell(withIdentifier: "EditPortionCell") as! EditPortionCell
+       
         let foodItem : FoodModel
         if isFiltering(){
             foodItem = filteredFood[indexPath.section]
@@ -134,6 +134,19 @@ extension FoodListHeaderTVC: CollapsibleTableSectionDelegate {
     
     func shouldCollapseOthers(_ tableView: UITableView) -> Bool {
         return false
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let height = heightAtIndexPath.object(forKey: indexPath) as? NSNumber {
+            return CGFloat(height.floatValue)
+        } else {
+            return UITableViewAutomaticDimension
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let height = NSNumber(value: Float(cell.frame.size.height))
+        heightAtIndexPath.setObject(height, forKey: indexPath as NSCopying)
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
