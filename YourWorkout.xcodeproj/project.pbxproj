@@ -13,6 +13,9 @@
 		0636E5ED20037E4D005E9282 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0636E5EB20037E4D005E9282 /* LaunchScreen.storyboard */; };
 		0636E5F820037E4E005E9282 /* YourWorkoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0636E5F720037E4E005E9282 /* YourWorkoutTests.swift */; };
 		0636E60320037E4E005E9282 /* YourWorkoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0636E60220037E4E005E9282 /* YourWorkoutUITests.swift */; };
+		06517A47200BD6BF00CA098A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06517A46200BD6BF00CA098A /* LoginVC.swift */; };
+		06517A4B200BD88600CA098A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06517A49200BD88500CA098A /* Keychain.swift */; };
+		06517AA6200BEA7D00CA098A /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06517AA5200BEA7D00CA098A /* RegistrationVC.swift */; };
 		06917D792003879900C1F624 /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06917D782003879900C1F624 /* FoodModel.swift */; };
 		06917D7B20039A6300C1F624 /* FoodListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06917D7A20039A6300C1F624 /* FoodListModel.swift */; };
 		06B3BDE72003F60000AD5B49 /* FoodItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3BDE52003F60000AD5B49 /* FoodItemCell.swift */; };
@@ -63,6 +66,9 @@
 		0636E5FE20037E4E005E9282 /* YourWorkoutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourWorkoutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0636E60220037E4E005E9282 /* YourWorkoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourWorkoutUITests.swift; sourceTree = "<group>"; };
 		0636E60420037E4E005E9282 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06517A46200BD6BF00CA098A /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		06517A49200BD88500CA098A /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		06517AA5200BEA7D00CA098A /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		06917D782003879900C1F624 /* FoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodModel.swift; sourceTree = "<group>"; };
 		06917D7A20039A6300C1F624 /* FoodListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListModel.swift; sourceTree = "<group>"; };
 		06B3BDE52003F60000AD5B49 /* FoodItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemCell.swift; sourceTree = "<group>"; };
@@ -147,10 +153,13 @@
 				CE1C0F6B2006161000AE430A /* FoodListHeaderTVC.swift */,
 				CEA64EDB20077A9B0002A87E /* FoodDetailsVC.swift */,
 				06917D782003879900C1F624 /* FoodModel.swift */,
+				06517A49200BD88500CA098A /* Keychain.swift */,
 				06917D7A20039A6300C1F624 /* FoodListModel.swift */,
+				06517A46200BD6BF00CA098A /* LoginVC.swift */,
 				CE1C0F642006151300AE430A /* Extensions */,
 				0636E5E620037E4D005E9282 /* Main.storyboard */,
 				0636E5E920037E4D005E9282 /* Assets.xcassets */,
+				06517AA5200BEA7D00CA098A /* RegistrationVC.swift */,
 				0636E5EB20037E4D005E9282 /* LaunchScreen.storyboard */,
 				0636E5EE20037E4D005E9282 /* Info.plist */,
 			);
@@ -541,9 +550,12 @@
 				06B3BDEC2004000D00AD5B49 /* ExpandedFoodCell.swift in Sources */,
 				CE1C0F662006152600AE430A /* UIColor + hex.swift in Sources */,
 				06917D7B20039A6300C1F624 /* FoodListModel.swift in Sources */,
+				06517A47200BD6BF00CA098A /* LoginVC.swift in Sources */,
 				CEA64EDC20077A9B0002A87E /* FoodDetailsVC.swift in Sources */,
 				CE1C0F6E2006292700AE430A /* CustomCell.swift in Sources */,
 				CE1C0F682006155500AE430A /* UIView + rotate.swift in Sources */,
+				06517AA6200BEA7D00CA098A /* RegistrationVC.swift in Sources */,
+				06517A4B200BD88600CA098A /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

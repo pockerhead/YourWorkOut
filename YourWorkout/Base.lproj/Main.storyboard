@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2mM-m9-VjM">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Ui-xh-Htm">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,7 +15,7 @@
             <objects>
                 <viewController id="UXq-wZ-eca" customClass="FoodListHeaderTVC" customModule="YourWorkout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2R5-Wz-ZbJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="8A2-oo-DbF"/>
@@ -30,11 +31,11 @@
             <objects>
                 <viewController storyboardIdentifier="FoodDetailsViewController" id="Pf3-sx-j1m" customClass="FoodDetailsVC" customModule="YourWorkout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NDT-Qm-LmQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Подробная информация " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3N3-0G-lxQ">
-                                <rect key="frame" x="87" y="45" width="201" height="21"/>
+                                <rect key="frame" x="59.5" y="45" width="201" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -127,7 +128,7 @@
                 <navigationController id="5st-pF-2bt" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="E0T-ot-9eP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="am0-gh-eVm">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -143,7 +144,7 @@
             <objects>
                 <viewController id="ETf-I1-DOo" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q3e-4y-dEH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="4Hr-0S-ito"/>
@@ -153,6 +154,150 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SWY-s2-ORF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="968" y="1148"/>
+        </scene>
+        <!--Войти-->
+        <scene sceneID="urL-MT-htI">
+            <objects>
+                <viewController id="nUd-UF-YH8" customClass="LoginVC" customModule="YourWorkout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c8d-aV-fgz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DXz-lH-JEX">
+                                <rect key="frame" x="85" y="233" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Jy6-sr-xLT"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31a-wn-Cdn">
+                                <rect key="frame" x="114" y="313" width="92" height="30"/>
+                                <state key="normal" title="Регистрация"/>
+                                <connections>
+                                    <segue destination="qwz-s1-ohd" kind="show" id="v3W-yN-ecl"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dH3-ed-JY2">
+                                <rect key="frame" x="85.5" y="181" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="dQd-Pg-QGx"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xq8-c1-MPZ">
+                                <rect key="frame" x="138" y="275" width="44" height="30"/>
+                                <state key="normal" title="Войти"/>
+                                <connections>
+                                    <action selector="login:" destination="nUd-UF-YH8" eventType="touchUpInside" id="5PH-OS-Q8O"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Xq8-c1-MPZ" firstAttribute="top" secondItem="c8d-aV-fgz" secondAttribute="topMargin" constant="211" id="2I5-xu-99k"/>
+                            <constraint firstItem="DXz-lH-JEX" firstAttribute="centerX" secondItem="c8d-aV-fgz" secondAttribute="centerX" id="SWp-eq-8mc"/>
+                            <constraint firstItem="31a-wn-Cdn" firstAttribute="centerX" secondItem="c8d-aV-fgz" secondAttribute="centerX" id="U2q-D4-UGh"/>
+                            <constraint firstItem="DXz-lH-JEX" firstAttribute="top" secondItem="c8d-aV-fgz" secondAttribute="topMargin" constant="169" id="VWg-G6-K3o"/>
+                            <constraint firstItem="31a-wn-Cdn" firstAttribute="top" secondItem="c8d-aV-fgz" secondAttribute="topMargin" constant="249" id="aKh-yJ-5aq"/>
+                            <constraint firstItem="dH3-ed-JY2" firstAttribute="centerX" secondItem="c8d-aV-fgz" secondAttribute="centerX" id="eZx-fE-cBM"/>
+                            <constraint firstItem="Xq8-c1-MPZ" firstAttribute="centerX" secondItem="c8d-aV-fgz" secondAttribute="centerX" id="hRX-3b-mUN"/>
+                            <constraint firstItem="dH3-ed-JY2" firstAttribute="top" secondItem="bpk-BC-Bhm" secondAttribute="top" constant="117" id="oj5-e7-4FI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bpk-BC-Bhm"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Войти" id="8BO-GI-043">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="Qhe-L8-pui"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="login" destination="Xq8-c1-MPZ" id="Alx-Ke-3KW"/>
+                        <outlet property="password" destination="DXz-lH-JEX" id="7Vf-MS-QPp"/>
+                        <outlet property="username" destination="dH3-ed-JY2" id="bEK-4e-UoJ"/>
+                        <segue destination="2mM-m9-VjM" kind="presentation" identifier="LoginSegue" id="iVK-1c-AJ7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qFG-qs-gsX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1674" y="772"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zdl-pC-zXj">
+            <objects>
+                <navigationController id="1Ui-xh-Htm" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="Назад" id="hjv-HM-sef">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nUd-UF-YH8" kind="relationship" relationship="rootViewController" id="yfQ-bN-lpy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Xo-Nd-XYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2612" y="923"/>
+        </scene>
+        <!--RegistrationVC-->
+        <scene sceneID="NiX-N0-8qH">
+            <objects>
+                <viewController id="qwz-s1-ohd" customClass="RegistrationVC" customModule="YourWorkout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D2l-De-6xh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VRM-ut-ugb">
+                                <rect key="frame" x="112" y="88" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Логин" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h9q-0i-vGV">
+                                <rect key="frame" x="112" y="147" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7uE-8u-p2k">
+                                <rect key="frame" x="112" y="200" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Почта" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fbY-k5-yp8">
+                                <rect key="frame" x="112" y="258" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tz4-gH-yY6">
+                                <rect key="frame" x="86" y="393" width="149" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Зарегистрироваться"/>
+                                <connections>
+                                    <action selector="register:" destination="qwz-s1-ohd" eventType="touchUpInside" id="hxH-ae-k5A"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="m1Q-gj-Lbm"/>
+                    </view>
+                    <connections>
+                        <outlet property="email" destination="fbY-k5-yp8" id="Tsj-B4-bjx"/>
+                        <outlet property="name" destination="VRM-ut-ugb" id="pjj-12-sER"/>
+                        <outlet property="password" destination="7uE-8u-p2k" id="306-YS-SR4"/>
+                        <outlet property="username" destination="h9q-0i-vGV" id="GZc-xN-adh"/>
+                        <segue destination="2mM-m9-VjM" kind="show" identifier="LogSeg" id="2yz-8y-Xgb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Jr-dN-Ya4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1080" y="1493"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4C3-hC-oa8">
@@ -173,4 +318,10 @@
             <point key="canvasLocation" x="18" y="816"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Назад" width="16" height="16"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="2yz-8y-Xgb"/>
+    </inferredMetricsTieBreakers>
 </document>
