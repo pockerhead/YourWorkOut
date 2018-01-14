@@ -23,7 +23,7 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         self.addSocketHandlers()
         self.loggedIn = false;
-        
+        self.hideKeyboardWhenTappedAround()
         //comment below to force login
         guard let username = self.keychain.getPasscode(identifier: "MPPassword") else {
             return
@@ -31,10 +31,28 @@ class LoginVC: UIViewController {
         guard let password = self.keychain.getPasscode(identifier: "MPUsername") else {
             return
         }
-        if(username != "" && password != ""){
-            self.loginRequestWithParams(usernameString: self.keychain.getPasscode(identifier: "MPUsername")! as String, passwordString: self.keychain.getPasscode(identifier: "MPPassword")! as String)
-        }
+//        if(username != "" && password != ""){
+//            self.loginRequestWithParams(usernameString: self.keychain.getPasscode(identifier: "MPUsername")! as String, passwordString: self.keychain.getPasscode(identifier: "MPPassword")! as String)
+//        }
         // Do any additional setup after loading the view.
+//        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
     }
     func addSocketHandlers(){
         // Our socket handlers go here
