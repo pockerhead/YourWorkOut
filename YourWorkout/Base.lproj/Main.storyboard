@@ -292,7 +292,7 @@
                         <outlet property="name" destination="VRM-ut-ugb" id="pjj-12-sER"/>
                         <outlet property="password" destination="7uE-8u-p2k" id="306-YS-SR4"/>
                         <outlet property="username" destination="h9q-0i-vGV" id="GZc-xN-adh"/>
-                        <segue destination="2mM-m9-VjM" kind="show" identifier="LogSeg" id="2yz-8y-Xgb"/>
+                        <segue destination="2mM-m9-VjM" kind="presentation" identifier="LogSeg" id="2yz-8y-Xgb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Jr-dN-Ya4" userLabel="First Responder" sceneMemberID="firstResponder"/>
