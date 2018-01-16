@@ -22,6 +22,8 @@
 		06517AB0200CAA3A00CA098A /* FoodMealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06517AAF200CAA3A00CA098A /* FoodMealModel.swift */; };
 		06517AB9200CBB2A00CA098A /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06517AB8200CBB2A00CA098A /* MyButton.swift */; };
 		06517ABC200DDCD900CA098A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06517ABB200DDCD900CA098A /* Network.swift */; };
+		068BF392200E0E7A006EBBAB /* JournalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068BF391200E0E7A006EBBAB /* JournalVC.swift */; };
+		0690BE71200E448300B70259 /* SearchBar + UIColore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0690BE70200E448300B70259 /* SearchBar + UIColore.swift */; };
 		06917D792003879900C1F624 /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06917D782003879900C1F624 /* FoodModel.swift */; };
 		06917D7B20039A6300C1F624 /* FoodListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06917D7A20039A6300C1F624 /* FoodListModel.swift */; };
 		06B3BDE72003F60000AD5B49 /* FoodItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3BDE52003F60000AD5B49 /* FoodItemCell.swift */; };
@@ -81,6 +83,8 @@
 		06517AAF200CAA3A00CA098A /* FoodMealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMealModel.swift; sourceTree = "<group>"; };
 		06517AB8200CBB2A00CA098A /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		06517ABB200DDCD900CA098A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		068BF391200E0E7A006EBBAB /* JournalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalVC.swift; sourceTree = "<group>"; };
+		0690BE70200E448300B70259 /* SearchBar + UIColore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchBar + UIColore.swift"; sourceTree = "<group>"; };
 		06917D782003879900C1F624 /* FoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodModel.swift; sourceTree = "<group>"; };
 		06917D7A20039A6300C1F624 /* FoodListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListModel.swift; sourceTree = "<group>"; };
 		06B3BDE52003F60000AD5B49 /* FoodItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemCell.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 				06517AAB200C8BF700CA098A /* FoodMenuTVC.swift */,
 				06517AAD200CA8CE00CA098A /* FoodTodayVC.swift */,
 				CEA64EDB20077A9B0002A87E /* FoodDetailsVC.swift */,
+				068BF391200E0E7A006EBBAB /* JournalVC.swift */,
 				CE1C0F6B2006161000AE430A /* SearchFoodVC.swift */,
 			);
 			path = ViewControllers;
@@ -289,6 +294,7 @@
 				CE1C0F652006152600AE430A /* UIColor + hex.swift */,
 				06517AA7200BEF4100CA098A /* ViewController + hideKeyboard.swift */,
 				CE1C0F672006155500AE430A /* UIView + rotate.swift */,
+				0690BE70200E448300B70259 /* SearchBar + UIColore.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -505,12 +511,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-YourWorkout/Pods-YourWorkout-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CVCalendar/CVCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/CollapsibleTableSectionViewController/CollapsibleTableSectionViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/ValueStepper/ValueStepper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CVCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollapsibleTableSectionViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ValueStepper.framework",
 			);
@@ -625,8 +633,10 @@
 				CEA64EDC20077A9B0002A87E /* FoodDetailsVC.swift in Sources */,
 				06517AA8200BEF4200CA098A /* ViewController + hideKeyboard.swift in Sources */,
 				CE1C0F6E2006292700AE430A /* CustomCell.swift in Sources */,
+				068BF392200E0E7A006EBBAB /* JournalVC.swift in Sources */,
 				CE1C0F682006155500AE430A /* UIView + rotate.swift in Sources */,
 				06517AA6200BEA7D00CA098A /* RegistrationVC.swift in Sources */,
+				0690BE71200E448300B70259 /* SearchBar + UIColore.swift in Sources */,
 				06517A4B200BD88600CA098A /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

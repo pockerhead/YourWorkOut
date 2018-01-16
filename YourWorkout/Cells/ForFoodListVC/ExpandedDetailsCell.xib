@@ -115,6 +115,7 @@
                     <constraint firstItem="jd8-aa-ujp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="50" id="sRK-vF-dlq"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="caloriesLabel" destination="jd8-aa-ujp" id="BNw-jR-QCt"/>

@@ -21,17 +21,22 @@ class SearchFoodVC: CollapsibleTableSectionViewController {
     var filteredFood = [FoodModel]()
     var heightAtIndexPath = NSMutableDictionary()
     var foodDelegate : SearchFoodVCDelegate?
+    var activityIndicator = UIActivityIndicatorView()
+    var strLabel = UILabel()
     
+    let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-
+        self.activityIndicatorInit("Загрузка")
+//        self.navigationController?.navigationBar.prefersLargeTitles=false
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Foods"
+        searchController.searchBar.barStyle = .black
+
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        
         self._tableView.rowHeight = UITableViewAutomaticDimension
 
         
@@ -49,6 +54,36 @@ class SearchFoodVC: CollapsibleTableSectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func activityIndicatorInit(_ title: String) {
+        
+        strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
+        strLabel.text = title
+        strLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightMedium)
+        strLabel.textColor = UIColor(white: 0.9, alpha: 0.7)
+        
+        effectView.frame = CGRect(x: view.frame.midX - strLabel.frame.width/2, y: view.frame.midY - strLabel.frame.height/2 , width: 160, height: 46)
+        effectView.layer.cornerRadius = 15
+        effectView.layer.masksToBounds = true
+        
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
+        effectView.contentView.addSubview(activityIndicator)
+        effectView.contentView.addSubview(strLabel)
+        
+        
+        
+    }
+    func toggleActivity() {
+        if activityIndicator.isAnimating{
+            UIView.transition(with: self.view, duration: 0.5, options: .curveEaseIn,
+                              animations: {self.effectView.removeFromSuperview()}, completion: nil)
+            activityIndicator.stopAnimating()
+        } else {
+            UIView.transition(with: self.view, duration: 0.5, options: .curveEaseIn,
+                              animations: {self.view.addSubview(self.effectView)}, completion: nil)
+            activityIndicator.startAnimating()
+        }
+    }
 }
 
 extension SearchFoodVC: UISearchResultsUpdating {
@@ -72,6 +107,7 @@ extension SearchFoodVC {
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         let parameters: Parameters = ["search":searchText]
         let requestFood = FoodListModel.sharedInstance
+        self.toggleActivity()
         Alamofire.request("\(API_URL)/food/find", parameters:parameters).responseJSON(completionHandler: { responce in
             if let json = responce.result.value{
                 DispatchQueue.main.async {
@@ -80,6 +116,8 @@ extension SearchFoodVC {
                     self.filteredFood = requestFood.foodList
                     
                     self._tableView.reloadData()
+                    self.toggleActivity()
+
                 }
                 
             }

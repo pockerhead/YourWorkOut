@@ -9,6 +9,7 @@ target 'YourWorkout' do
 	pod 'Alamofire'
     pod 'ValueStepper'
     pod 'CollapsibleTableSectionViewController', '~> 1.0.0'
+    pod 'CVCalendar'
   target 'YourWorkoutTests' do
     inherit! :search_paths
     # Pods for testing

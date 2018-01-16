@@ -21,7 +21,13 @@ class FoodTodayVC: UIViewController  {
     var selectedMeal : FoodMeal?
     var selectedIndex : IndexPath?
     let keychain = Keychain()
-
+    var date : Date?
+    var navItemTitle : String?
+    var activityIndicator = UIActivityIndicatorView()
+    var strLabel = UILabel()
+    
+    let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,15 +35,18 @@ class FoodTodayVC: UIViewController  {
         self.tableView.dataSource = self
 
         self.tableView.allowsMultipleSelectionDuringEditing = false;
-        
         let addItemCellNib = UINib(nibName: "FoodItemCell", bundle: nil)
         let foodCellNib = UINib(nibName: "ExpandedDetailsCell", bundle: nil)
-        
+        self.activityIndicatorInit("Загрузка")
         self.tableView.register( addItemCellNib, forCellReuseIdentifier: "AddItemCell")
         self.tableView.register( foodCellNib, forCellReuseIdentifier: "FoodCell")
         
+        if let nav = self.navItemTitle{
+            self.navigationItem.title = nav
+        } else {
+            self.navigationItem.title = "Сегодня"
+        }
         
-        self.navigationItem.title = "Сегодня"
         
         self.getCurrentJournal()
         
@@ -56,12 +65,18 @@ class FoodTodayVC: UIViewController  {
         }
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
-        let date = formatter.string(from: Date())
+        var formattedDate : String
+        if let date = self.date {
+            formattedDate = formatter.string(from: date)
+        } else {
+            formattedDate = formatter.string(from: Date())
+        }
         let parameters: Parameters = [
             "username":username,
-            "date":date,
+            "date":formattedDate,
             "foods":[]
         ]
+        self.toggleActivity()
         Alamofire.request(URL.init(string: "\(API_URL)/food/getjournalbydate")!, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(completionHandler: {
             responce in
             
@@ -69,6 +84,7 @@ class FoodTodayVC: UIViewController  {
                 self.todayMeal.initWithServerResponse(response: json["foods"] as! [[String:Any]] )
                 self.tableView.reloadData()
                 self.updateMainValues()
+                self.toggleActivity()
             }
         })
     }
@@ -93,20 +109,57 @@ class FoodTodayVC: UIViewController  {
         }
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
-        let date = formatter.string(from: Date())
+        var formattedDate : String
+        if let date = self.date {
+            formattedDate = formatter.string(from: date)
+        } else {
+            formattedDate = formatter.string(from: Date())
+        }
         let foods = todayMeal.toDict()
         let parameters: Parameters = [
             "username":username,
-            "date":date,
+            "date":formattedDate,
             "foods":foods
         ]
+        self.toggleActivity()
         Alamofire.request(URL.init(string: "\(API_URL)/food/update")!, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(completionHandler: {
             responce in
-            
+            self.toggleActivity()
             
         })
         self.updateMainValues()
 
+    }
+    
+    func activityIndicatorInit(_ title: String) {
+        
+        strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
+        strLabel.text = title
+        strLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightMedium)
+        strLabel.textColor = UIColor(white: 0.9, alpha: 0.7)
+        
+        effectView.frame = CGRect(x: view.frame.midX - strLabel.frame.width/2, y: view.frame.midY - strLabel.frame.height/2 , width: 160, height: 46)
+        effectView.layer.cornerRadius = 15
+        effectView.layer.masksToBounds = true
+        
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
+        effectView.contentView.addSubview(activityIndicator)
+        effectView.contentView.addSubview(strLabel)
+       
+
+
+    }
+    func toggleActivity() {
+        if activityIndicator.isAnimating{
+            UIView.transition(with: self.view, duration: 0.5, options: .curveEaseIn,
+                              animations: {self.effectView.removeFromSuperview()}, completion: nil)
+            activityIndicator.stopAnimating()
+        } else {
+            UIView.transition(with: self.view, duration: 0.5, options: .curveEaseIn,
+                              animations: {self.view.addSubview(self.effectView)}, completion: nil)
+            activityIndicator.startAnimating()
+        }
     }
     /*
      // MARK: - Navigation
