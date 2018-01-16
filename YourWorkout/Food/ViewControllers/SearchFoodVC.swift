@@ -8,16 +8,20 @@
 
 import UIKit
 import CollapsibleTableSectionViewController
+import Alamofire
 
+protocol SearchFoodVCDelegate {
+    func getFood(food:FoodModel,fromController:SearchFoodVC, gramms:Float)
+}
 
-
-class FoodListHeaderTVC: CollapsibleTableSectionViewController {
+class SearchFoodVC: CollapsibleTableSectionViewController {
     
     var foodData = FoodListModel.sharedInstance
     let searchController = UISearchController(searchResultsController: nil)
     var filteredFood = [FoodModel]()
     var heightAtIndexPath = NSMutableDictionary()
-
+    var foodDelegate : SearchFoodVCDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -47,7 +51,7 @@ class FoodListHeaderTVC: CollapsibleTableSectionViewController {
 
 }
 
-extension FoodListHeaderTVC: UISearchResultsUpdating {
+extension SearchFoodVC: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
@@ -55,7 +59,7 @@ extension FoodListHeaderTVC: UISearchResultsUpdating {
 }
 // MARK: - Search
 
-extension FoodListHeaderTVC {
+extension SearchFoodVC {
     func searchBarIsEmpty() -> Bool {
         // Returns true if the text is empty or nil
         return searchController.searchBar.text?.isEmpty ?? true
@@ -66,16 +70,27 @@ extension FoodListHeaderTVC {
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        filteredFood = foodData.foodList.filter({( item : FoodModel) -> Bool in
-            return (item.name?.lowercased().contains(searchText.lowercased()))!
+        let parameters: Parameters = ["search":searchText]
+        let requestFood = FoodListModel.sharedInstance
+        Alamofire.request("\(API_URL)/food/find", parameters:parameters).responseJSON(completionHandler: { responce in
+            if let json = responce.result.value{
+                DispatchQueue.main.async {
+                    print(json)
+                    requestFood.initFoodListWithResponce(responce: json as! [[String : Any]])
+                    self.filteredFood = requestFood.foodList
+                    
+                    self._tableView.reloadData()
+                }
+                
+            }
         })
         
-        self._tableView.reloadData()
+        
     }
 }
 
 
-extension FoodListHeaderTVC: CollapsibleTableSectionDelegate {
+extension SearchFoodVC: CollapsibleTableSectionDelegate {
     
     func numberOfSections(_ tableView: UITableView) -> Int {
         if isFiltering() {
@@ -100,19 +115,18 @@ extension FoodListHeaderTVC: CollapsibleTableSectionDelegate {
         }
         
         cell1.initWithFood(protein: foodItem.protein, fat: foodItem.fat, carbonhydrates: foodItem.carbonhydrate, calories: foodItem.calories)
-//        cell2.initWithFood(calories: foodItem.calories)
-//        cell3.selectionStyle = .none
-//
-//        switch indexPath.row {
-//        case 0:
-//            return cell1
-//        case 1:
-//            return cell2
-//        case 2:
-//            return cell3
-//        default:
-//            break
-//        }
+        cell1.addButton.didTouchUpInside = {sender in
+            let foodName = self.foodData.foodList[indexPath.section].name!
+            let calories = cell1.caloriesOnChange
+            let protein = cell1.proteinsOnChange
+            let carbonhydrate = cell1.carbonhydratesOnChange
+            let fat = cell1.fatsOnChange
+            let gramms = Float(cell1.portionStepper.value)
+            print(fat)
+            let food = FoodModel(name: foodName, calories: calories, protein: protein, carbonhydrate: carbonhydrate, fat: fat)
+            self.foodDelegate?.getFood(food: food, fromController: self, gramms: gramms)
+            self.navigationController?.popViewController(animated: true)
+        }
         
         return cell1
         
@@ -151,11 +165,13 @@ extension FoodListHeaderTVC: CollapsibleTableSectionDelegate {
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         let vc : FoodDetailsVC = (self.storyboard?.instantiateViewController(withIdentifier: "FoodDetailsViewController") as? FoodDetailsVC)!
-        vc.navigationItem.title = foodData.foodList[indexPath.section].name
-        vc.protein = foodData.foodList[indexPath.section].protein!
-        vc.carbonhydrate = foodData.foodList[indexPath.section].carbonhydrate!
-        vc.fat = foodData.foodList[indexPath.section].fat!
-        vc.calories = foodData.foodList[indexPath.section].calories!
+        var foodItem: FoodModel
+        if isFiltering(){
+            foodItem = filteredFood[indexPath.section]
+        } else {
+            foodItem = foodData.foodList[indexPath.section]
+        }
+        vc.initWithFoodData(data: foodItem)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

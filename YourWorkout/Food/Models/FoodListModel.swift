@@ -19,8 +19,9 @@ class FoodListModel {
     }
     
     func initFoodListWithResponce(responce:[[String:Any]]){
+        self.foodList = []
         for item in responce {
-            foodList.append(FoodModel.init(item: item))
+            self.foodList.append(FoodModel.init(item: item))
         }
     }
     

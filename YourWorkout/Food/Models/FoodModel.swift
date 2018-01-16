@@ -27,6 +27,11 @@ class FoodModel {
         self.fat = (item["fat"] as? Float) ?? 0.0
     }
     
-
-    
+    init(name:String,calories:Float,protein:Float,carbonhydrate:Float,fat:Float){
+        self.name = name
+        self.calories = calories
+        self.protein = protein
+        self.carbonhydrate = carbonhydrate
+        self.fat = fat
+    }
 }

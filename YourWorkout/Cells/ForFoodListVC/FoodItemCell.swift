@@ -12,13 +12,19 @@ class FoodItemCell: UITableViewCell {
 
     @IBOutlet weak var foodName: UILabel!
     
+    @IBOutlet weak var deleteButton: MyButton!
+    @IBOutlet weak var button: MyButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
     
+
     override func prepareForReuse() {
         super.prepareForReuse()
+        button.didTouchUpInside = nil
+        deleteButton.didTouchUpInside = nil
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

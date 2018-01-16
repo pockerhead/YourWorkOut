@@ -13,7 +13,6 @@ class FoodDetailsVC: UIViewController {
     var carbonhydrate = Float()
     var calories = Float()
     var fat = Float()
-
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var proteinsLabel: UILabel!
     @IBOutlet weak var fatsLabel: UILabel!
@@ -34,7 +33,14 @@ class FoodDetailsVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func initWithFoodData(data:FoodModel){
+        self.navigationItem.title = data.name
+        self.protein = data.protein!
+        self.carbonhydrate = data.carbonhydrate!
+        self.fat = data.fat!
+        self.calories = data.calories!
+        
+    }
 
     /*
     // MARK: - Navigation

@@ -31,10 +31,10 @@ class LoginVC: UIViewController {
         guard let password = self.keychain.getPasscode(identifier: "MPUsername") else {
             return
         }
-//        if(username != "" && password != ""){
-//            self.loginRequestWithParams(usernameString: self.keychain.getPasscode(identifier: "MPUsername")! as String, passwordString: self.keychain.getPasscode(identifier: "MPPassword")! as String)
-//        }
-        // Do any additional setup after loading the view.
+        if(username != "" && password != ""){
+            self.loginRequestWithParams(usernameString: self.keychain.getPasscode(identifier: "MPUsername")! as String, passwordString: self.keychain.getPasscode(identifier: "MPPassword")! as String)
+        }
+//         Do any additional setup after loading the view.
 //        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
@@ -70,7 +70,7 @@ class LoginVC: UIViewController {
         
         postData.append(passwordStr.data(using: String.Encoding.utf8)!)
         
-        var request = URLRequest(url: NSURL(string: "http://192.168.1.41:3000/login")! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+        var request = URLRequest(url: NSURL(string: "\(API_URL)/login")! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         request.httpMethod = "POST"
         request.allHTTPHeaderFields = headers
         request.httpBody = postData as Data
@@ -86,19 +86,21 @@ class LoginVC: UIViewController {
                 print(httpResponse as Any)
                 
                 if (httpResponse?.statusCode == 200){
-                    
                         //segue to main view.
-                    if(self.keychain.getPasscode(identifier: "MPPassword") == "" || self.keychain.getPasscode(identifier: "MPUsername") == ""){
-                        self.keychain.setPasscode(identifier: "MPPassword", passcode: passwordString)
-                        self.keychain.setPasscode(identifier: "MPUsername", passcode: usernameString)
+
+                        if(self.keychain.getPasscode(identifier: "MPPassword") == "" || self.keychain.getPasscode(identifier: "MPUsername") == ""){
+                            self.keychain.setPasscode(identifier: "MPPassword", passcode: passwordString)
+                            self.keychain.setPasscode(identifier: "MPUsername", passcode: usernameString)
                         }
                         if (self.loggedIn == false){
                             self.performSegue(withIdentifier: "LoginSegue", sender: self)
                             // use anyObj here
                             self.loggedIn = true;
                         }else{
-                            
+                            self.performSegue(withIdentifier: "LoginSegue", sender: self)
                         }
+                    
+                    
                     
                 }else{
                     print("error")
@@ -125,8 +127,8 @@ class LoginVC: UIViewController {
     
     @IBAction func login(_ sender: UIButton) {
         if (self.username.text == "" || self.password.text == ""){
-            let alertView = UIAlertController(title: "UWOTM8", message: "Fam, what you tryna pull?", preferredStyle: .alert)
-            let OK = UIAlertAction(title: "Is it 2 l8 2 say sorry", style: .default, handler: nil)
+            let alertView = UIAlertController(title: "Ошибка", message: "Введите корректные данные", preferredStyle: .alert)
+            let OK = UIAlertAction(title: "ОК", style: .default, handler: nil)
             alertView.addAction(OK)
             self.present(alertView, animated: true, completion: nil);
             return;

@@ -60,7 +60,7 @@ class RegistrationVC: UIViewController {
         postData.append(emailString.data(using: String.Encoding.utf8)!)
         postData.append(nameString.data(using: String.Encoding.utf8)!)
         
-        let request = NSMutableURLRequest(url: NSURL(string: "http://192.168.1.41:3000/signup")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "\(API_URL)/signup")! as URL,
                                    cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         request.httpMethod = "POST"

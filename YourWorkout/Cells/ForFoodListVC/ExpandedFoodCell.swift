@@ -10,6 +10,7 @@ import UIKit
 import ValueStepper
 class ExpandedFoodCell: UITableViewCell {
 
+    @IBOutlet weak var addButton: MyButton!
     @IBOutlet weak var portionStepper: ValueStepper!
     @IBOutlet weak var carbonhydratesLabel: UILabel!
     @IBOutlet weak var caloriesLabel: UILabel!
@@ -19,6 +20,11 @@ class ExpandedFoodCell: UITableViewCell {
     var carbonhydrates : Float = 0.0
     var fats : Float = 0.0
     var calories : Float = 0.0
+
+    var proteinsOnChange : Float = 0.0
+    var carbonhydratesOnChange : Float = 0.0
+    var fatsOnChange : Float = 0.0
+    var caloriesOnChange : Float = 0.0
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,10 +35,14 @@ class ExpandedFoodCell: UITableViewCell {
     
     @IBAction func onValueChanged(_ sender: ValueStepper) {
         let coef = Float(self.portionStepper.value / 100)
-        self.proteinsLabel.text = String(describing: (self.proteins * coef))
-        self.fatsLabel.text = String(describing: (self.fats * coef))
-        self.carbonhydratesLabel.text = String(describing: (self.carbonhydrates * coef))
-        self.caloriesLabel.text = String(describing: (self.calories * coef))
+        self.proteinsOnChange = self.proteins * coef
+        self.fatsOnChange = self.fats * coef
+        self.carbonhydratesOnChange = self.carbonhydrates * coef
+        self.caloriesOnChange = self.calories * coef
+        self.proteinsLabel.text = String(format:"%.1f", self.proteinsOnChange)
+        self.fatsLabel.text = String(format:"%.1f", self.fatsOnChange)
+        self.carbonhydratesLabel.text = String(format:"%.1f", self.carbonhydratesOnChange)
+        self.caloriesLabel.text = String(format:"%.1f", self.caloriesOnChange)
         
         
     }
@@ -45,13 +55,20 @@ class ExpandedFoodCell: UITableViewCell {
     }
     func initWithFood(protein:Float?,fat:Float?,carbonhydrates:Float?, calories:Float?){
         self.proteins = protein!
+        self.proteinsOnChange = protein!
         self.carbonhydrates = carbonhydrates!
+        self.carbonhydratesOnChange = carbonhydrates!
+
         self.fats = fat!
+        self.fatsOnChange = fat!
+
         self.calories = calories!
-        self.proteinsLabel.text = String(describing: self.proteins)
-        self.fatsLabel.text = String(describing: self.fats)
-        self.carbonhydratesLabel.text = String(describing: self.carbonhydrates)
-        self.caloriesLabel.text = String(describing: self.calories)
+        self.caloriesOnChange = calories!
+
+        self.proteinsLabel.text = String(format:"%.1f", self.proteins)
+        self.fatsLabel.text = String(format:"%.1f", self.fats)
+        self.carbonhydratesLabel.text = String(format:"%.1f", self.carbonhydrates)
+        self.caloriesLabel.text = String(format:"%.1f", self.calories)
         self.portionStepper.valueLabel.text = "100"
         self.portionStepper.value = 100
         self.selectionStyle = .none

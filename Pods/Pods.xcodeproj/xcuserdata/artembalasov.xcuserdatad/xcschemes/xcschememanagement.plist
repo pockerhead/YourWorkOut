@@ -14,7 +14,7 @@
 		<key>CollapsibleTableSectionViewController.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>6</integer>
 		</dict>
 		<key>ExpandableCell.xcscheme</key>
 		<dict>

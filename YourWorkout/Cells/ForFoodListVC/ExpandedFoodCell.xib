@@ -70,6 +70,10 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rzw-cP-Ae5" customClass="ValueStepper" customModule="ValueStepper">
                         <rect key="frame" x="16" y="69" width="141" height="29"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="141" id="Ynz-JO-gUx"/>
+                            <constraint firstAttribute="height" constant="29" id="pkK-Op-NFr"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="labelTextColor">
                                 <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -92,7 +96,7 @@
                             <action selector="onValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="x3U-Lg-0A5"/>
                         </connections>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o81-QS-Up4">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o81-QS-Up4" customClass="MyButton" customModule="YourWorkout" customModuleProvider="target">
                         <rect key="frame" x="175" y="69" width="69" height="30"/>
                         <state key="normal" title="Добавить"/>
                         <connections>
@@ -125,6 +129,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="addButton" destination="o81-QS-Up4" id="DNb-Wq-OLt"/>
                 <outlet property="caloriesLabel" destination="fMd-aQ-TEO" id="1g1-O3-8iQ"/>
                 <outlet property="carbonhydratesLabel" destination="nH6-g8-8xq" id="u7T-jd-GFW"/>
                 <outlet property="fatsLabel" destination="2he-CC-YOA" id="ooz-TC-hjk"/>
