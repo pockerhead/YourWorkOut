@@ -14,7 +14,7 @@ struct FoodColors {
     
     static let barColor = UIColor(hexString: "498d65")
     
-    static let primaryColor = UIColor(hexString:"#27AE60")
+    static let primaryColor = UIColor(hexString:"#D2D7D3")
     
     static let secondaryColor = UIColor(hexString:"#2ecc71")
     

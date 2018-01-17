@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -117,7 +117,7 @@
 		05070191764E8CB22E152960E9E145B3 /* CVCalendarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVCalendarView.swift; path = CVCalendar/CVCalendarView.swift; sourceTree = "<group>"; };
 		09951584DFFD143957D5EC93D2A2B1CF /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		09CBE7E0464C9C0512099F6139D5199C /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
-		0BAD32C63BD498EDFB3A1BD98456D8F3 /* Pods_YourWorkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_YourWorkout.framework; path = "Pods-YourWorkout.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BAD32C63BD498EDFB3A1BD98456D8F3 /* Pods_YourWorkout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourWorkout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CCC33D5DACC7C8FDCAD3B4521829A33 /* CVCalendarDayViewControlCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVCalendarDayViewControlCoordinator.swift; path = CVCalendar/CVCalendarDayViewControlCoordinator.swift; sourceTree = "<group>"; };
 		0D1B0B09B3CF3AF554735E8B98C0980C /* CVCalendarManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVCalendarManager.swift; path = CVCalendar/CVCalendarManager.swift; sourceTree = "<group>"; };
 		0DA11014367B8B4BA562315EA6A2FE6F /* CVCalendarMenuView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVCalendarMenuView.swift; path = CVCalendar/CVCalendarMenuView.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		24BB0BAE7609D600191ADB5F5F7F47B2 /* CollapsibleTableSectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CollapsibleTableSectionViewController.swift; path = CollapsibleTableSectionViewController/CollapsibleTableSectionViewController.swift; sourceTree = "<group>"; };
 		24BC606967CA1262457D46B80280BC23 /* CVCalendarViewAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVCalendarViewAnimator.swift; path = CVCalendar/CVCalendarViewAnimator.swift; sourceTree = "<group>"; };
 		26761CE5839824F89C03AA6C6DF483B8 /* Pods-YourWorkoutUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YourWorkoutUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		27F730078CB6842C7C7C028C6F8EFBCF /* CollapsibleTableSectionViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CollapsibleTableSectionViewController.framework; path = CollapsibleTableSectionViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27F730078CB6842C7C7C028C6F8EFBCF /* CollapsibleTableSectionViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CollapsibleTableSectionViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27F9B6F343646782BE5BE316C3FBC637 /* ValueStepper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ValueStepper-prefix.pch"; sourceTree = "<group>"; };
 		286E6BA19D18DC216C50A80D087BBF0E /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		29CCF00CBA9681AC81F49503DC5EB140 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -154,19 +154,19 @@
 		51F689A8934FC4A2FC51327427A3655D /* CVCalendarDayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVCalendarDayView.swift; path = CVCalendar/CVCalendarDayView.swift; sourceTree = "<group>"; };
 		53B901ADDEA18F413B8885D789923660 /* Pods-YourWorkoutTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YourWorkoutTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		543DBC1E62D5956C4099D70B68CE5FD2 /* CVPresent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVPresent.swift; path = CVCalendar/CVPresent.swift; sourceTree = "<group>"; };
-		575A980045A034BC646DD54569AB63E0 /* Pods-YourWorkout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-YourWorkout.modulemap"; sourceTree = "<group>"; };
+		575A980045A034BC646DD54569AB63E0 /* Pods-YourWorkout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-YourWorkout.modulemap"; sourceTree = "<group>"; };
 		578DBC7B60C0DE713B3A0C8BEEAC94ED /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		5845410E1082A8290DCF7A66E582A28F /* CollapsibleTableSectionViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CollapsibleTableSectionViewController-prefix.pch"; sourceTree = "<group>"; };
 		5A479B9D8CEDC3F10F897D8F00DC23A7 /* CVStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVStatus.swift; path = CVCalendar/CVStatus.swift; sourceTree = "<group>"; };
-		5D1D18BA18013D00ADE17247FF6237F1 /* CVCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CVCalendar.framework; path = CVCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F261AB644D1F4ED23084D517BC962D1 /* CVCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CVCalendar.modulemap; sourceTree = "<group>"; };
+		5D1D18BA18013D00ADE17247FF6237F1 /* CVCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CVCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F261AB644D1F4ED23084D517BC962D1 /* CVCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CVCalendar.modulemap; sourceTree = "<group>"; };
 		6087627C0AD573FBF764337CED3E488B /* ValueStepper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ValueStepper.xcconfig; sourceTree = "<group>"; };
 		620BA9C849246B6D8745C97E40E7ACB2 /* ValueStepper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValueStepper.swift; path = Pod/Classes/ValueStepper.swift; sourceTree = "<group>"; };
 		63A15932A89A162874BBEDE7176B6C8B /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
 		662D06B81DAEEDCA3686F409C8E9B2CE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		714B9D92E45B5BDAF83BDA88148CB19C /* CVCalendarWeekView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVCalendarWeekView.swift; path = CVCalendar/CVCalendarWeekView.swift; sourceTree = "<group>"; };
-		71D3753FB479E6198D2F1F950BD7D3FB /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		77883B41ED8020D52FD441F20A7586A2 /* ValueStepper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ValueStepper.framework; path = ValueStepper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71D3753FB479E6198D2F1F950BD7D3FB /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77883B41ED8020D52FD441F20A7586A2 /* ValueStepper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ValueStepper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78CB2FEC39626FD0032533040F5539EA /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
 		80E195171167ED7295C95FC7849921BD /* CVCalendarWeekContentViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVCalendarWeekContentViewController.swift; path = CVCalendar/CVCalendarWeekContentViewController.swift; sourceTree = "<group>"; };
 		817C2A02203EFFF0AF2FBC520FC6EB05 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -182,10 +182,10 @@
 		914400225F7D052D0DA8A077A7E5E776 /* Pods-YourWorkoutUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YourWorkoutUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9207EDE736FC8759206C3FB1DB34C1FE /* Pods-YourWorkoutTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-YourWorkoutTests-dummy.m"; sourceTree = "<group>"; };
 		93091A978DCB185971AC700089A9E8F3 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		951A6ACA00E5E035B443B620B2F8A513 /* Pods-YourWorkoutUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YourWorkoutUITests-frameworks.sh"; sourceTree = "<group>"; };
 		95A0B2F2B79C467462A84F164C358038 /* Pods-YourWorkout-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YourWorkout-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9A7383E46411F1EB2F2C54998F3FE43B /* CollapsibleTableSectionViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CollapsibleTableSectionViewController.modulemap; sourceTree = "<group>"; };
+		9A7383E46411F1EB2F2C54998F3FE43B /* CollapsibleTableSectionViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CollapsibleTableSectionViewController.modulemap; sourceTree = "<group>"; };
 		9A8E4E97CC32B301DE0DB8C5DBD9141B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3A19A5BAAECAFA9816DDC2393EB6221 /* Pods-YourWorkoutTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YourWorkoutTests-frameworks.sh"; sourceTree = "<group>"; };
 		A4E481055BFE7AA5C3B8D2F2082443D0 /* CVCalendarViewAppearanceDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVCalendarViewAppearanceDelegate.swift; path = CVCalendar/CVCalendarViewAppearanceDelegate.swift; sourceTree = "<group>"; };
@@ -195,21 +195,21 @@
 		AF684B4033C8E77506CED0236C136463 /* Pods-YourWorkoutTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YourWorkoutTests-resources.sh"; sourceTree = "<group>"; };
 		B160C89440B51819F7A3865DEF331D76 /* CVSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVSet.swift; path = CVCalendar/CVSet.swift; sourceTree = "<group>"; };
 		B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		B76FBEDBB013DF2116067728497A8545 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		B76FBEDBB013DF2116067728497A8545 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		BA5CB73A3DADE8E17FC8D36C6DEC8663 /* CollapsibleTableSectionViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CollapsibleTableSectionViewController-umbrella.h"; sourceTree = "<group>"; };
 		BB523AA5FC80D263C25F6059E0967ADB /* Pods-YourWorkout-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YourWorkout-acknowledgements.plist"; sourceTree = "<group>"; };
-		BD55D781BAFE879F84FF2EEC38970350 /* Pods_YourWorkoutUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_YourWorkoutUITests.framework; path = "Pods-YourWorkoutUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD55D781BAFE879F84FF2EEC38970350 /* Pods_YourWorkoutUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourWorkoutUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEFF6C360154A3F1AFC76470CE139B26 /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
 		BF31998F7E706A9E95D0A712990008E0 /* Pods-YourWorkout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-YourWorkout-dummy.m"; sourceTree = "<group>"; };
 		C084C18826E3C1609C4CBC9364C1C830 /* CVRange.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVRange.swift; path = CVCalendar/CVRange.swift; sourceTree = "<group>"; };
 		C0E6976D9AC049FA214CD426CC66F5A4 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		C1E1BBE8EAD4E934FB3EA6B9313D3620 /* CVCalendarContentPresentationCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVCalendarContentPresentationCoordinator.swift; path = CVCalendar/CVCalendarContentPresentationCoordinator.swift; sourceTree = "<group>"; };
-		C42A85809AB82ACA454CD03AFEF6327A /* Pods_YourWorkoutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_YourWorkoutTests.framework; path = "Pods-YourWorkoutTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C42A85809AB82ACA454CD03AFEF6327A /* Pods_YourWorkoutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourWorkoutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48BF71512BB5B8612E947478E697A5B /* CVCalendar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CVCalendar-dummy.m"; sourceTree = "<group>"; };
 		D54C5B4DBCFB5AA1F3D90A1D2FAC3E1D /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
 		D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D9E8C3461EEF49EAAD170C6BF0628072 /* Pods-YourWorkoutTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YourWorkoutTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		DB45AE07CE182093595E85950EBEE209 /* Pods-YourWorkoutTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-YourWorkoutTests.modulemap"; sourceTree = "<group>"; };
+		DB45AE07CE182093595E85950EBEE209 /* Pods-YourWorkoutTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-YourWorkoutTests.modulemap"; sourceTree = "<group>"; };
 		E0061E4AB693A5F0A55F1C5B30BF6FDA /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CollapsibleTableViewHeader.swift; path = CollapsibleTableSectionViewController/CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
 		E1D5D33848519268CD30003444D76A0E /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
 		E8A8FE4DA17C8053823FB4CBC5600060 /* Pods-YourWorkoutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YourWorkoutTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -219,8 +219,8 @@
 		EC3438C6A68611E333EFB000DBFAA721 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		F4EB349678919411BD68069930CB20EF /* Pods-YourWorkoutUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-YourWorkoutUITests-umbrella.h"; sourceTree = "<group>"; };
 		F5D2E6625DD41EF692947E0D92EF6082 /* CVCalendarViewAnimatorDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVCalendarViewAnimatorDelegate.swift; path = CVCalendar/CVCalendarViewAnimatorDelegate.swift; sourceTree = "<group>"; };
-		F68FA8A85DEFB418B22867B342AF415A /* Pods-YourWorkoutUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-YourWorkoutUITests.modulemap"; sourceTree = "<group>"; };
-		F89A1A2996A6E20A334BAF62826FDAD7 /* ValueStepper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ValueStepper.modulemap; sourceTree = "<group>"; };
+		F68FA8A85DEFB418B22867B342AF415A /* Pods-YourWorkoutUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-YourWorkoutUITests.modulemap"; sourceTree = "<group>"; };
+		F89A1A2996A6E20A334BAF62826FDAD7 /* ValueStepper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ValueStepper.modulemap; sourceTree = "<group>"; };
 		F9F9E5B6434F8ACB2D32B22F825315E9 /* CVSelectionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CVSelectionType.swift; path = CVCalendar/CVSelectionType.swift; sourceTree = "<group>"; };
 		FA8E1EF81C558D2F06E2BC850E82ED29 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB455D0185A4070013187FCD8FDC648C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -314,7 +314,6 @@
 				E0061E4AB693A5F0A55F1C5B30BF6FDA /* CollapsibleTableViewHeader.swift */,
 				5F50E872286276595B2F16C6996956FF /* Support Files */,
 			);
-			name = CollapsibleTableSectionViewController;
 			path = CollapsibleTableSectionViewController;
 			sourceTree = "<group>";
 		};
@@ -386,7 +385,6 @@
 				86D6E3F2D35A7989C80E87D7E0766A83 /* Validation.swift */,
 				CFC3BE1D798CB38632F0D85560F8B5D3 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -478,7 +476,6 @@
 				620BA9C849246B6D8745C97E40E7ACB2 /* ValueStepper.swift */,
 				5AD11CF52BCF29556820E3DC8075BCD2 /* Support Files */,
 			);
-			name = ValueStepper;
 			path = ValueStepper;
 			sourceTree = "<group>";
 		};
@@ -517,7 +514,6 @@
 				FC969566B1B3887C6625666E07B77CF6 /* CVWeekdaySymbolType.swift */,
 				F58ADEC8372CBC7C2BBDCEB515354113 /* Support Files */,
 			);
-			name = CVCalendar;
 			path = CVCalendar;
 			sourceTree = "<group>";
 		};
@@ -741,7 +737,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0920;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -986,6 +982,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;

@@ -30,7 +30,7 @@ class ExpandedFoodCell: UITableViewCell {
         super.awakeFromNib()
         let path = UIBezierPath(roundedRect:self.bounds,
                                 byRoundingCorners:[.bottomRight, .bottomLeft],
-                                cornerRadii: CGSize(width: 7, height:  7))
+                                cornerRadii: CGSize(width: 10, height:  10))
         
         let maskLayer = CAShapeLayer()
         maskLayer.path = path.cgPath
