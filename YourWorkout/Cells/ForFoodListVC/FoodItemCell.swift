@@ -17,7 +17,7 @@ class FoodItemCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.backgroundColor = FoodColors.primaryColor
     }
     
 

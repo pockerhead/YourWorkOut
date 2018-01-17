@@ -41,6 +41,9 @@
 		CE1C0F682006155500AE430A /* UIView + rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F672006155500AE430A /* UIView + rotate.swift */; };
 		CE1C0F6C2006161000AE430A /* SearchFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F6B2006161000AE430A /* SearchFoodVC.swift */; };
 		CE1C0F6E2006292700AE430A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F6D2006292700AE430A /* CustomCell.swift */; };
+		CE8470C9200F329900CB7D57 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8470C8200F329900CB7D57 /* Colors.swift */; };
+		CE8470CC200F4A0900CB7D57 /* TodayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8470CA200F4A0900CB7D57 /* TodayHeaderCell.swift */; };
+		CE8470CD200F4A0900CB7D57 /* TodayHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8470CB200F4A0900CB7D57 /* TodayHeaderCell.xib */; };
 		CEA64EDC20077A9B0002A87E /* FoodDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA64EDB20077A9B0002A87E /* FoodDetailsVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +111,9 @@
 		CE1C0F672006155500AE430A /* UIView + rotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + rotate.swift"; sourceTree = "<group>"; };
 		CE1C0F6B2006161000AE430A /* SearchFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodVC.swift; sourceTree = "<group>"; };
 		CE1C0F6D2006292700AE430A /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		CE8470C8200F329900CB7D57 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		CE8470CA200F4A0900CB7D57 /* TodayHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeaderCell.swift; sourceTree = "<group>"; };
+		CE8470CB200F4A0900CB7D57 /* TodayHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayHeaderCell.xib; sourceTree = "<group>"; };
 		CEA64EDB20077A9B0002A87E /* FoodDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				06517ABB200DDCD900CA098A /* Network.swift */,
+				CE8470C8200F329900CB7D57 /* Colors.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -275,6 +282,8 @@
 		CE04B9F02004ADA6004EABE2 /* ForFoodListVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE8470CA200F4A0900CB7D57 /* TodayHeaderCell.swift */,
+				CE8470CB200F4A0900CB7D57 /* TodayHeaderCell.xib */,
 				06B3BDE52003F60000AD5B49 /* FoodItemCell.swift */,
 				06B3BDE62003F60000AD5B49 /* FoodItemCell.xib */,
 				06B3BDEA2004000D00AD5B49 /* ExpandedFoodCell.swift */,
@@ -434,6 +443,7 @@
 				0636E5EA20037E4D005E9282 /* Assets.xcassets in Resources */,
 				0636E5E820037E4D005E9282 /* Main.storyboard in Resources */,
 				CE04B9EF2004A908004EABE2 /* ExpandedDetailsCell.xib in Resources */,
+				CE8470CD200F4A0900CB7D57 /* TodayHeaderCell.xib in Resources */,
 				CE04B9F42004B085004EABE2 /* EditPortionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -616,6 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0636E5DF20037E4D005E9282 /* AppDelegate.swift in Sources */,
+				CE8470C9200F329900CB7D57 /* Colors.swift in Sources */,
 				CE04B9F32004B085004EABE2 /* EditPortionCell.swift in Sources */,
 				CE1C0F6C2006161000AE430A /* SearchFoodVC.swift in Sources */,
 				CE04B9EE2004A907004EABE2 /* ExpandedDetailsCell.swift in Sources */,
@@ -636,6 +647,7 @@
 				068BF392200E0E7A006EBBAB /* JournalVC.swift in Sources */,
 				CE1C0F682006155500AE430A /* UIView + rotate.swift in Sources */,
 				06517AA6200BEA7D00CA098A /* RegistrationVC.swift in Sources */,
+				CE8470CC200F4A0900CB7D57 /* TodayHeaderCell.swift in Sources */,
 				0690BE71200E448300B70259 /* SearchBar + UIColore.swift in Sources */,
 				06517A4B200BD88600CA098A /* Keychain.swift in Sources */,
 			);

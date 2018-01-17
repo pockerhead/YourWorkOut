@@ -33,25 +33,36 @@ class FoodTodayVC: UIViewController  {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-
+        self.tableView.backgroundColor = FoodColors.primaryColor
         self.tableView.allowsMultipleSelectionDuringEditing = false;
+        
         let addItemCellNib = UINib(nibName: "FoodItemCell", bundle: nil)
         let foodCellNib = UINib(nibName: "ExpandedDetailsCell", bundle: nil)
-        self.activityIndicatorInit("Загрузка")
+        let headerCellNub = UINib(nibName: "TodayHeaderCell", bundle: nil)
+
+        
         self.tableView.register( addItemCellNib, forCellReuseIdentifier: "AddItemCell")
         self.tableView.register( foodCellNib, forCellReuseIdentifier: "FoodCell")
-        
+        self.tableView.register( headerCellNub, forHeaderFooterViewReuseIdentifier: "HeaderCell")
+
         if let nav = self.navItemTitle{
             self.navigationItem.title = nav
         } else {
             self.navigationItem.title = "Сегодня"
         }
         
-        
+        self.activityIndicatorInit("Загрузка")
+
         self.getCurrentJournal()
         
         self.tableView.reloadData()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -188,19 +199,41 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if section >= self.todayMeal.foodMeals.count{
+//            return nil
+//        } else {
+//            return self.todayMeal.foodMeals[section].name
+//        }
+//
+//    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section >= self.todayMeal.foodMeals.count{
-            return "Добавить"
+            return 44
         } else {
-            return self.todayMeal.foodMeals[section].name
+            return 44 
         }
-  
     }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let  headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderCell") as! TodayHeaderCell
+        headerCell.backgroundColor = FoodColors.barColor
+        if section >= self.todayMeal.foodMeals.count{
+            headerCell.headerTitle.text = nil
+        } else {
+            headerCell.headerTitle.text = self.todayMeal.foodMeals[section].name
+        }
+        return headerCell
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section >= self.todayMeal.foodMeals.count{
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddItemCell") as! FoodItemCell
-            cell.button.setTitle("Добавить прием пищи", for: .normal)
+            
+            cell.button.setImage(#imageLiteral(resourceName: "addMealIcon"), for: .normal)
 //            cell.deleteButton.setTitle("", for: .normal)
             cell.deleteButton.isHidden = true
             cell.button.didTouchUpInside = { MyButton in
@@ -213,10 +246,13 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
                     
                     let foodMeal = FoodMeal(name: firstTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))
                     self.todayMeal.addMeal(meal: foodMeal)
+                    DispatchQueue.main.async {
+                        self.tableView.beginUpdates()
+                        self.tableView.insertSections(IndexSet.init(integer: self.todayMeal.foodMeals.count-1), with: .fade)
+                        self.tableView.endUpdates()
+
+                    }
                     
-                    self.tableView.beginUpdates()
-                    self.tableView.insertSections(IndexSet.init(integer: self.todayMeal.foodMeals.count-1), with: .fade)
-                    self.tableView.endUpdates()
                     self.updateCurrentJournal()
 
                 })
@@ -233,7 +269,6 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
                             
                             let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
                             let textIsNotEmpty = textCount > 0
-                            
                             saveAction.isEnabled = textIsNotEmpty
                             
                     })
@@ -262,10 +297,12 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
                         
 
                         self.todayMeal.foodMeals.remove(at: indexPath.section)
+                        DispatchQueue.main.async {
+                            self.tableView.beginUpdates()
+                            self.tableView.deleteSections(IndexSet.init(integer: indexPath.section), with: .fade)
+                            self.tableView.endUpdates()
+                        }
                         
-                        self.tableView.beginUpdates()
-                        self.tableView.deleteSections(IndexSet.init(integer: indexPath.section), with: .fade)
-                        self.tableView.endUpdates()
                         self.updateCurrentJournal()
                     })
                     saveAction.isEnabled = true
@@ -281,7 +318,7 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
                 }
                 
                 
-                cell1.button.setTitle("Добавить продукт", for: .normal)
+                cell1.button.setImage(#imageLiteral(resourceName: "addFoodIcon"), for: .normal)
 
                 cell1.button.didTouchUpInside = { sender in
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchFoodVC") as! SearchFoodVC
@@ -315,10 +352,10 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section >= self.todayMeal.foodMeals.count{
-            return 50.0
+            return 72.0
         } else {
             if indexPath.row >= self.todayMeal.foodMeals[indexPath.section].mealList.count{
-                return 50.0
+                return 72.0
             } else {
                 return 150.0
             }

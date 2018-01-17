@@ -43,7 +43,8 @@ class Keychain: NSObject {
         }
         else {
             print("Nothing was retrieved from the keychain. Status code \(status)")
-            
+            passcode = ""
+            return passcode;
         }
         return passcode;
     }

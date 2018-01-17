@@ -89,6 +89,7 @@ class LoginVC: UIViewController {
                         //segue to main view.
 
                         if(self.keychain.getPasscode(identifier: "MPPassword") == "" || self.keychain.getPasscode(identifier: "MPUsername") == ""){
+                            print(passwordString,usernameString)
                             self.keychain.setPasscode(identifier: "MPPassword", passcode: passwordString)
                             self.keychain.setPasscode(identifier: "MPUsername", passcode: usernameString)
                         }

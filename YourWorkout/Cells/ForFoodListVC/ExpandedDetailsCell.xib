@@ -12,11 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" rowHeight="150" id="KGk-i7-Jjw" customClass="ExpandedDetailsCell" customModule="YourWorkout" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="KGk-i7-Jjw" customClass="ExpandedDetailsCell" customModule="YourWorkout" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="272" height="149.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Б:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5w2-PE-TRF">
@@ -89,11 +89,17 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="31n-7a-jcl">
+                        <rect key="frame" x="7" y="7" width="306" height="135.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="31n-7a-jcl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="7" id="3KJ-0f-Bs2"/>
                     <constraint firstItem="lkO-Et-qT2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="70" id="4xo-NH-ZM8"/>
                     <constraint firstItem="5w2-PE-TRF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="50" id="AEw-lZ-cxh"/>
                     <constraint firstItem="fcq-H1-d66" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="BFs-AZ-J8o"/>
+                    <constraint firstItem="31n-7a-jcl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="CSW-Fa-8a1"/>
                     <constraint firstItem="epx-tP-YT4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="67" id="F9B-AY-rU6"/>
                     <constraint firstItem="jd8-aa-ujp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="70" id="GKK-VV-CwF"/>
                     <constraint firstItem="wgi-VD-Uai" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="HvT-u2-ru2"/>
@@ -108,16 +114,19 @@
                     <constraint firstItem="GMD-QF-Rcr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="67" id="aTh-lw-ORi"/>
                     <constraint firstItem="fcq-H1-d66" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="50" id="bnm-eF-3H2"/>
                     <constraint firstItem="5w2-PE-TRF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="fCZ-fX-b5e"/>
+                    <constraint firstAttribute="trailing" secondItem="31n-7a-jcl" secondAttribute="trailing" constant="7" id="hsI-e7-caP"/>
                     <constraint firstItem="tsX-dV-ho9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="94" id="ifN-eC-mYD"/>
                     <constraint firstItem="GMD-QF-Rcr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="50" id="k2b-f6-ih4"/>
                     <constraint firstItem="ErC-GX-oLP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="50" id="qmI-kc-if0"/>
                     <constraint firstItem="rsq-cE-yUJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="50" id="r0z-Pc-1xQ"/>
                     <constraint firstItem="jd8-aa-ujp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="50" id="sRK-vF-dlq"/>
+                    <constraint firstAttribute="bottom" secondItem="31n-7a-jcl" secondAttribute="bottom" constant="7" id="tff-Te-fg8"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="backView" destination="31n-7a-jcl" id="hAv-J9-2VM"/>
                 <outlet property="caloriesLabel" destination="jd8-aa-ujp" id="BNw-jR-QCt"/>
                 <outlet property="carbonhydratesLabel" destination="ErC-GX-oLP" id="wBj-Ea-hxM"/>
                 <outlet property="fatsLabel" destination="ToF-be-YbJ" id="rhO-1T-XsX"/>

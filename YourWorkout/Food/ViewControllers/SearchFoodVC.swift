@@ -34,11 +34,13 @@ class SearchFoodVC: CollapsibleTableSectionViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Foods"
         searchController.searchBar.barStyle = .black
-
         navigationItem.searchController = searchController
+        
         definesPresentationContext = true
+        self._tableView.backgroundColor = FoodColors.primaryColor
+        self.view.backgroundColor = FoodColors.primaryColor
         self._tableView.rowHeight = UITableViewAutomaticDimension
-
+        self._tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         
         let expandedCellNib = UINib(nibName: "ExpandedFoodCell", bundle: nil)
        
@@ -52,6 +54,11 @@ class SearchFoodVC: CollapsibleTableSectionViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self._tableView.reloadData()
     }
 
     func activityIndicatorInit(_ title: String) {

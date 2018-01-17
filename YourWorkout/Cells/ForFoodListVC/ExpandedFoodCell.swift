@@ -10,6 +10,7 @@ import UIKit
 import ValueStepper
 class ExpandedFoodCell: UITableViewCell {
 
+    @IBOutlet weak var backGroundView: UIView!
     @IBOutlet weak var addButton: MyButton!
     @IBOutlet weak var portionStepper: ValueStepper!
     @IBOutlet weak var carbonhydratesLabel: UILabel!
@@ -27,7 +28,18 @@ class ExpandedFoodCell: UITableViewCell {
     var caloriesOnChange : Float = 0.0
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        let path = UIBezierPath(roundedRect:self.bounds,
+                                byRoundingCorners:[.bottomRight, .bottomLeft],
+                                cornerRadii: CGSize(width: 7, height:  7))
+        
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+        self.layer.mask = maskLayer
+        self.backgroundColor = UIColor.white
+        self.contentView.backgroundColor = UIColor.white
+        self.portionStepper.backgroundColor = FoodColors.secondaryColor
+        self.portionStepper.tintColor = UIColor.white
+
     }
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -54,6 +66,7 @@ class ExpandedFoodCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func initWithFood(protein:Float?,fat:Float?,carbonhydrates:Float?, calories:Float?){
+        
         self.proteins = protein!
         self.proteinsOnChange = protein!
         self.carbonhydrates = carbonhydrates!

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        application.statusBarStyle =  .lightContent
         let foodList = FoodListModel.sharedInstance
         Alamofire.request("\(API_URL)/food/getfoodlist").responseJSON{ responce in
             if let json = responce.result.value{

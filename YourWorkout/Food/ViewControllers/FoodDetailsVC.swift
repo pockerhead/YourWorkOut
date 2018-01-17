@@ -42,6 +42,10 @@ class FoodDetailsVC: UIViewController {
         
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
     /*
     // MARK: - Navigation
 

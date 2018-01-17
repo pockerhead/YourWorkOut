@@ -17,6 +17,9 @@ class JournalVC: UIViewController {
     var selectedDate = Date()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarController?.tabBar.isHidden = true
+        
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = getMonthName()
 
