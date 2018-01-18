@@ -14,12 +14,10 @@ class TodayHeaderCell: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.backgroundColor = FoodColors.barColor
 
     }
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.backgroundColor = FoodColors.barColor
         
     }
 

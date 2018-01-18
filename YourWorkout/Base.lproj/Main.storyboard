@@ -188,9 +188,9 @@
         <!--Поиск-->
         <scene sceneID="kZs-bu-EF0">
             <objects>
-                <viewController storyboardIdentifier="SearchFoodVC" id="UXq-wZ-eca" customClass="SearchFoodVC" customModule="YourWorkout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchFoodVC" extendedLayoutIncludesOpaqueBars="YES" id="UXq-wZ-eca" customClass="SearchFoodVC" customModule="YourWorkout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2R5-Wz-ZbJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="8A2-oo-DbF"/>
@@ -510,7 +510,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="4C3-hC-oa8">
             <objects>
-                <tabBarController hidesBottomBarWhenPushed="YES" id="2mM-m9-VjM" sceneMemberID="viewController">
+                <tabBarController id="2mM-m9-VjM" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Pi-ft-MQw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -530,6 +530,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2yz-8y-Xgb"/>
-        <segue reference="WBh-1k-MmB"/>
+        <segue reference="2rk-KK-8yf"/>
     </inferredMetricsTieBreakers>
 </document>

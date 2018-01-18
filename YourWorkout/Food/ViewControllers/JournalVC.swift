@@ -20,7 +20,6 @@ class JournalVC: UIViewController {
         
         self.tabBarController?.tabBar.isHidden = true
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = getMonthName()
 
         // Do any additional setup after loading the view.

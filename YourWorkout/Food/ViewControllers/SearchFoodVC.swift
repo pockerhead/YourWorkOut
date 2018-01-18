@@ -29,10 +29,9 @@ class SearchFoodVC: CollapsibleTableSectionViewController {
         super.viewDidLoad()
         self.delegate = self
         self.activityIndicatorInit("Загрузка")
-//        self.navigationController?.navigationBar.prefersLargeTitles=false
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Foods"
+        searchController.searchBar.placeholder = "Введите название продукта"
         searchController.searchBar.barStyle = .black
         navigationItem.searchController = searchController
         
@@ -57,7 +56,8 @@ class SearchFoodVC: CollapsibleTableSectionViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.tabBarController?.tabBar.isHidden = true
+
         self._tableView.reloadData()
     }
 

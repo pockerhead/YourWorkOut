@@ -62,7 +62,6 @@ class FoodTodayVC: UIViewController  {
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
 
-        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -219,7 +218,6 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let  headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderCell") as! TodayHeaderCell
-        headerCell.backgroundColor = FoodColors.barColor
         if section >= self.todayMeal.foodMeals.count{
             headerCell.headerTitle.text = nil
         } else {
@@ -245,15 +243,18 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
                     let firstTextField = alertController.textFields![0] as UITextField
                     
                     let foodMeal = FoodMeal(name: firstTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))
-                    self.todayMeal.addMeal(meal: foodMeal)
                     DispatchQueue.main.async {
+                        self.todayMeal.addMeal(meal: foodMeal)
+
                         self.tableView.beginUpdates()
                         self.tableView.insertSections(IndexSet.init(integer: self.todayMeal.foodMeals.count-1), with: .fade)
                         self.tableView.endUpdates()
+                        
+                        self.updateCurrentJournal()
+
 
                     }
                     
-                    self.updateCurrentJournal()
 
                 })
                 saveAction.isEnabled = false
@@ -296,14 +297,16 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
                         alert -> Void in
                         
 
-                        self.todayMeal.foodMeals.remove(at: indexPath.section)
                         DispatchQueue.main.async {
+                            self.todayMeal.foodMeals.remove(at: indexPath.section)
+
                             self.tableView.beginUpdates()
                             self.tableView.deleteSections(IndexSet.init(integer: indexPath.section), with: .fade)
                             self.tableView.endUpdates()
+                            self.updateCurrentJournal()
+
                         }
                         
-                        self.updateCurrentJournal()
                     })
                     saveAction.isEnabled = true
                     let cancelAction = UIAlertAction(title: "Отмена", style: .default, handler: {
@@ -411,10 +414,11 @@ extension FoodTodayVC:SearchFoodVCDelegate{
     func getFood(food: FoodModel, fromController: SearchFoodVC,gramms:Float) {
         let meal = OneFood(name: food.name!, calories: food.calories!, protein: food.protein!, fat: food.fat!, carbonhydrate: food.carbonhydrate!, gramms: gramms)
         
-        self.selectedMeal?.addMeal(meal: meal)
         if let index = selectedIndex{
             
             DispatchQueue.main.async {
+                self.selectedMeal?.addMeal(meal: meal)
+
                 self.tableView.beginUpdates()
                 //                self.tableView.reloadData()
                 
@@ -423,11 +427,12 @@ extension FoodTodayVC:SearchFoodVCDelegate{
                 print(index)
                 
                 self.tableView.endUpdates()
+                self.updateCurrentJournal()
+
             }
             
             
         }
-        self.updateCurrentJournal()
         
     }
 }

@@ -147,24 +147,33 @@ extension CollapsibleTableSectionViewController: UITableViewDataSource, UITableV
 extension CollapsibleTableSectionViewController: CollapsibleTableViewHeaderDelegate {
     func toggleSection(_ section: Int) {
         
-                _tableView.reloadData()
-        let sectionsNeedReload = getSectionsNeedReload(section)
-        if #available(iOS 11.0, *) {
-            _tableView.performBatchUpdates({
-
-                self._tableView.reloadSections(IndexSet(sectionsNeedReload), with: .none)
-                
-            }, completion: nil)
-        } else {
-            let contentOffset = self._tableView.contentOffset
-            _tableView.beginUpdates()
-
-            _tableView.reloadSections(IndexSet(sectionsNeedReload), with: .none)
-            _tableView.setContentOffset(contentOffset, animated: false)
-            _tableView.endUpdates()
+        DispatchQueue.main.async {
             
+//            self._tableView.reloadData()
+            let sectionsNeedReload =  self.getSectionsNeedReload(section)
+            
+            if #available(iOS 11.0, *) {
+                
+                 self._tableView.performBatchUpdates({
+                    let contentOffset = self._tableView.contentOffset
+                    
+                    self._tableView.reloadSections(IndexSet(sectionsNeedReload), with: .automatic)
+                    self._tableView.reloadData()
+
+                     self._tableView.setContentOffset(contentOffset, animated: false)
+                    
+                }, completion: nil)
+                
+            } else {
+                
+                 self._tableView.beginUpdates()
+                
+                 self._tableView.reloadSections(IndexSet(sectionsNeedReload), with: .automatic)
+                self._tableView.reloadData()
+                 self._tableView.endUpdates()
+                
+            }
         }
-        //
         
     }
     

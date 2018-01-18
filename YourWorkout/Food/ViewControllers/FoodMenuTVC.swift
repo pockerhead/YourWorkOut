@@ -34,7 +34,6 @@ class FoodMenuTVC: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
-        self.navigationController?.navigationBar.prefersLargeTitles = true
 
     }
     
