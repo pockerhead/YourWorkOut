@@ -172,17 +172,17 @@
 		0636E5DD20037E4D005E9282 /* YourWorkout */ = {
 			isa = PBXGroup;
 			children = (
-				0636E5DE20037E4D005E9282 /* AppDelegate.swift */,
 				06B3BDE92003F61B00AD5B49 /* Cells */,
 				06517AB5200CAA7D00CA098A /* Food */,
 				06517AB6200CAA8200CA098A /* Gym */,
-				06517A49200BD88500CA098A /* Keychain.swift */,
 				06517AB7200CBB1100CA098A /* CustomClasses */,
-				06517A46200BD6BF00CA098A /* LoginVC.swift */,
 				06517ABA200DDCCA00CA098A /* Constants */,
-				06517AA5200BEA7D00CA098A /* RegistrationVC.swift */,
 				CE1C0F642006151300AE430A /* Extensions */,
 				0636E5E620037E4D005E9282 /* Main.storyboard */,
+				06517A46200BD6BF00CA098A /* LoginVC.swift */,
+				06517AA5200BEA7D00CA098A /* RegistrationVC.swift */,
+				06517A49200BD88500CA098A /* Keychain.swift */,
+				0636E5DE20037E4D005E9282 /* AppDelegate.swift */,
 				0636E5E920037E4D005E9282 /* Assets.xcassets */,
 				0636E5EB20037E4D005E9282 /* LaunchScreen.storyboard */,
 				0636E5EE20037E4D005E9282 /* Info.plist */,

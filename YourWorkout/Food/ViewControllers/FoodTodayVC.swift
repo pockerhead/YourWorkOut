@@ -54,7 +54,7 @@ class FoodTodayVC: UIViewController  {
         self.activityIndicatorInit("Загрузка")
 
         self.getCurrentJournal()
-        
+        self.uploadWithAlamofire()
         self.tableView.reloadData()
         // Do any additional setup after loading the view.
     }
@@ -406,7 +406,44 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
             }
         }
     }
-    
+    func uploadWithAlamofire() {
+        
+        guard let username = self.keychain.getPasscode(identifier: "MPPassword") else {
+            return
+        }
+        let image = UIImage(named:"addMealIcon")!
+        let username1 = username as String
+        // define parameters
+        let parameters = [
+            "username": username1,
+        ]
+        
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            
+            
+            for (key, value) in parameters {
+                multipartFormData.append((value.data(using: .utf8))!, withName: key)
+            }
+            
+            if let imageData = UIImageJPEGRepresentation(image, 0.5) {
+                multipartFormData.append(imageData, withName: "file", fileName: "file.png", mimeType: "image/jpeg")
+            }
+            
+        }, to: "\(API_URL)/user/uploadavatar", method: .post, headers: ["Authorization": "auth_token"],
+                encodingCompletion: { encodingResult in
+                    switch encodingResult {
+                    case .success(let upload, _, _):
+                        upload.response { [weak self] response in
+                            guard let strongSelf = self else {
+                                return
+                            }
+                            print(response.error as Any)
+                        }
+                    case .failure(let encodingError):
+                        print("error:\(encodingError)")
+                    }
+        })
+    }
     
 }
 

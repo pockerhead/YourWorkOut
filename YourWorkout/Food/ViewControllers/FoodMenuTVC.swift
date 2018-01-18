@@ -9,7 +9,7 @@
 import UIKit
 
 class FoodMenuTVC: UITableViewController {
-
+    var keychain = Keychain()
     var menu = [
         ["title":"Сегодня",
          "segue":"toToday"
@@ -19,6 +19,9 @@ class FoodMenuTVC: UITableViewController {
         ],
         ["title":"Замеры и статистика",
          "segue":"toStatistics"
+        ],
+        ["title":"Выйти",
+           "segue":"toLogin"
         ],
     ]
     
@@ -65,6 +68,7 @@ class FoodMenuTVC: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         self.performSegue(withIdentifier: menu[indexPath.row]["segue"]!, sender: self)
     }
     /*
@@ -102,14 +106,18 @@ class FoodMenuTVC: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toLogin"{
+            self.keychain.setPasscode(identifier: "MPPassword", passcode: "")
+            self.keychain.setPasscode(identifier: "MPUsername", passcode: "")
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
