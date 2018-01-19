@@ -160,6 +160,7 @@ class FoodTodayVC: UIViewController  {
 
 
     }
+    
     func toggleActivity() {
         if activityIndicator.isAnimating{
             UIView.transition(with: self.view, duration: 0.5, options: .curveEaseIn,
@@ -197,15 +198,6 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
         }
     }
     
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if section >= self.todayMeal.foodMeals.count{
-//            return nil
-//        } else {
-//            return self.todayMeal.foodMeals[section].name
-//        }
-//
-//    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section >= self.todayMeal.foodMeals.count{
             return 44
@@ -213,9 +205,11 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
             return 44 
         }
     }
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let  headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderCell") as! TodayHeaderCell
         if section >= self.todayMeal.foodMeals.count{
@@ -353,6 +347,7 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section >= self.todayMeal.foodMeals.count{
             return 72.0
@@ -365,6 +360,7 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
             
         }
     }
+    
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         if indexPath.section >= self.todayMeal.foodMeals.count{
             return UITableViewCellEditingStyle.delete
@@ -390,14 +386,14 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
             
         }
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             DispatchQueue.main.async {
                 self.todayMeal.foodMeals[indexPath.section].mealList.remove(at: indexPath.row)
                 
                 self.tableView.beginUpdates()
-                //                self.tableView.reloadData()
-                
+
                 self.tableView.deleteRows(at: [indexPath], with: .right)
                 self.tableView.reloadSections(IndexSet.init(integer: indexPath.section), with: .left)
                 self.tableView.endUpdates()
@@ -406,6 +402,7 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
             }
         }
     }
+    
     func uploadWithAlamofire() {
         
         guard let username = self.keychain.getPasscode(identifier: "MPPassword") else {
@@ -413,7 +410,6 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
         }
         let image = UIImage(named:"addMealIcon")!
         let username1 = username as String
-        // define parameters
         let parameters = [
             "username": username1,
         ]
@@ -448,6 +444,7 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
 }
 
 extension FoodTodayVC:SearchFoodVCDelegate{
+    
     func getFood(food: FoodModel, fromController: SearchFoodVC,gramms:Float) {
         let meal = OneFood(name: food.name!, calories: food.calories!, protein: food.protein!, fat: food.fat!, carbonhydrate: food.carbonhydrate!, gramms: gramms)
         
@@ -457,7 +454,6 @@ extension FoodTodayVC:SearchFoodVCDelegate{
                 self.selectedMeal?.addMeal(meal: meal)
 
                 self.tableView.beginUpdates()
-                //                self.tableView.reloadData()
                 
                 self.tableView.insertRows(at:[index], with: .right)
                 self.tableView.reloadRows(at:[index], with: .none)
@@ -472,5 +468,6 @@ extension FoodTodayVC:SearchFoodVCDelegate{
         }
         
     }
+    
 }
 
