@@ -185,6 +185,61 @@
             </objects>
             <point key="canvasLocation" x="2580" y="463"/>
         </scene>
+        <!--ProfileVC-->
+        <scene sceneID="YRg-hn-Gji">
+            <objects>
+                <viewController id="tnu-a5-0Sk" customClass="ProfileVC" customModule="YourWorkout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WqI-HD-Pts">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="7YB-Es-Z0f">
+                                <rect key="frame" x="16" y="120" width="288" height="428"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="m2p-bA-KKJ">
+                                        <rect key="frame" x="0.0" y="55.5" width="288" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m2p-bA-KKJ" id="TB1-Th-peb">
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tnu-a5-0Sk" id="dPH-RF-JvQ"/>
+                                    <outlet property="delegate" destination="tnu-a5-0Sk" id="EOu-36-W6G"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQP-cv-wZ3">
+                                <rect key="frame" x="16" y="20" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="NBl-S2-BgI"/>
+                                    <constraint firstAttribute="width" constant="80" id="TLS-An-OAX"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7YB-Es-Z0f" firstAttribute="leading" secondItem="ieZ-lG-Aqo" secondAttribute="leading" constant="16" id="CqL-Wo-fda"/>
+                            <constraint firstItem="ieZ-lG-Aqo" firstAttribute="bottom" secondItem="7YB-Es-Z0f" secondAttribute="bottom" constant="20" id="YaC-eo-rV4"/>
+                            <constraint firstItem="JQP-cv-wZ3" firstAttribute="top" secondItem="ieZ-lG-Aqo" secondAttribute="top" id="fPl-Iz-Gzt"/>
+                            <constraint firstItem="7YB-Es-Z0f" firstAttribute="top" secondItem="JQP-cv-wZ3" secondAttribute="bottom" constant="20" id="kVR-Uv-5oM"/>
+                            <constraint firstItem="ieZ-lG-Aqo" firstAttribute="trailing" secondItem="7YB-Es-Z0f" secondAttribute="trailing" constant="16" id="prP-9i-AYe"/>
+                            <constraint firstItem="JQP-cv-wZ3" firstAttribute="leading" secondItem="ieZ-lG-Aqo" secondAttribute="leading" constant="16" id="xiO-eA-NJ9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ieZ-lG-Aqo"/>
+                    </view>
+                    <connections>
+                        <outlet property="profileImageButton" destination="JQP-cv-wZ3" id="lhv-J0-oMx"/>
+                        <outlet property="tableView" destination="7YB-Es-Z0f" id="cSw-J8-cFK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pbq-z9-bKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1719" y="1267"/>
+        </scene>
         <!--Поиск-->
         <scene sceneID="kZs-bu-EF0">
             <objects>
@@ -192,16 +247,31 @@
                     <view key="view" contentMode="scaleToFill" id="2R5-Wz-ZbJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cu9-wR-Y1f">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Cu9-wR-Y1f" firstAttribute="leading" secondItem="8A2-oo-DbF" secondAttribute="leading" id="9s5-4O-Lq8"/>
+                            <constraint firstItem="Cu9-wR-Y1f" firstAttribute="top" secondItem="8A2-oo-DbF" secondAttribute="top" id="CnR-aV-Ev2"/>
+                            <constraint firstItem="Cu9-wR-Y1f" firstAttribute="bottom" secondItem="8A2-oo-DbF" secondAttribute="bottom" id="wqz-MB-Gk6"/>
+                            <constraint firstItem="Cu9-wR-Y1f" firstAttribute="trailing" secondItem="8A2-oo-DbF" secondAttribute="trailing" id="zpi-zq-yfP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8A2-oo-DbF"/>
                     </view>
                     <navigationItem key="navigationItem" title="Поиск" id="kbU-PC-FOp">
                         <barButtonItem key="backBarButtonItem" title="Назад" id="FJG-Wv-sw6"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Cu9-wR-Y1f" id="OaA-N5-7VL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pK9-JT-a7y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3568" y="463"/>
+            <point key="canvasLocation" x="3527" y="463"/>
         </scene>
         <!--Еда-->
         <scene sceneID="7wL-oA-HO8">
@@ -228,8 +298,24 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Еда" largeTitleDisplayMode="always" id="QDF-m9-AaN">
                         <barButtonItem key="backBarButtonItem" title="Назад" id="rre-tF-Cdv"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="BsM-bI-UF5">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T2n-nj-Edn">
+                                <rect key="frame" x="16" y="4.5" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="21"/>
+                                <connections>
+                                    <action selector="profileButtonWasPressed:" destination="swj-jW-EEN" eventType="touchUpInside" id="Ghx-eV-9w4"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <segue destination="tnu-a5-0Sk" kind="popoverPresentation" identifier="toProfileVC" popoverAnchorBarButtonItem="BsM-bI-UF5" id="QaN-AN-FDi">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="profileButton" destination="T2n-nj-Edn" id="V3V-eX-WkJ"/>
                         <segue destination="bKk-vd-Dfm" kind="show" identifier="toJournal" id="dWK-Hk-7Au"/>
                         <segue destination="9kp-HD-MMf" kind="show" identifier="toStatistics" id="6jo-gw-5of"/>
                         <segue destination="ocS-lw-agl" kind="show" identifier="toToday" id="2rk-KK-8yf"/>
@@ -530,7 +616,7 @@
         <image name="Назад" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2yz-8y-Xgb"/>
-        <segue reference="WBh-1k-MmB"/>
+        <segue reference="iVK-1c-AJ7"/>
+        <segue reference="2rk-KK-8yf"/>
     </inferredMetricsTieBreakers>
 </document>

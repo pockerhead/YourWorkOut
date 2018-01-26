@@ -10,8 +10,9 @@ import UIKit
 import ValueStepper
 class ExpandedFoodCell: UITableViewCell {
 
+    @IBOutlet weak var nameButton: MyMDCRaisedButton!
     @IBOutlet weak var backGroundView: UIView!
-    @IBOutlet weak var addButton: MyButton!
+    @IBOutlet weak var addButton: MyMDCFloatingButton!
     @IBOutlet weak var portionStepper: ValueStepper!
     @IBOutlet weak var carbonhydratesLabel: UILabel!
     @IBOutlet weak var caloriesLabel: UILabel!
@@ -35,11 +36,11 @@ class ExpandedFoodCell: UITableViewCell {
         let maskLayer = CAShapeLayer()
         maskLayer.path = path.cgPath
         self.layer.mask = maskLayer
-        self.backgroundColor = UIColor.white
-        self.contentView.backgroundColor = UIColor.white
+        self.backgroundColor = FoodColors.primaryColor
+        self.contentView.backgroundColor = FoodColors.primaryColor
         self.portionStepper.backgroundColor = FoodColors.secondaryColor
         self.portionStepper.tintColor = UIColor.white
-
+        self.backGroundView.isHidden = true
     }
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -65,13 +66,20 @@ class ExpandedFoodCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func initWithFood(protein:Float?,fat:Float?,carbonhydrates:Float?, calories:Float?){
+//    @IBAction func nameButtonPressed(_ sender: Any) {
+//        self.backGroundView.isHidden = !self.backGroundView.isHidden
+//
+//    }
+    func initWithFood(protein:Float?,fat:Float?,carbonhydrates:Float?, calories:Float?,name:String){
+        
+        self.nameButton.setTitle(name, for: .normal)
+        self.nameButton.sizeToFit()
         
         self.proteins = protein!
         self.proteinsOnChange = protein!
         self.carbonhydrates = carbonhydrates!
         self.carbonhydratesOnChange = carbonhydrates!
-
+        
         self.fats = fat!
         self.fatsOnChange = fat!
 

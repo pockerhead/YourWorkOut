@@ -10,6 +10,12 @@ target 'YourWorkout' do
     pod 'ValueStepper'
     pod 'CollapsibleTableSectionViewController', '~> 1.0.0'
     pod 'CVCalendar'
+	pod 'MaterialComponents/AppBar'
+    pod 'ExpandableCell'
+  pod 'MaterialComponents/Buttons'
+  pod 'MaterialComponents/Collections'
+  pod 'RxSwift'
+  pod 'RxCocoa'
   target 'YourWorkoutTests' do
     inherit! :search_paths
     # Pods for testing

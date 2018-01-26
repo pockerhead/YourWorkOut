@@ -7,60 +7,115 @@
 //
 
 import UIKit
-import CollapsibleTableSectionViewController
 import Alamofire
+import RxSwift
+import RxCocoa
+import ExpandableCell
 
 protocol SearchFoodVCDelegate {
     func getFood(food:FoodModel,fromController:SearchFoodVC, gramms:Float)
 }
 
-class SearchFoodVC: CollapsibleTableSectionViewController {
+class SearchFoodVC: UIViewController {
     
+    let disposeBag = DisposeBag()
     var foodData = FoodListModel.sharedInstance
     let searchController = UISearchController(searchResultsController: nil)
-    var filteredFood = [FoodModel]()
+    var filteredFood = FoodListModel.sharedInstance.foodList
     var heightAtIndexPath = NSMutableDictionary()
     var foodDelegate : SearchFoodVCDelegate?
     var activityIndicator = UIActivityIndicatorView()
     var strLabel = UILabel()
+    var expandedCells = [Int]()
+    
+    
+    @IBOutlet weak var tableView: UITableView!
     
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self
+        
         self.activityIndicatorInit("Загрузка")
-        searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Введите название продукта"
         searchController.searchBar.barStyle = .black
         navigationItem.searchController = searchController
+        tableView.delegate = self
+        tableView.dataSource = self
+//        definesPresentationContext = true
+        doFirstRequest()
+        //        tableView.openAll()
+        searchController.searchBar
+            .rx.text // Observable property thanks to RxCocoa
+            .orEmpty // Make it non-optional
+            .debounce(0.5, scheduler: MainScheduler.instance) // Wait 0.5 for changes.
+            .distinctUntilChanged() // If they didn't occur, check if the new value is the same as old.
+            // If the new value is really new, filter for non-empty query.
+            .subscribe(onNext: { [unowned self] query in // Here we subscribe to every new value, that is not empty (thanks to filter above).
+                let parameters: Parameters = ["search":query]
+                let requestFood = FoodListModel.sharedInstance
+                self.toggleActivity()
+                Alamofire.request("\(API_URL)/food/find", parameters:parameters).responseJSON(completionHandler: { responce in
+                    if let json = responce.result.value{
+                        DispatchQueue.main.async {
+                            print(json)
+                            requestFood.initFoodListWithResponce(responce: json as! [[String : Any]])
+                            self.filteredFood = requestFood.foodList
+                            let indexSet = IndexSet.init(integer: 0)
+                            self.tableView.reloadData()
+                            self.toggleActivity()
+                            
+                        }
+                        
+                    }
+                })
+            })
+            .disposed(by: disposeBag)
         
-        definesPresentationContext = true
-        self._tableView.backgroundColor = FoodColors.primaryColor
-        self.view.backgroundColor = FoodColors.primaryColor
-        self._tableView.rowHeight = UITableViewAutomaticDimension
-        self._tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+//        self.tableView.backgroundColor = FoodColors.primaryColor
+//        self.view.backgroundColor = FoodColors.primaryColor
         
         let expandedCellNib = UINib(nibName: "ExpandedFoodCell", bundle: nil)
-       
         
- 
-        self._tableView.register(expandedCellNib, forCellReuseIdentifier: "ExpandedFoodCell")
-       
-
+        let expandableCell = UINib(nibName: "ExpandableCellForFood", bundle: nil)
+        self.tableView.register(expandedCellNib, forCellReuseIdentifier: "ExpandedFoodCell")
+        self.tableView.register(expandableCell, forCellReuseIdentifier: "ExpandableCellForFood")
+//        let indexPath = IndexPath(row: 0, section: 0)
+//        self.tableView.open(at:indexPath )
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func doFirstRequest(){
+        let parameters: Parameters = ["search":""]
+        let requestFood = FoodListModel.sharedInstance
+        self.toggleActivity()
+        Alamofire.request("\(API_URL)/food/find", parameters:parameters).responseJSON(completionHandler: { responce in
+            if let json = responce.result.value{
+                DispatchQueue.main.async {
+                    print(json)
+                    requestFood.initFoodListWithResponce(responce: json as! [[String : Any]])
+                    self.filteredFood = requestFood.foodList
+                    
+                    self.tableView.reloadData()
+                    self.toggleActivity()
+                    
+                }
+                
+            }
+        })
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
-
-        self._tableView.reloadData()
+        
+        self.tableView.reloadData()
     }
-
+    
     func activityIndicatorInit(_ title: String) {
         
         strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
@@ -93,75 +148,31 @@ class SearchFoodVC: CollapsibleTableSectionViewController {
     }
 }
 
-extension SearchFoodVC: UISearchResultsUpdating {
-    // MARK: - UISearchResultsUpdating Delegate
-    func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
-    }
-}
-// MARK: - Search
-
-extension SearchFoodVC {
-    func searchBarIsEmpty() -> Bool {
-        // Returns true if the text is empty or nil
-        return searchController.searchBar.text?.isEmpty ?? true
-    }
-    
-    func isFiltering() -> Bool {
-        return searchController.isActive && !searchBarIsEmpty()
-    }
-    
-    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        let parameters: Parameters = ["search":searchText]
-        let requestFood = FoodListModel.sharedInstance
-        self.toggleActivity()
-        Alamofire.request("\(API_URL)/food/find", parameters:parameters).responseJSON(completionHandler: { responce in
-            if let json = responce.result.value{
-                DispatchQueue.main.async {
-                    print(json)
-                    requestFood.initFoodListWithResponce(responce: json as! [[String : Any]])
-                    self.filteredFood = requestFood.foodList
-                    
-                    self._tableView.reloadData()
-                    self.toggleActivity()
-
-                }
-                
-            }
-        })
-        
-        
-    }
-}
-
-
-extension SearchFoodVC: CollapsibleTableSectionDelegate {
-    
-    func numberOfSections(_ tableView: UITableView) -> Int {
-        if isFiltering() {
-            return filteredFood.count
-        } else {
-            return foodData.foodList.count
-        }
-    }
-    
-    func collapsibleTableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension SearchFoodVC: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func collapsibleTableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell1 = self._tableView.dequeueReusableCell(withIdentifier: "ExpandedFoodCell") as! ExpandedFoodCell
-       
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredFood.count
+
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell1 = tableView.dequeueReusableCell(withIdentifier: "ExpandedFoodCell") as! ExpandedFoodCell
+        //        let cell1 = UITableViewCell()
         let foodItem : FoodModel
-        if isFiltering(){
-            foodItem = filteredFood[indexPath.section]
-        } else {
-            foodItem = foodData.foodList[indexPath.section]
-        }
         
-        cell1.initWithFood(protein: foodItem.protein, fat: foodItem.fat, carbonhydrates: foodItem.carbonhydrate, calories: foodItem.calories)
+        foodItem = filteredFood[indexPath.row]
+        //        cell1.textLabel?.text = foodItem.name
+        if self.expandedCells.contains(indexPath.row) {
+            cell1.backGroundView.isHidden = false
+        } else {
+            cell1.backGroundView.isHidden = true
+        }
+        cell1.initWithFood(protein: foodItem.protein, fat: foodItem.fat, carbonhydrates: foodItem.carbonhydrate, calories: foodItem.calories,name:foodItem.name!)
         cell1.addButton.didTouchUpInside = {sender in
-            let foodName = self.foodData.foodList[indexPath.section].name!
+            let foodName = self.foodData.foodList[indexPath.row].name!
             let calories = cell1.caloriesOnChange
             let protein = cell1.proteinsOnChange
             let carbonhydrate = cell1.carbonhydratesOnChange
@@ -171,53 +182,35 @@ extension SearchFoodVC: CollapsibleTableSectionDelegate {
             let food = FoodModel(name: foodName, calories: calories, protein: protein, carbonhydrate: carbonhydrate, fat: fat)
             self.foodDelegate?.getFood(food: food, fromController: self, gramms: gramms)
             self.navigationController?.popViewController(animated: true)
+            
+            
+            
+            
+            
         }
-        
+        cell1.nameButton.didTouchUpInside = {[unowned self] sender in
+            cell1.backGroundView.isHidden = !cell1.backGroundView.isHidden
+            if self.expandedCells.contains(indexPath.row) {
+                self.expandedCells = self.expandedCells.filter({$0 != indexPath.row})
+            } else {
+                self.expandedCells.append(indexPath.row)
+            }
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
         return cell1
-        
-        
     }
     
-    func collapsibleTableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if isFiltering(){
-            return filteredFood[section].name
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if self.expandedCells.contains(indexPath.row){
+            return 155
 
         } else {
-            return foodData.foodList[section].name
+            return 44
+
         }
+        return 44
     }
     
-    func shouldCollapseByDefault(_ tableView: UITableView) -> Bool {
-        return true
-    }
-    
-    func shouldCollapseOthers(_ tableView: UITableView) -> Bool {
-        return false
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let height = heightAtIndexPath.object(forKey: indexPath) as? NSNumber {
-            return CGFloat(height.floatValue)
-        } else {
-            return UITableViewAutomaticDimension
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let height = NSNumber(value: Float(cell.frame.size.height))
-        heightAtIndexPath.setObject(height, forKey: indexPath as NSCopying)
-    }
-    
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        let vc : FoodDetailsVC = (self.storyboard?.instantiateViewController(withIdentifier: "FoodDetailsViewController") as? FoodDetailsVC)!
-        var foodItem: FoodModel
-        if isFiltering(){
-            foodItem = filteredFood[indexPath.section]
-        } else {
-            foodItem = foodData.foodList[indexPath.section]
-        }
-        vc.initWithFoodData(data: foodItem)
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
 }
+
 

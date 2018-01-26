@@ -12,8 +12,8 @@ class FoodItemCell: UITableViewCell {
 
     @IBOutlet weak var foodName: UILabel!
     
-    @IBOutlet weak var deleteButton: MyButton!
-    @IBOutlet weak var button: MyButton!
+    @IBOutlet weak var deleteButton: MyMDCRaisedButton!
+    @IBOutlet weak var button: MyMDCRaisedButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

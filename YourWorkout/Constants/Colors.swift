@@ -18,6 +18,6 @@ struct FoodColors {
     
     static let secondaryColor = UIColor(hexString:"#2ecc71")
     
-    static let deleteColor = UIColor(hexString: "e74c3c")
+    static let deleteColor = UIColor(hexString: "CC3333")
     
 }

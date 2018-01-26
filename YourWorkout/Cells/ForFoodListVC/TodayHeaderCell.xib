@@ -31,11 +31,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9B-hT-jr8" customClass="MyMDCRaisedButton" customModule="YourWorkout" customModuleProvider="target">
+                                <rect key="frame" x="255" y="7" width="58" height="30"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="удалить">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.30121527777777779" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="V9B-hT-jr8" firstAttribute="top" secondItem="mho-OA-WYe" secondAttribute="top" constant="7" id="CoG-pR-IsY"/>
                             <constraint firstItem="byk-Pk-7pe" firstAttribute="top" secondItem="mho-OA-WYe" secondAttribute="top" constant="12" id="Lge-Pc-7VK"/>
                             <constraint firstItem="byk-Pk-7pe" firstAttribute="leading" secondItem="mho-OA-WYe" secondAttribute="leading" constant="8" id="nLo-p9-q7c"/>
+                            <constraint firstAttribute="trailing" secondItem="V9B-hT-jr8" secondAttribute="trailing" constant="8" id="wFY-Z5-a4T"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -49,6 +58,7 @@
             <color key="backgroundColor" red="0.24313725489999999" green="0.47843137250000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="deleteButton" destination="V9B-hT-jr8" id="IP4-Hd-9dz"/>
                 <outlet property="headerTitle" destination="byk-Pk-7pe" id="d21-BV-fnJ"/>
             </connections>
             <point key="canvasLocation" x="72.5" y="48.5"/>

@@ -51,10 +51,11 @@ class FoodTodayVC: UIViewController  {
             self.navigationItem.title = "Сегодня"
         }
         
+        
         self.activityIndicatorInit("Загрузка")
 
         self.getCurrentJournal()
-        self.uploadWithAlamofire()
+//        self.uploadWithAlamofire()
         self.tableView.reloadData()
         // Do any additional setup after loading the view.
     }
@@ -70,7 +71,7 @@ class FoodTodayVC: UIViewController  {
     }
     
     func getCurrentJournal(){
-        guard let username = self.keychain.getPasscode(identifier: "MPPassword") else {
+        guard let username = self.keychain.getPasscode(identifier: "MPUsername") else {
             return
         }
         let formatter = DateFormatter()
@@ -111,10 +112,11 @@ class FoodTodayVC: UIViewController  {
         self.carbonhydratesMainLabel.text = String(format:"%.1f",carbonhydrates!)
         self.fatsMainLabel.text = String(format:"%.1f",fats!)
 
+        
     }
     
     func updateCurrentJournal(){
-        guard let username = self.keychain.getPasscode(identifier: "MPPassword") else {
+        guard let username = self.keychain.getPasscode(identifier: "MPUsername") else {
             return
         }
         let formatter = DateFormatter()
@@ -184,6 +186,7 @@ class FoodTodayVC: UIViewController  {
     
 }
 extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return self.todayMeal.foodMeals.count + 1
@@ -200,9 +203,9 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section >= self.todayMeal.foodMeals.count{
-            return 44
+            return 55
         } else {
-            return 44 
+            return 55
         }
     }
     
@@ -213,9 +216,41 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let  headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderCell") as! TodayHeaderCell
         if section >= self.todayMeal.foodMeals.count{
+            headerCell.deleteButton.isHidden = true
             headerCell.headerTitle.text = nil
         } else {
+            headerCell.deleteButton.isHidden = false
             headerCell.headerTitle.text = self.todayMeal.foodMeals[section].name
+            headerCell.deleteButton.didTouchUpInside = { sender in
+                
+                let alertController = UIAlertController(title: "Удалить \(self.todayMeal.foodMeals[section].name)?", message: "", preferredStyle: .alert)
+                
+                let saveAction = UIAlertAction(title: "Удалить", style: .default, handler: {
+                    alert -> Void in
+                    
+                    
+                    DispatchQueue.main.async {
+                        self.todayMeal.foodMeals.remove(at: section)
+                        
+                        self.tableView.beginUpdates()
+                        self.tableView.deleteSections(IndexSet.init(integer: section), with: .fade)
+                        self.tableView.endUpdates()
+                        self.updateCurrentJournal()
+                        
+                    }
+                    
+                })
+                saveAction.isEnabled = true
+                let cancelAction = UIAlertAction(title: "Отмена", style: .default, handler: {
+                    (action : UIAlertAction!) -> Void in
+                    
+                })
+                
+                alertController.addAction(saveAction)
+                alertController.addAction(cancelAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
         return headerCell
     }
@@ -225,7 +260,8 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
         if indexPath.section >= self.todayMeal.foodMeals.count{
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddItemCell") as! FoodItemCell
             
-            cell.button.setImage(#imageLiteral(resourceName: "addMealIcon"), for: .normal)
+            cell.button.setTitle("Доб. прием пищи", for: .normal)
+            cell.button.sizeToFit()
 //            cell.deleteButton.setTitle("", for: .normal)
             cell.deleteButton.isHidden = true
             cell.button.didTouchUpInside = { MyButton in
@@ -280,8 +316,8 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
             if indexPath.row >= self.todayMeal.foodMeals[indexPath.section].mealList.count{
                 let cell1 = tableView.dequeueReusableCell(withIdentifier: "AddItemCell") as! FoodItemCell
                 
-                cell1.deleteButton.isHidden = false
-                cell1.deleteButton.setTitle("Удалить прием", for: .normal)
+                cell1.deleteButton.isHidden = true
+                cell1.deleteButton.setTitle("- прием", for: .normal)
 
                 cell1.deleteButton.didTouchUpInside = { sender in
                     
@@ -315,8 +351,8 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
                 }
                 
                 
-                cell1.button.setImage(#imageLiteral(resourceName: "addFoodIcon"), for: .normal)
-
+                cell1.button.setTitle("+ продукт", for: .normal)
+                cell1.button.sizeToFit()
                 cell1.button.didTouchUpInside = { sender in
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchFoodVC") as! SearchFoodVC
                     self.selectedMeal = self.todayMeal.foodMeals[indexPath.section]
@@ -403,43 +439,43 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
         }
     }
     
-    func uploadWithAlamofire() {
-        
-        guard let username = self.keychain.getPasscode(identifier: "MPPassword") else {
-            return
-        }
-        let image = UIImage(named:"addMealIcon")!
-        let username1 = username as String
-        let parameters = [
-            "username": username1,
-        ]
-        
-        Alamofire.upload(multipartFormData: { multipartFormData in
-            
-            
-            for (key, value) in parameters {
-                multipartFormData.append((value.data(using: .utf8))!, withName: key)
-            }
-            
-            if let imageData = UIImageJPEGRepresentation(image, 0.5) {
-                multipartFormData.append(imageData, withName: "file", fileName: "file.png", mimeType: "image/jpeg")
-            }
-            
-        }, to: "\(API_URL)/user/uploadavatar", method: .post, headers: ["Authorization": "auth_token"],
-                encodingCompletion: { encodingResult in
-                    switch encodingResult {
-                    case .success(let upload, _, _):
-                        upload.response { [weak self] response in
-                            guard let strongSelf = self else {
-                                return
-                            }
-                            print(response.error as Any)
-                        }
-                    case .failure(let encodingError):
-                        print("error:\(encodingError)")
-                    }
-        })
-    }
+//    func uploadWithAlamofire() {
+//
+//        guard let username = self.keychain.getPasscode(identifier: "MPUsername") else {
+//            return
+//        }
+//        let image = UIImage(named:"addMealIcon")!
+//        let username1 = username as String
+//        let parameters = [
+//            "username": username1,
+//        ]
+//
+//        Alamofire.upload(multipartFormData: { multipartFormData in
+//
+//
+//            for (key, value) in parameters {
+//                multipartFormData.append((value.data(using: .utf8))!, withName: key)
+//            }
+//
+//            if let imageData = UIImageJPEGRepresentation(image, 0.5) {
+//                multipartFormData.append(imageData, withName: "file", fileName: "file.png", mimeType: "image/jpeg")
+//            }
+//
+//        }, to: "\(API_URL)/user/uploadavatar", method: .post, headers: ["Authorization": "auth_token"],
+//                encodingCompletion: { encodingResult in
+//                    switch encodingResult {
+//                    case .success(let upload, _, _):
+//                        upload.response { [weak self] response in
+//                            guard let strongSelf = self else {
+//                                return
+//                            }
+//                            print(response.error as Any)
+//                        }
+//                    case .failure(let encodingError):
+//                        print("error:\(encodingError)")
+//                    }
+//        })
+//    }
     
 }
 
