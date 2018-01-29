@@ -36,16 +36,17 @@ class SearchFoodVC: UIViewController {
         super.viewDidLoad()
         
         self.activityIndicatorInit("Загрузка")
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Введите название продукта"
-        searchController.searchBar.barStyle = .black
-        navigationItem.searchController = searchController
-        tableView.delegate = self
-        tableView.dataSource = self
-//        definesPresentationContext = true
-        doFirstRequest()
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.searchBar.placeholder = "Введите название продукта"
+        self.searchController.searchBar.barStyle = .black
+        self.navigationItem.searchController = searchController
+        self.searchController.hidesNavigationBarDuringPresentation = false;
+
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.doFirstRequest()
         //        tableView.openAll()
-        searchController.searchBar
+        self.searchController.searchBar
             .rx.text // Observable property thanks to RxCocoa
             .orEmpty // Make it non-optional
             .debounce(0.5, scheduler: MainScheduler.instance) // Wait 0.5 for changes.
@@ -72,17 +73,12 @@ class SearchFoodVC: UIViewController {
             })
             .disposed(by: disposeBag)
         
-//        self.tableView.backgroundColor = FoodColors.primaryColor
-//        self.view.backgroundColor = FoodColors.primaryColor
         
         let expandedCellNib = UINib(nibName: "ExpandedFoodCell", bundle: nil)
-        
         let expandableCell = UINib(nibName: "ExpandableCellForFood", bundle: nil)
+        
         self.tableView.register(expandedCellNib, forCellReuseIdentifier: "ExpandedFoodCell")
         self.tableView.register(expandableCell, forCellReuseIdentifier: "ExpandableCellForFood")
-//        let indexPath = IndexPath(row: 0, section: 0)
-//        self.tableView.open(at:indexPath )
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -100,40 +96,30 @@ class SearchFoodVC: UIViewController {
                     print(json)
                     requestFood.initFoodListWithResponce(responce: json as! [[String : Any]])
                     self.filteredFood = requestFood.foodList
-                    
                     self.tableView.reloadData()
                     self.toggleActivity()
-                    
                 }
-                
             }
         })
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
-        
         self.tableView.reloadData()
     }
     
     func activityIndicatorInit(_ title: String) {
-        
         strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
         strLabel.text = title
         strLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightMedium)
         strLabel.textColor = UIColor(white: 0.9, alpha: 0.7)
-        
         effectView.frame = CGRect(x: view.frame.midX - strLabel.frame.width/2, y: view.frame.midY - strLabel.frame.height/2 , width: 160, height: 46)
         effectView.layer.cornerRadius = 15
         effectView.layer.masksToBounds = true
-        
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
         activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
         effectView.contentView.addSubview(activityIndicator)
         effectView.contentView.addSubview(strLabel)
-        
-        
-        
     }
     func toggleActivity() {
         if activityIndicator.isAnimating{
@@ -152,19 +138,13 @@ extension SearchFoodVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredFood.count
-
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell1 = tableView.dequeueReusableCell(withIdentifier: "ExpandedFoodCell") as! ExpandedFoodCell
-        //        let cell1 = UITableViewCell()
         let foodItem : FoodModel
-        
         foodItem = filteredFood[indexPath.row]
-        //        cell1.textLabel?.text = foodItem.name
         if self.expandedCells.contains(indexPath.row) {
             cell1.backGroundView.isHidden = false
         } else {
@@ -172,6 +152,7 @@ extension SearchFoodVC: UITableViewDelegate, UITableViewDataSource {
         }
         cell1.initWithFood(protein: foodItem.protein, fat: foodItem.fat, carbonhydrates: foodItem.carbonhydrate, calories: foodItem.calories,name:foodItem.name!)
         cell1.addButton.didTouchUpInside = {sender in
+            self.searchController.setEditing(false, animated: false)
             let foodName = self.foodData.foodList[indexPath.row].name!
             let calories = cell1.caloriesOnChange
             let protein = cell1.proteinsOnChange
@@ -183,19 +164,19 @@ extension SearchFoodVC: UITableViewDelegate, UITableViewDataSource {
             self.foodDelegate?.getFood(food: food, fromController: self, gramms: gramms)
             self.navigationController?.popViewController(animated: true)
             
-            
-            
-            
-            
         }
         cell1.nameButton.didTouchUpInside = {[unowned self] sender in
-            cell1.backGroundView.isHidden = !cell1.backGroundView.isHidden
+            cell1.isOpened = !cell1.isOpened
+            print(cell1.isOpened)
             if self.expandedCells.contains(indexPath.row) {
                 self.expandedCells = self.expandedCells.filter({$0 != indexPath.row})
             } else {
                 self.expandedCells.append(indexPath.row)
             }
+            cell1.backGroundView.isHidden = !cell1.backGroundView.isHidden
+
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            
         }
         return cell1
     }
@@ -203,12 +184,12 @@ extension SearchFoodVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.expandedCells.contains(indexPath.row){
             return 155
-
+            
         } else {
             return 44
-
+            
         }
-        return 44
+        
     }
     
 }

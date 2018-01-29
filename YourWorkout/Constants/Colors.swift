@@ -20,4 +20,6 @@ struct FoodColors {
     
     static let deleteColor = UIColor(hexString: "CC3333")
     
+    static let whiteGrayColor = UIColor(hexString: "ecf0f1")
+    
 }

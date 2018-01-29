@@ -10,23 +10,32 @@ import UIKit
 import ValueStepper
 class ExpandedFoodCell: UITableViewCell {
 
-    @IBOutlet weak var nameButton: MyMDCRaisedButton!
-    @IBOutlet weak var backGroundView: UIView!
+    @IBOutlet weak var disclosureIndicator: MyButton!
+    
+    @IBOutlet weak var nameButton: MyButton!
+    @IBOutlet weak var infoButton: MyButton!
     @IBOutlet weak var addButton: MyMDCFloatingButton!
+
+    @IBOutlet weak var backGroundView: UIView!
+    
     @IBOutlet weak var portionStepper: ValueStepper!
+    
     @IBOutlet weak var carbonhydratesLabel: UILabel!
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var fatsLabel: UILabel!
     @IBOutlet weak var proteinsLabel: UILabel!
+    
     var proteins : Float = 0.0
     var carbonhydrates : Float = 0.0
     var fats : Float = 0.0
     var calories : Float = 0.0
-
     var proteinsOnChange : Float = 0.0
     var carbonhydratesOnChange : Float = 0.0
     var fatsOnChange : Float = 0.0
     var caloriesOnChange : Float = 0.0
+    
+    var isOpened = false
+
     override func awakeFromNib() {
         super.awakeFromNib()
         let path = UIBezierPath(roundedRect:self.bounds,
@@ -41,9 +50,15 @@ class ExpandedFoodCell: UITableViewCell {
         self.portionStepper.backgroundColor = FoodColors.secondaryColor
         self.portionStepper.tintColor = UIColor.white
         self.backGroundView.isHidden = true
+        self.nameButton.titleLabel?.numberOfLines = 0
+        self.nameButton.setBackgroundColor(color: FoodColors.whiteGrayColor, for: .normal)
+        self.nameButton.setBackgroundColor(color: FoodColors.primaryColor, for: .selected)
+
     }
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.isOpened = false
+
     }
     
     @IBAction func onValueChanged(_ sender: ValueStepper) {
@@ -66,10 +81,7 @@ class ExpandedFoodCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-//    @IBAction func nameButtonPressed(_ sender: Any) {
-//        self.backGroundView.isHidden = !self.backGroundView.isHidden
-//
-//    }
+
     func initWithFood(protein:Float?,fat:Float?,carbonhydrates:Float?, calories:Float?,name:String){
         
         self.nameButton.setTitle(name, for: .normal)
@@ -93,5 +105,11 @@ class ExpandedFoodCell: UITableViewCell {
         self.portionStepper.valueLabel.text = "100"
         self.portionStepper.value = 100
         self.selectionStyle = .none
+    }
+    
+    public func rotateView(targetView: UIView, duration: Double = 1.0) {
+        UIView.animate(withDuration: duration, delay: 0.0, options: .curveLinear, animations: {
+            targetView.transform = targetView.transform.rotated(by: CGFloat(Double.pi))
+        }) 
     }
 }

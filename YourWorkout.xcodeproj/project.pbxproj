@@ -46,6 +46,11 @@
 		CE8470C9200F329900CB7D57 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8470C8200F329900CB7D57 /* Colors.swift */; };
 		CE8470CC200F4A0900CB7D57 /* TodayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8470CA200F4A0900CB7D57 /* TodayHeaderCell.swift */; };
 		CE8470CD200F4A0900CB7D57 /* TodayHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8470CB200F4A0900CB7D57 /* TodayHeaderCell.xib */; };
+		CEA03E7A201F279A002F4DD5 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA03E79201F279A002F4DD5 /* MyButton.swift */; };
+		CEA03E7C201F3869002F4DD5 /* UIButton + setBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA03E7B201F3869002F4DD5 /* UIButton + setBackgroundColor.swift */; };
+		CEA03E7E201F4A7F002F4DD5 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA03E7D201F4A7F002F4DD5 /* HealthKit.framework */; };
+		CEA03E81201F4C37002F4DD5 /* HealthKitSeupAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA03E80201F4C37002F4DD5 /* HealthKitSeupAssistant.swift */; };
+		CEA03E83201F60B9002F4DD5 /* StatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA03E82201F60B9002F4DD5 /* StatisticsVC.swift */; };
 		CEA640132018D36A00EC2F2E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA640122018D36A00EC2F2E /* ProfileVC.swift */; };
 		CEA64EDC20077A9B0002A87E /* FoodDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA64EDB20077A9B0002A87E /* FoodDetailsVC.swift */; };
 /* End PBXBuildFile section */
@@ -119,6 +124,12 @@
 		CE8470C8200F329900CB7D57 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CE8470CA200F4A0900CB7D57 /* TodayHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeaderCell.swift; sourceTree = "<group>"; };
 		CE8470CB200F4A0900CB7D57 /* TodayHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayHeaderCell.xib; sourceTree = "<group>"; };
+		CEA03E79201F279A002F4DD5 /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
+		CEA03E7B201F3869002F4DD5 /* UIButton + setBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + setBackgroundColor.swift"; sourceTree = "<group>"; };
+		CEA03E7D201F4A7F002F4DD5 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		CEA03E7F201F4A7F002F4DD5 /* YourWorkout.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YourWorkout.entitlements; sourceTree = "<group>"; };
+		CEA03E80201F4C37002F4DD5 /* HealthKitSeupAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitSeupAssistant.swift; sourceTree = "<group>"; };
+		CEA03E82201F60B9002F4DD5 /* StatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsVC.swift; sourceTree = "<group>"; };
 		CEA640122018D36A00EC2F2E /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		CEA64EDB20077A9B0002A87E /* FoodDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E11E9ADD2D57D1570CBE8CC /* Pods_YourWorkout.framework in Frameworks */,
+				CEA03E7E201F4A7F002F4DD5 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +188,7 @@
 		0636E5DD20037E4D005E9282 /* YourWorkout */ = {
 			isa = PBXGroup;
 			children = (
+				CEA03E7F201F4A7F002F4DD5 /* YourWorkout.entitlements */,
 				CEA640112018D34E00EC2F2E /* User */,
 				06B3BDE92003F61B00AD5B49 /* Cells */,
 				06517AB5200CAA7D00CA098A /* Food */,
@@ -186,6 +199,7 @@
 				0636E5E620037E4D005E9282 /* Main.storyboard */,
 				06517A46200BD6BF00CA098A /* LoginVC.swift */,
 				06517AA5200BEA7D00CA098A /* RegistrationVC.swift */,
+				CEA03E80201F4C37002F4DD5 /* HealthKitSeupAssistant.swift */,
 				06517A49200BD88500CA098A /* Keychain.swift */,
 				0636E5DE20037E4D005E9282 /* AppDelegate.swift */,
 				0636E5E920037E4D005E9282 /* Assets.xcassets */,
@@ -227,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				06517AAB200C8BF700CA098A /* FoodMenuTVC.swift */,
+				CEA03E82201F60B9002F4DD5 /* StatisticsVC.swift */,
 				06517AAD200CA8CE00CA098A /* FoodTodayVC.swift */,
 				CEA64EDB20077A9B0002A87E /* FoodDetailsVC.swift */,
 				068BF391200E0E7A006EBBAB /* JournalVC.swift */,
@@ -256,6 +271,7 @@
 			children = (
 				06517AB8200CBB2A00CA098A /* MyMDCFloatingButton.swift */,
 				CE7885DF2017594B0026A640 /* MyMDCRaisedButton.swift */,
+				CEA03E79201F279A002F4DD5 /* MyButton.swift */,
 			);
 			path = CustomClasses;
 			sourceTree = "<group>";
@@ -280,6 +296,7 @@
 		A402BD39DB26A7B52166F6DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEA03E7D201F4A7F002F4DD5 /* HealthKit.framework */,
 				3FFD4313F8A8B38F08246A85 /* Pods_YourWorkout.framework */,
 				802B52A4CCC937F1BDA03EE4 /* Pods_YourWorkoutTests.framework */,
 				562AFD5BCC8F0114693CD4A5 /* Pods_YourWorkoutUITests.framework */,
@@ -313,6 +330,7 @@
 				CE1C0F672006155500AE430A /* UIView + rotate.swift */,
 				0690BE70200E448300B70259 /* SearchBar + UIColore.swift */,
 				CE165A582010930F005B56C2 /* UIImage +CircleCrop.swift */,
+				CEA03E7B201F3869002F4DD5 /* UIButton + setBackgroundColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -416,6 +434,11 @@
 					0636E5DA20037E4D005E9282 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					0636E5F220037E4E005E9282 = {
 						CreatedOnToolsVersion = 9.1;
@@ -655,8 +678,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0636E5DF20037E4D005E9282 /* AppDelegate.swift in Sources */,
+				CEA03E7A201F279A002F4DD5 /* MyButton.swift in Sources */,
 				CE8470C9200F329900CB7D57 /* Colors.swift in Sources */,
 				CE04B9F32004B085004EABE2 /* ExpandableCellForFood.swift in Sources */,
+				CEA03E7C201F3869002F4DD5 /* UIButton + setBackgroundColor.swift in Sources */,
 				CE1C0F6C2006161000AE430A /* SearchFoodVC.swift in Sources */,
 				CE04B9EE2004A907004EABE2 /* ExpandedDetailsCell.swift in Sources */,
 				06517AAC200C8BF700CA098A /* FoodMenuTVC.swift in Sources */,
@@ -669,6 +694,7 @@
 				06517AAE200CA8CE00CA098A /* FoodTodayVC.swift in Sources */,
 				CE1C0F662006152600AE430A /* UIColor + hex.swift in Sources */,
 				06917D7B20039A6300C1F624 /* FoodListModel.swift in Sources */,
+				CEA03E83201F60B9002F4DD5 /* StatisticsVC.swift in Sources */,
 				CE7885E02017594B0026A640 /* MyMDCRaisedButton.swift in Sources */,
 				CEA640132018D36A00EC2F2E /* ProfileVC.swift in Sources */,
 				06517AB0200CAA3A00CA098A /* FoodMealModel.swift in Sources */,
@@ -679,6 +705,7 @@
 				068BF392200E0E7A006EBBAB /* JournalVC.swift in Sources */,
 				CE1C0F682006155500AE430A /* UIView + rotate.swift in Sources */,
 				06517AA6200BEA7D00CA098A /* RegistrationVC.swift in Sources */,
+				CEA03E81201F4C37002F4DD5 /* HealthKitSeupAssistant.swift in Sources */,
 				CE8470CC200F4A0900CB7D57 /* TodayHeaderCell.swift in Sources */,
 				0690BE71200E448300B70259 /* SearchBar + UIColore.swift in Sources */,
 				06517A4B200BD88600CA098A /* Keychain.swift in Sources */,
@@ -848,6 +875,7 @@
 			baseConfigurationReference = 68E3C4CB7BD1B9EE31F424A9 /* Pods-YourWorkout.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = YourWorkout/YourWorkout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 54X9L274YP;
 				INFOPLIST_FILE = YourWorkout/Info.plist;
@@ -865,6 +893,7 @@
 			baseConfigurationReference = 3447CD47CCA7182E60A971B6 /* Pods-YourWorkout.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = YourWorkout/YourWorkout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 54X9L274YP;
 				INFOPLIST_FILE = YourWorkout/Info.plist;

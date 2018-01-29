@@ -16,7 +16,9 @@ class FoodTodayVC: UIViewController  {
     @IBOutlet weak var fatsMainLabel: UILabel!
     @IBOutlet weak var proteinsMainLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-
+    
+    @IBOutlet weak var backViewForLabels: UIView!
+    
     var todayMeal = TodayEating()
     var selectedMeal : FoodMeal?
     var selectedIndex : IndexPath?
@@ -39,12 +41,12 @@ class FoodTodayVC: UIViewController  {
         let addItemCellNib = UINib(nibName: "FoodItemCell", bundle: nil)
         let foodCellNib = UINib(nibName: "ExpandedDetailsCell", bundle: nil)
         let headerCellNub = UINib(nibName: "TodayHeaderCell", bundle: nil)
-
+        
         
         self.tableView.register( addItemCellNib, forCellReuseIdentifier: "AddItemCell")
         self.tableView.register( foodCellNib, forCellReuseIdentifier: "FoodCell")
         self.tableView.register( headerCellNub, forHeaderFooterViewReuseIdentifier: "HeaderCell")
-
+        self.backViewForLabels.layer.cornerRadius = 8
         if let nav = self.navItemTitle{
             self.navigationItem.title = nav
         } else {
@@ -53,16 +55,16 @@ class FoodTodayVC: UIViewController  {
         
         
         self.activityIndicatorInit("Загрузка")
-
+        
         self.getCurrentJournal()
-//        self.uploadWithAlamofire()
+        //        self.uploadWithAlamofire()
         self.tableView.reloadData()
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -111,7 +113,7 @@ class FoodTodayVC: UIViewController  {
         self.proteinsMainLabel.text = String(format:"%.1f",proteins!)
         self.carbonhydratesMainLabel.text = String(format:"%.1f",carbonhydrates!)
         self.fatsMainLabel.text = String(format:"%.1f",fats!)
-
+        
         
     }
     
@@ -140,7 +142,7 @@ class FoodTodayVC: UIViewController  {
             
         })
         self.updateMainValues()
-
+        
     }
     
     func activityIndicatorInit(_ title: String) {
@@ -158,9 +160,9 @@ class FoodTodayVC: UIViewController  {
         activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
         effectView.contentView.addSubview(activityIndicator)
         effectView.contentView.addSubview(strLabel)
-       
-
-
+        
+        
+        
     }
     
     func toggleActivity() {
@@ -262,7 +264,6 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
             
             cell.button.setTitle("Доб. прием пищи", for: .normal)
             cell.button.sizeToFit()
-//            cell.deleteButton.setTitle("", for: .normal)
             cell.deleteButton.isHidden = true
             cell.button.didTouchUpInside = { MyButton in
                 let alertController = UIAlertController(title: "Новый прием пищи", message: "", preferredStyle: .alert)
@@ -275,17 +276,17 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
                     let foodMeal = FoodMeal(name: firstTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))
                     DispatchQueue.main.async {
                         self.todayMeal.addMeal(meal: foodMeal)
-
+                        
                         self.tableView.beginUpdates()
                         self.tableView.insertSections(IndexSet.init(integer: self.todayMeal.foodMeals.count-1), with: .fade)
                         self.tableView.endUpdates()
                         
                         self.updateCurrentJournal()
-
-
+                        
+                        
                     }
                     
-
+                    
                 })
                 saveAction.isEnabled = false
                 let cancelAction = UIAlertAction(title: "Отмена", style: .default, handler: {
@@ -318,7 +319,7 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
                 
                 cell1.deleteButton.isHidden = true
                 cell1.deleteButton.setTitle("- прием", for: .normal)
-
+                
                 cell1.deleteButton.didTouchUpInside = { sender in
                     
                     let alertController = UIAlertController(title: "Удалить \(self.todayMeal.foodMeals[indexPath.section].name)?", message: "", preferredStyle: .alert)
@@ -326,15 +327,15 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
                     let saveAction = UIAlertAction(title: "Удалить", style: .default, handler: {
                         alert -> Void in
                         
-
+                        
                         DispatchQueue.main.async {
                             self.todayMeal.foodMeals.remove(at: indexPath.section)
-
+                            
                             self.tableView.beginUpdates()
                             self.tableView.deleteSections(IndexSet.init(integer: indexPath.section), with: .fade)
                             self.tableView.endUpdates()
                             self.updateCurrentJournal()
-
+                            
                         }
                         
                     })
@@ -371,12 +372,11 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
                 cell.carbonhydratesLabel.text = String(format:"%.1f",oneMeal.carbonhydrate)
                 cell.caloriesLabel.text = String(format:"%.1f",oneMeal.calories)
                 cell.grammsLabel.text = "\(String(format:"%.1f",oneMeal.gramms)) гр."
-
+                
                 return cell
             }
             
         }
-        return UITableViewCell()
         
     }
     
@@ -429,53 +429,15 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
                 self.todayMeal.foodMeals[indexPath.section].mealList.remove(at: indexPath.row)
                 
                 self.tableView.beginUpdates()
-
+                
                 self.tableView.deleteRows(at: [indexPath], with: .right)
                 self.tableView.reloadSections(IndexSet.init(integer: indexPath.section), with: .left)
                 self.tableView.endUpdates()
                 self.updateCurrentJournal()
-
+                
             }
         }
     }
-    
-//    func uploadWithAlamofire() {
-//
-//        guard let username = self.keychain.getPasscode(identifier: "MPUsername") else {
-//            return
-//        }
-//        let image = UIImage(named:"addMealIcon")!
-//        let username1 = username as String
-//        let parameters = [
-//            "username": username1,
-//        ]
-//
-//        Alamofire.upload(multipartFormData: { multipartFormData in
-//
-//
-//            for (key, value) in parameters {
-//                multipartFormData.append((value.data(using: .utf8))!, withName: key)
-//            }
-//
-//            if let imageData = UIImageJPEGRepresentation(image, 0.5) {
-//                multipartFormData.append(imageData, withName: "file", fileName: "file.png", mimeType: "image/jpeg")
-//            }
-//
-//        }, to: "\(API_URL)/user/uploadavatar", method: .post, headers: ["Authorization": "auth_token"],
-//                encodingCompletion: { encodingResult in
-//                    switch encodingResult {
-//                    case .success(let upload, _, _):
-//                        upload.response { [weak self] response in
-//                            guard let strongSelf = self else {
-//                                return
-//                            }
-//                            print(response.error as Any)
-//                        }
-//                    case .failure(let encodingError):
-//                        print("error:\(encodingError)")
-//                    }
-//        })
-//    }
     
 }
 
@@ -488,7 +450,7 @@ extension FoodTodayVC:SearchFoodVCDelegate{
             
             DispatchQueue.main.async {
                 self.selectedMeal?.addMeal(meal: meal)
-
+                
                 self.tableView.beginUpdates()
                 
                 self.tableView.insertRows(at:[index], with: .right)
@@ -497,7 +459,7 @@ extension FoodTodayVC:SearchFoodVCDelegate{
                 
                 self.tableView.endUpdates()
                 self.updateCurrentJournal()
-
+                
             }
             
             
