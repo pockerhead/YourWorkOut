@@ -95,6 +95,12 @@ class FoodTodayVC: UIViewController  {
             
             if let json = responce.result.value as? [String:Any]{
                 self.todayMeal.initWithServerResponse(response: json["foods"] as! [[String:Any]] )
+                if let json = responce.result.value as? [String:Any]{
+                    if let responce = json["dailyFoods"] as? [String:Any]{
+                        DailyFood.shared.updateDailyFoodWith(responce: responce)
+                        self.tableView.reloadData()
+                    }
+                }
                 self.tableView.reloadData()
                 self.updateMainValues()
                 self.toggleActivity()
@@ -129,11 +135,22 @@ class FoodTodayVC: UIViewController  {
         } else {
             formattedDate = formatter.string(from: Date())
         }
+        let dict = self.todayMeal.returnAllMacros()
+        let proteins = dict["proteins"]
+        let carbonhydrates = dict["carbonhydrates"]
+        let fats = dict["fats"]
+        let calories = dict["calories"]
         let foods = todayMeal.toDict()
         let parameters: Parameters = [
             "username":username,
             "date":formattedDate,
-            "foods":foods
+            "foods":foods,
+            "dailyFoods":[
+                "calories": calories,
+                "protein": proteins,
+                "fat": fats,
+                "carbonhydrate": carbonhydrates
+            ]
         ]
         self.toggleActivity()
         Alamofire.request(URL.init(string: "\(API_URL)/food/update")!, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(completionHandler: {

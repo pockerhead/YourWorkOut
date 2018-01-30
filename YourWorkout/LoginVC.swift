@@ -86,7 +86,9 @@ class LoginVC: UIViewController {
                 print(httpResponse as Any)
                 
                 if (httpResponse?.statusCode == 200){
-                        //segue to main view.
+                        //segue to main view.ё
+                    
+                        User.shared.username = usernameString
 
                         if(self.keychain.getPasscode(identifier: "MPPassword") == "" || self.keychain.getPasscode(identifier: "MPUsername") == ""){
                             print(passwordString,usernameString)

@@ -42,6 +42,10 @@
 		CE1C0F682006155500AE430A /* UIView + rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F672006155500AE430A /* UIView + rotate.swift */; };
 		CE1C0F6C2006161000AE430A /* SearchFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F6B2006161000AE430A /* SearchFoodVC.swift */; };
 		CE1C0F6E2006292700AE430A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C0F6D2006292700AE430A /* CustomCell.swift */; };
+		CE24ECC22020B3A200318194 /* TodayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24ECC12020B3A200318194 /* TodayVC.swift */; };
+		CE24ECC42020B5C500318194 /* DailyFoodSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24ECC32020B5C500318194 /* DailyFoodSingleton.swift */; };
+		CE24ECC62020B70A00318194 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24ECC52020B70A00318194 /* UserModel.swift */; };
+		CE24ECC92020B7C000318194 /* HelthKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24ECC82020B7C000318194 /* HelthKitHelper.swift */; };
 		CE7885E02017594B0026A640 /* MyMDCRaisedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7885DF2017594B0026A640 /* MyMDCRaisedButton.swift */; };
 		CE8470C9200F329900CB7D57 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8470C8200F329900CB7D57 /* Colors.swift */; };
 		CE8470CC200F4A0900CB7D57 /* TodayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8470CA200F4A0900CB7D57 /* TodayHeaderCell.swift */; };
@@ -120,6 +124,10 @@
 		CE1C0F672006155500AE430A /* UIView + rotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + rotate.swift"; sourceTree = "<group>"; };
 		CE1C0F6B2006161000AE430A /* SearchFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodVC.swift; sourceTree = "<group>"; };
 		CE1C0F6D2006292700AE430A /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		CE24ECC12020B3A200318194 /* TodayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayVC.swift; sourceTree = "<group>"; };
+		CE24ECC32020B5C500318194 /* DailyFoodSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFoodSingleton.swift; sourceTree = "<group>"; };
+		CE24ECC52020B70A00318194 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		CE24ECC82020B7C000318194 /* HelthKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelthKitHelper.swift; sourceTree = "<group>"; };
 		CE7885DF2017594B0026A640 /* MyMDCRaisedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMDCRaisedButton.swift; sourceTree = "<group>"; };
 		CE8470C8200F329900CB7D57 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CE8470CA200F4A0900CB7D57 /* TodayHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeaderCell.swift; sourceTree = "<group>"; };
@@ -188,6 +196,7 @@
 		0636E5DD20037E4D005E9282 /* YourWorkout */ = {
 			isa = PBXGroup;
 			children = (
+				CE24ECC72020B7B200318194 /* Helpers */,
 				CEA03E7F201F4A7F002F4DD5 /* YourWorkout.entitlements */,
 				CEA640112018D34E00EC2F2E /* User */,
 				06B3BDE92003F61B00AD5B49 /* Cells */,
@@ -199,6 +208,7 @@
 				0636E5E620037E4D005E9282 /* Main.storyboard */,
 				06517A46200BD6BF00CA098A /* LoginVC.swift */,
 				06517AA5200BEA7D00CA098A /* RegistrationVC.swift */,
+				CE24ECC02020B38B00318194 /* Today */,
 				CEA03E80201F4C37002F4DD5 /* HealthKitSeupAssistant.swift */,
 				06517A49200BD88500CA098A /* Keychain.swift */,
 				0636E5DE20037E4D005E9282 /* AppDelegate.swift */,
@@ -231,8 +241,10 @@
 			isa = PBXGroup;
 			children = (
 				06517AAF200CAA3A00CA098A /* FoodMealModel.swift */,
+				CE24ECC32020B5C500318194 /* DailyFoodSingleton.swift */,
 				06917D782003879900C1F624 /* FoodModel.swift */,
 				06917D7A20039A6300C1F624 /* FoodListModel.swift */,
+				CE24ECC52020B70A00318194 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -333,6 +345,22 @@
 				CEA03E7B201F3869002F4DD5 /* UIButton + setBackgroundColor.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CE24ECC02020B38B00318194 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				CE24ECC12020B3A200318194 /* TodayVC.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		CE24ECC72020B7B200318194 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CE24ECC82020B7C000318194 /* HelthKitHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		CEA640112018D34E00EC2F2E /* User */ = {
@@ -685,6 +713,7 @@
 				CE1C0F6C2006161000AE430A /* SearchFoodVC.swift in Sources */,
 				CE04B9EE2004A907004EABE2 /* ExpandedDetailsCell.swift in Sources */,
 				06517AAC200C8BF700CA098A /* FoodMenuTVC.swift in Sources */,
+				CE24ECC62020B70A00318194 /* UserModel.swift in Sources */,
 				CE165A592010930F005B56C2 /* UIImage +CircleCrop.swift in Sources */,
 				06517ABC200DDCD900CA098A /* Network.swift in Sources */,
 				06917D792003879900C1F624 /* FoodModel.swift in Sources */,
@@ -692,12 +721,15 @@
 				06517AB9200CBB2A00CA098A /* MyMDCFloatingButton.swift in Sources */,
 				06B3BDEC2004000D00AD5B49 /* ExpandedFoodCell.swift in Sources */,
 				06517AAE200CA8CE00CA098A /* FoodTodayVC.swift in Sources */,
+				CE24ECC22020B3A200318194 /* TodayVC.swift in Sources */,
 				CE1C0F662006152600AE430A /* UIColor + hex.swift in Sources */,
 				06917D7B20039A6300C1F624 /* FoodListModel.swift in Sources */,
 				CEA03E83201F60B9002F4DD5 /* StatisticsVC.swift in Sources */,
 				CE7885E02017594B0026A640 /* MyMDCRaisedButton.swift in Sources */,
 				CEA640132018D36A00EC2F2E /* ProfileVC.swift in Sources */,
+				CE24ECC42020B5C500318194 /* DailyFoodSingleton.swift in Sources */,
 				06517AB0200CAA3A00CA098A /* FoodMealModel.swift in Sources */,
+				CE24ECC92020B7C000318194 /* HelthKitHelper.swift in Sources */,
 				06517A47200BD6BF00CA098A /* LoginVC.swift in Sources */,
 				CEA64EDC20077A9B0002A87E /* FoodDetailsVC.swift in Sources */,
 				06517AA8200BEF4200CA098A /* ViewController + hideKeyboard.swift in Sources */,
