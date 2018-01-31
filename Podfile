@@ -2,28 +2,30 @@
 # platform :ios, '9.0'
 
 target 'YourWorkout' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for YourWorkout
-	pod 'Alamofire'
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    
+    # Pods for YourWorkout
+    pod 'Alamofire'
     pod 'ValueStepper'
     pod 'CollapsibleTableSectionViewController', '~> 1.0.0'
     pod 'CVCalendar'
-	pod 'MaterialComponents/AppBar'
+    pod 'MaterialComponents/AppBar'
     pod 'ExpandableCell'
-  pod 'MaterialComponents/Buttons'
-  pod 'MaterialComponents/Collections'
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  target 'YourWorkoutTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'YourWorkoutUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
+    pod 'MaterialComponents/Buttons'
+    pod 'MaterialComponents/Collections'
+    pod 'RxSwift'
+    pod 'RxCocoa'
+    pod 'SwiftyJSON'
+    
+    target 'YourWorkoutTests' do
+        inherit! :search_paths
+        # Pods for testing
+    end
+    
+    target 'YourWorkoutUITests' do
+        inherit! :search_paths
+        # Pods for testing
+    end
+    
 end

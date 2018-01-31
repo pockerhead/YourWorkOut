@@ -35,3 +35,21 @@ class HealthParser {
         healthStore.execute(query)
     }
 }
+
+class HealthSingletone {
+    static let shared = HealthSingletone()
+    
+    let healthParser = HealthParser()
+    
+    private init(){
+        
+    }
+    
+    var distance = 0.0
+    
+   public func updateDistance(){
+        self.healthParser.getTodaysDistance(completion: {distance in
+            self.distance = distance/1000
+        })
+    }
+}

@@ -45,7 +45,8 @@
 		CE24ECC22020B3A200318194 /* TodayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24ECC12020B3A200318194 /* TodayVC.swift */; };
 		CE24ECC42020B5C500318194 /* DailyFoodSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24ECC32020B5C500318194 /* DailyFoodSingleton.swift */; };
 		CE24ECC62020B70A00318194 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24ECC52020B70A00318194 /* UserModel.swift */; };
-		CE24ECC92020B7C000318194 /* HelthKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24ECC82020B7C000318194 /* HelthKitHelper.swift */; };
+		CE24ECC92020B7C000318194 /* HealthKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24ECC82020B7C000318194 /* HealthKitHelper.swift */; };
+		CE24ECCB2021BF2F00318194 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24ECCA2021BF2F00318194 /* ActivityIndicator.swift */; };
 		CE7885E02017594B0026A640 /* MyMDCRaisedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7885DF2017594B0026A640 /* MyMDCRaisedButton.swift */; };
 		CE8470C9200F329900CB7D57 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8470C8200F329900CB7D57 /* Colors.swift */; };
 		CE8470CC200F4A0900CB7D57 /* TodayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8470CA200F4A0900CB7D57 /* TodayHeaderCell.swift */; };
@@ -57,6 +58,7 @@
 		CEA03E83201F60B9002F4DD5 /* StatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA03E82201F60B9002F4DD5 /* StatisticsVC.swift */; };
 		CEA640132018D36A00EC2F2E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA640122018D36A00EC2F2E /* ProfileVC.swift */; };
 		CEA64EDC20077A9B0002A87E /* FoodDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA64EDB20077A9B0002A87E /* FoodDetailsVC.swift */; };
+		CED6B0652021D00900FD37CE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6B0642021D00900FD37CE /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,7 +129,8 @@
 		CE24ECC12020B3A200318194 /* TodayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayVC.swift; sourceTree = "<group>"; };
 		CE24ECC32020B5C500318194 /* DailyFoodSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFoodSingleton.swift; sourceTree = "<group>"; };
 		CE24ECC52020B70A00318194 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		CE24ECC82020B7C000318194 /* HelthKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelthKitHelper.swift; sourceTree = "<group>"; };
+		CE24ECC82020B7C000318194 /* HealthKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitHelper.swift; sourceTree = "<group>"; };
+		CE24ECCA2021BF2F00318194 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		CE7885DF2017594B0026A640 /* MyMDCRaisedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMDCRaisedButton.swift; sourceTree = "<group>"; };
 		CE8470C8200F329900CB7D57 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CE8470CA200F4A0900CB7D57 /* TodayHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeaderCell.swift; sourceTree = "<group>"; };
@@ -140,6 +143,7 @@
 		CEA03E82201F60B9002F4DD5 /* StatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsVC.swift; sourceTree = "<group>"; };
 		CEA640122018D36A00EC2F2E /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		CEA64EDB20077A9B0002A87E /* FoodDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailsVC.swift; sourceTree = "<group>"; };
+		CED6B0642021D00900FD37CE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +287,7 @@
 			children = (
 				06517AB8200CBB2A00CA098A /* MyMDCFloatingButton.swift */,
 				CE7885DF2017594B0026A640 /* MyMDCRaisedButton.swift */,
+				CE24ECCA2021BF2F00318194 /* ActivityIndicator.swift */,
 				CEA03E79201F279A002F4DD5 /* MyButton.swift */,
 			);
 			path = CustomClasses;
@@ -358,7 +363,8 @@
 		CE24ECC72020B7B200318194 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				CE24ECC82020B7C000318194 /* HelthKitHelper.swift */,
+				CED6B0632021CFF200FD37CE /* Network */,
+				CE24ECC82020B7C000318194 /* HealthKitHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -369,6 +375,14 @@
 				CEA640122018D36A00EC2F2E /* ProfileVC.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		CED6B0632021CFF200FD37CE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CED6B0642021D00900FD37CE /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		EAA7B82F793F0E8248A8C793 /* Pods */ = {
@@ -597,6 +611,7 @@
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/ValueStepper/ValueStepper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -610,6 +625,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ValueStepper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,6 +721,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED6B0652021D00900FD37CE /* NetworkManager.swift in Sources */,
+				CE24ECCB2021BF2F00318194 /* ActivityIndicator.swift in Sources */,
 				0636E5DF20037E4D005E9282 /* AppDelegate.swift in Sources */,
 				CEA03E7A201F279A002F4DD5 /* MyButton.swift in Sources */,
 				CE8470C9200F329900CB7D57 /* Colors.swift in Sources */,
@@ -729,7 +747,7 @@
 				CEA640132018D36A00EC2F2E /* ProfileVC.swift in Sources */,
 				CE24ECC42020B5C500318194 /* DailyFoodSingleton.swift in Sources */,
 				06517AB0200CAA3A00CA098A /* FoodMealModel.swift in Sources */,
-				CE24ECC92020B7C000318194 /* HelthKitHelper.swift in Sources */,
+				CE24ECC92020B7C000318194 /* HealthKitHelper.swift in Sources */,
 				06517A47200BD6BF00CA098A /* LoginVC.swift in Sources */,
 				CEA64EDC20077A9B0002A87E /* FoodDetailsVC.swift in Sources */,
 				06517AA8200BEF4200CA098A /* ViewController + hideKeyboard.swift in Sources */,

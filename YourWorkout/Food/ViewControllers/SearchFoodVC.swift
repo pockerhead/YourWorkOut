@@ -24,24 +24,24 @@ class SearchFoodVC: UIViewController {
     var filteredFood = FoodListModel.sharedInstance.foodList
     var heightAtIndexPath = NSMutableDictionary()
     var foodDelegate : SearchFoodVCDelegate?
-    var activityIndicator = UIActivityIndicatorView()
-    var strLabel = UILabel()
+    
     var expandedCells = [Int]()
     
-    
+    let activityIndicator = ActivityIndicator()
     @IBOutlet weak var tableView: UITableView!
     
+    var strLabel = UILabel()
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.activityIndicatorInit("Загрузка")
+        activityIndicator.initIndicator("Loading", from: self)
         self.searchController.obscuresBackgroundDuringPresentation = false
         self.searchController.searchBar.placeholder = "Введите название продукта"
         self.searchController.searchBar.barStyle = .black
         self.navigationItem.searchController = searchController
         self.searchController.hidesNavigationBarDuringPresentation = false;
-
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.doFirstRequest()
@@ -55,7 +55,7 @@ class SearchFoodVC: UIViewController {
             .subscribe(onNext: { [unowned self] query in // Here we subscribe to every new value, that is not empty (thanks to filter above).
                 let parameters: Parameters = ["search":query]
                 let requestFood = FoodListModel.sharedInstance
-                self.toggleActivity()
+                self.activityIndicator.toggleActivity()
                 Alamofire.request("\(API_URL)/food/find", parameters:parameters).responseJSON(completionHandler: { responce in
                     if let json = responce.result.value{
                         DispatchQueue.main.async {
@@ -63,8 +63,10 @@ class SearchFoodVC: UIViewController {
                             requestFood.initFoodListWithResponce(responce: json as! [[String : Any]])
                             self.filteredFood = requestFood.foodList
                             let indexSet = IndexSet.init(integer: 0)
-                            self.tableView.reloadData()
-                            self.toggleActivity()
+                            self.tableView.performBatchUpdates({
+                                self.tableView.reloadSections(indexSet, with: .automatic)
+                                self.activityIndicator.toggleActivity()
+                            }, completion: nil)
                             
                         }
                         
@@ -89,17 +91,24 @@ class SearchFoodVC: UIViewController {
     func doFirstRequest(){
         let parameters: Parameters = ["search":""]
         let requestFood = FoodListModel.sharedInstance
-        self.toggleActivity()
+        self.activityIndicator.toggleActivity()
+        
         Alamofire.request("\(API_URL)/food/find", parameters:parameters).responseJSON(completionHandler: { responce in
             if let json = responce.result.value{
                 DispatchQueue.main.async {
                     print(json)
                     requestFood.initFoodListWithResponce(responce: json as! [[String : Any]])
                     self.filteredFood = requestFood.foodList
-                    self.tableView.reloadData()
-                    self.toggleActivity()
+                    let indexSet = IndexSet.init(integer: 0)
+                    self.tableView.performBatchUpdates({
+                        self.tableView.reloadSections(indexSet, with: .automatic)
+                        self.activityIndicator.toggleActivity()
+                        
+                    }, completion: nil)
+                    
                 }
             }
+            
         })
     }
     
@@ -108,31 +117,8 @@ class SearchFoodVC: UIViewController {
         self.tableView.reloadData()
     }
     
-    func activityIndicatorInit(_ title: String) {
-        strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 160, height: 46))
-        strLabel.text = title
-        strLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightMedium)
-        strLabel.textColor = UIColor(white: 0.9, alpha: 0.7)
-        effectView.frame = CGRect(x: view.frame.midX - strLabel.frame.width/2, y: view.frame.midY - strLabel.frame.height/2 , width: 160, height: 46)
-        effectView.layer.cornerRadius = 15
-        effectView.layer.masksToBounds = true
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
-        activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
-        effectView.contentView.addSubview(activityIndicator)
-        effectView.contentView.addSubview(strLabel)
-    }
-    func toggleActivity() {
-        if activityIndicator.isAnimating{
-            UIView.transition(with: self.view, duration: 0.5, options: .curveEaseIn,
-                              animations: {self.effectView.removeFromSuperview()}, completion: nil)
-            activityIndicator.stopAnimating()
-        } else {
-            UIView.transition(with: self.view, duration: 0.5, options: .curveEaseIn,
-                              animations: {self.view.addSubview(self.effectView)}, completion: nil)
-            activityIndicator.startAnimating()
-        }
-    }
 }
+
 
 extension SearchFoodVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -174,7 +160,7 @@ extension SearchFoodVC: UITableViewDelegate, UITableViewDataSource {
                 self.expandedCells.append(indexPath.row)
             }
             cell1.backGroundView.isHidden = !cell1.backGroundView.isHidden
-
+            
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
             
         }

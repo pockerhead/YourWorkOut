@@ -11,7 +11,6 @@ import Alamofire
 import HealthKit
 
 class TodayVC: UIViewController {
-    var healthParser = HealthParser()
     var menuStruct = [
         ["title":""],
         ["title":""],
@@ -36,35 +35,17 @@ class TodayVC: UIViewController {
         self.updateMainValues()
     }
     func updateMainValues(){
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-        var formattedDate : String
-        formattedDate = formatter.string(from: Date())
-        
-        let parameters: Parameters = [
-            "username":User.shared.username,
-            "date":formattedDate,
-            "foods":[]
-        ]
-        Alamofire.request(URL.init(string: "\(API_URL)/food/getjournalbydate")!, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(completionHandler: {
-            responce in
-            
-            if let json = responce.result.value as? [String:Any]{
-                if let responce = json["dailyFoods"] as? [String:Any]{
-                    DailyFood.shared.updateDailyFoodWith(responce: responce)
-                    DispatchQueue.main.async {
-                        self.tableView.performBatchUpdates({self.tableView.reloadData()}, completion: nil)
-                    }
-                }
-            }
-        })
-        
-        self.healthParser.getTodaysDistance(completion: {distance in
-            self.distance = distance
+        DailyFood.shared.updateDailyFood(completion: {
             DispatchQueue.main.async {
                 self.tableView.performBatchUpdates({self.tableView.reloadData()}, completion: nil)
             }
         })
+        
+        self.distance = HealthSingletone.shared.distance
+        DispatchQueue.main.async {
+            self.tableView.performBatchUpdates({self.tableView.reloadData()}, completion: nil)
+        }
+        
     }
     /*
     // MARK: - Navigation
@@ -87,9 +68,9 @@ extension TodayVC : UITableViewDelegate, UITableViewDataSource{
         let cell = UITableViewCell()
         switch indexPath.row {
         case 0:
-            cell.textLabel?.text = String(format:"Съедено сегодня: %1.f Ккал.",DailyFood.shared.calories)
+            cell.textLabel?.text = String(format:"Съедено сегодня: %.1f Ккал.",DailyFood.shared.calories)
         case 1:
-            cell.textLabel?.text = String(format:"Пройдено за сегодня :%3.f км.",self.distance)
+            cell.textLabel?.text = String(format:"Пройдено за сегодня :%.3f км.",self.distance)
         default:
             cell.textLabel?.text = self.menuStruct[indexPath.row]["title"]
         }

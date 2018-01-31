@@ -90,17 +90,13 @@ class FoodTodayVC: UIViewController  {
             "foods":[]
         ]
         self.toggleActivity()
+        DailyFood.shared.updateDailyFood(completion: {})
         Alamofire.request(URL.init(string: "\(API_URL)/food/getjournalbydate")!, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(completionHandler: {
             responce in
             
             if let json = responce.result.value as? [String:Any]{
                 self.todayMeal.initWithServerResponse(response: json["foods"] as! [[String:Any]] )
-                if let json = responce.result.value as? [String:Any]{
-                    if let responce = json["dailyFoods"] as? [String:Any]{
-                        DailyFood.shared.updateDailyFoodWith(responce: responce)
-                        self.tableView.reloadData()
-                    }
-                }
+                
                 self.tableView.reloadData()
                 self.updateMainValues()
                 self.toggleActivity()

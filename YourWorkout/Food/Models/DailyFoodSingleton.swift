@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
 
 class DailyFood {
     
@@ -20,20 +22,42 @@ class DailyFood {
     private init(){
     }
     
-    func updateDailyFoodWith(responce:[String:Any]){
+    func updateDailyFood(completion: @escaping () -> Void){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        var formattedDate : String
+        formattedDate = formatter.string(from: Date())
         
-        if let calories = responce["calories"] as? Float{
-            self.calories = calories
-        }
-        if let carbonhydrates = responce["carbonhydrates"] as? Float{
-            self.carbonhydrates = carbonhydrates
-        }
-        if let proteins = responce["proteins"] as? Float{
-            self.proteins = proteins
-        }
-        if let fats = responce["fats"] as? Float{
-            self.fats = fats
-        }
+        let parameters: Parameters = [
+            "username":User.shared.username,
+            "date":formattedDate,
+            "foods":[]
+        ]
+        Alamofire.request(URL.init(string: "\(API_URL)/food/getjournalbydate")!, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: {
+            responce in
+            
+            if let json = responce.result.value as? [String:Any]{
+                let json = JSON(json)
+                if let responce = json["dailyFoods"].dictionary {
+                    
+                    if let calories = responce["calories"]?.float{
+                        self.calories = calories
+                    }
+                    if let carbonhydrates = responce["carbonhydrates"]?.float{
+                        self.carbonhydrates = carbonhydrates
+                    }
+                    if let proteins = responce["proteins"]?.float{
+                        self.proteins = proteins
+                    }
+                    if let fats = responce["fats"]?.float{
+                        self.fats = fats
+                    }
+                    completion()
+                }
+            }
+        })
+        
+        
     }
     
 }
