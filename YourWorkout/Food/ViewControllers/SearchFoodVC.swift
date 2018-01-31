@@ -25,6 +25,8 @@ class SearchFoodVC: UIViewController {
     var heightAtIndexPath = NSMutableDictionary()
     var foodDelegate : SearchFoodVCDelegate?
     var isLoadingMore = false // flag
+    var isFirstRequest = true
+    var isOver = false
     var expandedCells = [Int]()
     var searchQuery = ""
     let activityIndicator = ActivityIndicator()
@@ -51,15 +53,18 @@ class SearchFoodVC: UIViewController {
             // If the new value is really new, filter for non-empty query.
             .subscribe(onNext: { [unowned self] query in // Here we subscribe to every new value, that is not empty (thanks to filter above).
                 self.page = 1
+                self.isOver = false
+
                 let parameters: Parameters = ["search":query,
                                               "page":self.page]
                 self.searchQuery = query
+                self.page = self.page + 1
+
                 let requestFood = FoodListModel.sharedInstance
                 self.activityIndicator.toggleActivity()
                 Alamofire.request("\(API_URL)/food/find", parameters:parameters).responseJSON(completionHandler: { responce in
                     if let json = responce.result.value{
                         DispatchQueue.main.async {
-                            print(json)
                             requestFood.initFoodListWithResponce(responce: json as! [[String : Any]])
                             self.filteredFood = requestFood.foodList
                             let indexSet = IndexSet.init(integer: 0)
@@ -81,9 +86,6 @@ class SearchFoodVC: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.doFirstRequest()
-        
-        
         let expandedCellNib = UINib(nibName: "ExpandedFoodCell", bundle: nil)
         let expandableCell = UINib(nibName: "ExpandableCellForFood", bundle: nil)
         
@@ -91,39 +93,57 @@ class SearchFoodVC: UIViewController {
         self.tableView.register(expandableCell, forCellReuseIdentifier: "ExpandableCellForFood")
     }
     
+    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        let contentOffset = scrollView.contentOffset.y
+        
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let threshold = scrollView.contentSize.height * 0.2
         let contentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+        if contentOffset < 0{
+            scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+        }
         if !isLoadingMore && (maximumOffset - contentOffset <= threshold) {
-            // Get more data - API call
             self.isLoadingMore = true
-            // Update UI
             let parameters: Parameters = [
                 "search":self.searchQuery,
                 "page":self.page
             ]
-            let requestFood = FoodListModel.sharedInstance
-//            self.activityIndicator.toggleActivity()
-            Alamofire.request("\(API_URL)/food/find", parameters:parameters).responseJSON(completionHandler: { responce in
-                if let json = responce.result.value{
-                    self.page = self.page + 1
-                    print(json)
-                    requestFood.initFoodListWithResponce(responce: json as! [[String : Any]])
-                    self.filteredFood = requestFood.foodList
-                    let indexSet = IndexSet.init(integer: 0)
-                    
-//                    self.activityIndicator.toggleActivity()
-                    
-                    self.tableView.reloadData()
-                    
-                    self.isLoadingMore = false
-                    
-                    
-                    
-                }
-            })
+            let requestFood = FoodListModelNonShared()
             
+            if !self.isOver{
+                Alamofire.request("\(API_URL)/food/find", parameters:parameters).responseJSON(completionHandler: { responce in
+                    if let json = responce.result.value{
+                        self.page = self.page + 1
+                        requestFood.initFoodListWithResponce(responce: json as! [[String : Any]])
+                        
+                        if self.isFirstRequest{
+                            self.isFirstRequest = false
+                        } else {
+                            if let lastNameFood = self.filteredFood[self.filteredFood.count - 1].name{
+                                if lastNameFood == requestFood.foodList[requestFood.foodList.count - 1].name{
+                                    self.isOver = true
+                                }
+                            }
+                        }
+                        self.filteredFood = requestFood.foodList
+
+                        
+                        
+                        self.tableView.reloadData()
+                        
+                        self.isLoadingMore = false
+                        
+                        
+                        
+                    }
+                })
+            }
+            
+
+  
         }
     }
     
@@ -134,30 +154,7 @@ class SearchFoodVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func doFirstRequest(){
-        let parameters: Parameters = ["search":"","page":1]
-        let requestFood = FoodListModel.sharedInstance
-        self.activityIndicator.toggleActivity()
-        
-        Alamofire.request("\(API_URL)/food/find", parameters:parameters).responseJSON(completionHandler: { responce in
-            if let json = responce.result.value{
-                DispatchQueue.main.async {
-                    print(json)
-                    requestFood.initFoodListWithResponce(responce: json as! [[String : Any]])
-                    self.filteredFood = requestFood.foodList
-                    let indexSet = IndexSet.init(integer: 0)
-                    self.tableView.performBatchUpdates({
-                        self.tableView.reloadSections(indexSet, with: .automatic)
-                        self.activityIndicator.toggleActivity()
-                        
-                    }, completion: nil)
-                    
-                }
-            }
-            
-        })
-    }
-    
+   
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
         self.tableView.reloadData()

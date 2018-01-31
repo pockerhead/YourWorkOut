@@ -26,3 +26,21 @@ class FoodListModel {
     }
     
 }
+
+class FoodListModelNonShared {
+    
+    
+    var foodList : [FoodModel]
+    
+    init(){
+        self.foodList = []
+    }
+    
+    func initFoodListWithResponce(responce:[[String:Any]]){
+        self.foodList = []
+        for item in responce {
+            self.foodList.append(FoodModel.init(item: item))
+        }
+    }
+    
+}
