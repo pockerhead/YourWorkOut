@@ -24,28 +24,25 @@ class SearchFoodVC: UIViewController {
     var filteredFood = FoodListModel.sharedInstance.foodList
     var heightAtIndexPath = NSMutableDictionary()
     var foodDelegate : SearchFoodVCDelegate?
-    
+    var isLoadingMore = false // flag
     var expandedCells = [Int]()
-    
+    var searchQuery = ""
     let activityIndicator = ActivityIndicator()
+    var page = 2
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
-    var strLabel = UILabel()
-    let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator.initIndicator("Loading", from: self)
+        
+        self.activityIndicator.initIndicator("Loading", from: self)
+        
         self.searchController.obscuresBackgroundDuringPresentation = false
         self.searchController.searchBar.placeholder = "Введите название продукта"
         self.searchController.searchBar.barStyle = .black
-        self.navigationItem.searchController = searchController
         self.searchController.hidesNavigationBarDuringPresentation = false;
-        
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.doFirstRequest()
-        //        tableView.openAll()
         self.searchController.searchBar
             .rx.text // Observable property thanks to RxCocoa
             .orEmpty // Make it non-optional
@@ -53,7 +50,10 @@ class SearchFoodVC: UIViewController {
             .distinctUntilChanged() // If they didn't occur, check if the new value is the same as old.
             // If the new value is really new, filter for non-empty query.
             .subscribe(onNext: { [unowned self] query in // Here we subscribe to every new value, that is not empty (thanks to filter above).
-                let parameters: Parameters = ["search":query]
+                self.page = 1
+                let parameters: Parameters = ["search":query,
+                                              "page":self.page]
+                self.searchQuery = query
                 let requestFood = FoodListModel.sharedInstance
                 self.activityIndicator.toggleActivity()
                 Alamofire.request("\(API_URL)/food/find", parameters:parameters).responseJSON(completionHandler: { responce in
@@ -76,6 +76,14 @@ class SearchFoodVC: UIViewController {
             .disposed(by: disposeBag)
         
         
+        self.navigationItem.searchController = searchController
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        self.doFirstRequest()
+        
+        
         let expandedCellNib = UINib(nibName: "ExpandedFoodCell", bundle: nil)
         let expandableCell = UINib(nibName: "ExpandableCellForFood", bundle: nil)
         
@@ -83,13 +91,51 @@ class SearchFoodVC: UIViewController {
         self.tableView.register(expandableCell, forCellReuseIdentifier: "ExpandableCellForFood")
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let threshold = scrollView.contentSize.height * 0.2
+        let contentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+        if !isLoadingMore && (maximumOffset - contentOffset <= threshold) {
+            // Get more data - API call
+            self.isLoadingMore = true
+            // Update UI
+            let parameters: Parameters = [
+                "search":self.searchQuery,
+                "page":self.page
+            ]
+            let requestFood = FoodListModel.sharedInstance
+//            self.activityIndicator.toggleActivity()
+            Alamofire.request("\(API_URL)/food/find", parameters:parameters).responseJSON(completionHandler: { responce in
+                if let json = responce.result.value{
+                    self.page = self.page + 1
+                    print(json)
+                    requestFood.initFoodListWithResponce(responce: json as! [[String : Any]])
+                    self.filteredFood = requestFood.foodList
+                    let indexSet = IndexSet.init(integer: 0)
+                    
+//                    self.activityIndicator.toggleActivity()
+                    
+                    self.tableView.reloadData()
+                    
+                    self.isLoadingMore = false
+                    
+                    
+                    
+                }
+            })
+            
+        }
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func doFirstRequest(){
-        let parameters: Parameters = ["search":""]
+        let parameters: Parameters = ["search":"","page":1]
         let requestFood = FoodListModel.sharedInstance
         self.activityIndicator.toggleActivity()
         
