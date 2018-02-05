@@ -95,16 +95,16 @@ class SearchFoodVC: UIViewController {
     
     func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
         let contentOffset = scrollView.contentOffset.y
-        
+        if contentOffset < 0{
+            scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let threshold = scrollView.contentSize.height * 0.2
         let contentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
-        if contentOffset < 0{
-            scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
-        }
+        
         if !isLoadingMore && (maximumOffset - contentOffset <= threshold) {
             self.isLoadingMore = true
             let parameters: Parameters = [
