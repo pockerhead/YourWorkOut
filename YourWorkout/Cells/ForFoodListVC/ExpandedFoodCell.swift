@@ -16,7 +16,8 @@ class ExpandedFoodCell: UITableViewCell {
     @IBOutlet weak var infoButton: MyButton!
     @IBOutlet weak var addButton: MyMDCFloatingButton!
 
-    @IBOutlet weak var backGroundView: UIView!
+    @IBOutlet weak var gradientView: GradientView!
+    @IBOutlet weak var backGroundView: GradientView!
     
     @IBOutlet weak var portionStepper: ValueStepper!
     
@@ -45,14 +46,16 @@ class ExpandedFoodCell: UITableViewCell {
         let maskLayer = CAShapeLayer()
         maskLayer.path = path.cgPath
         self.layer.mask = maskLayer
-        self.backgroundColor = FoodColors.primaryColor
+//        self.backgroundColor = FoodColors.primaryColor
         self.contentView.backgroundColor = FoodColors.primaryColor
-        self.portionStepper.backgroundColor = FoodColors.secondaryColor
+//        self.portionStepper.backgroundColor = FoodColors.secondaryColor
         self.portionStepper.tintColor = UIColor.white
         self.backGroundView.isHidden = true
         self.nameButton.titleLabel?.numberOfLines = 0
-        self.nameButton.setBackgroundColor(color: FoodColors.whiteGrayColor, for: .normal)
-        self.nameButton.setBackgroundColor(color: FoodColors.primaryColor, for: .selected)
+//        self.addButton.setBackgroundColor(color: NewWaveColors.violetColor, for: .normal)
+//        self.addButton.sizeToFit()
+        self.portionStepper.backgroundColor = NewWaveColors.blueColor
+        self.infoButton.tintColor = NewWaveColors.violetColor
 
     }
     override func prepareForReuse() {

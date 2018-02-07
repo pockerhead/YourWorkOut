@@ -41,6 +41,8 @@ class SearchFoodVC: UIViewController {
         
         self.activityIndicator.initIndicator("Loading", from: self)
         
+        
+        self.searchController.searchBar.backgroundColor = FoodColors.barBottomColor
         self.searchController.obscuresBackgroundDuringPresentation = false
         self.searchController.searchBar.placeholder = "Введите название продукта"
         self.searchController.searchBar.barStyle = .black
@@ -172,12 +174,25 @@ extension SearchFoodVC: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell1 = tableView.dequeueReusableCell(withIdentifier: "ExpandedFoodCell") as! ExpandedFoodCell
+
         let foodItem : FoodModel
         foodItem = filteredFood[indexPath.row]
         if self.expandedCells.contains(indexPath.row) {
             cell1.backGroundView.isHidden = false
+            cell1.gradientView.isHidden = false
+            cell1.gradientView.startColor = FoodColors.barBottomColor
+            cell1.gradientView.endColor = FoodColors.barBottomColor
+            cell1.addButton.layer.shadowColor = UIColor.clear.cgColor
+            cell1.nameButton.setTitleColor(FoodColors.primaryColor, for: .normal)
+            
+            cell1.portionStepper.layer.shadowColor = UIColor.black.cgColor
+            cell1.portionStepper.layer.shadowOffset = CGSize(width: 5, height: 5)
+            cell1.portionStepper.layer.shadowRadius = 7
+
         } else {
             cell1.backGroundView.isHidden = true
+            cell1.gradientView.isHidden = true
+            cell1.nameButton.setTitleColor(UIColor.darkGray, for: .normal)
         }
         cell1.initWithFood(protein: foodItem.protein, fat: foodItem.fat, carbonhydrates: foodItem.carbonhydrate, calories: foodItem.calories,name:foodItem.name!)
         cell1.addButton.didTouchUpInside = {sender in

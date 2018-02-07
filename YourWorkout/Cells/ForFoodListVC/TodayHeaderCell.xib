@@ -39,7 +39,6 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.30121527777777779" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="V9B-hT-jr8" firstAttribute="top" secondItem="mho-OA-WYe" secondAttribute="top" constant="7" id="CoG-pR-IsY"/>
                             <constraint firstItem="byk-Pk-7pe" firstAttribute="top" secondItem="mho-OA-WYe" secondAttribute="top" constant="12" id="Lge-Pc-7VK"/>
@@ -58,6 +57,7 @@
             <color key="backgroundColor" red="0.24313725489999999" green="0.47843137250000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="backgroundViewForHeader" destination="mho-OA-WYe" id="o4p-5e-3mT"/>
                 <outlet property="deleteButton" destination="V9B-hT-jr8" id="IP4-Hd-9dz"/>
                 <outlet property="headerTitle" destination="byk-Pk-7pe" id="d21-BV-fnJ"/>
             </connections>

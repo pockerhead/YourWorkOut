@@ -23,9 +23,15 @@ class TodayVC: UIViewController {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        // Do any additional setup after loading the view.
+        
+        var colors = [UIColor]()
+        colors.append(FoodColors.barTopColor)
+        colors.append(FoodColors.barBottomColor)
+        navigationController?.navigationBar.setGradientBackground(colors: colors)
     }
 
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -33,6 +39,8 @@ class TodayVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.updateMainValues()
+        self.tabBarController?.tabBar.isHidden = false
+
     }
     func updateMainValues(){
         DailyFood.shared.updateDailyFood(completion: {

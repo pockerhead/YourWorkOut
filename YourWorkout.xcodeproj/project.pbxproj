@@ -51,6 +51,7 @@
 		CE8470C9200F329900CB7D57 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8470C8200F329900CB7D57 /* Colors.swift */; };
 		CE8470CC200F4A0900CB7D57 /* TodayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8470CA200F4A0900CB7D57 /* TodayHeaderCell.swift */; };
 		CE8470CD200F4A0900CB7D57 /* TodayHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8470CB200F4A0900CB7D57 /* TodayHeaderCell.xib */; };
+		CE93780E202ADCD6008B2BFD /* UINavigationBar+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93780D202ADCD6008B2BFD /* UINavigationBar+Gradient.swift */; };
 		CEA03E7A201F279A002F4DD5 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA03E79201F279A002F4DD5 /* MyButton.swift */; };
 		CEA03E7C201F3869002F4DD5 /* UIButton + setBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA03E7B201F3869002F4DD5 /* UIButton + setBackgroundColor.swift */; };
 		CEA03E7E201F4A7F002F4DD5 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA03E7D201F4A7F002F4DD5 /* HealthKit.framework */; };
@@ -58,6 +59,8 @@
 		CEA03E83201F60B9002F4DD5 /* StatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA03E82201F60B9002F4DD5 /* StatisticsVC.swift */; };
 		CEA640132018D36A00EC2F2E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA640122018D36A00EC2F2E /* ProfileVC.swift */; };
 		CEA64EDC20077A9B0002A87E /* FoodDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA64EDB20077A9B0002A87E /* FoodDetailsVC.swift */; };
+		CEB555B920298EC8004B7BC9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB555B820298EC8004B7BC9 /* GradientView.swift */; };
+		CEB555BB2029A25E004B7BC9 /* UIView + Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB555BA2029A25E004B7BC9 /* UIView + Blur.swift */; };
 		CED6B0652021D00900FD37CE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6B0642021D00900FD37CE /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +138,7 @@
 		CE8470C8200F329900CB7D57 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CE8470CA200F4A0900CB7D57 /* TodayHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeaderCell.swift; sourceTree = "<group>"; };
 		CE8470CB200F4A0900CB7D57 /* TodayHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayHeaderCell.xib; sourceTree = "<group>"; };
+		CE93780D202ADCD6008B2BFD /* UINavigationBar+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Gradient.swift"; sourceTree = "<group>"; };
 		CEA03E79201F279A002F4DD5 /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		CEA03E7B201F3869002F4DD5 /* UIButton + setBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + setBackgroundColor.swift"; sourceTree = "<group>"; };
 		CEA03E7D201F4A7F002F4DD5 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -143,6 +147,8 @@
 		CEA03E82201F60B9002F4DD5 /* StatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsVC.swift; sourceTree = "<group>"; };
 		CEA640122018D36A00EC2F2E /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		CEA64EDB20077A9B0002A87E /* FoodDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailsVC.swift; sourceTree = "<group>"; };
+		CEB555B820298EC8004B7BC9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		CEB555BA2029A25E004B7BC9 /* UIView + Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Blur.swift"; sourceTree = "<group>"; };
 		CED6B0642021D00900FD37CE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,12 +213,12 @@
 				06517AB5200CAA7D00CA098A /* Food */,
 				06517AB6200CAA8200CA098A /* Gym */,
 				06517AB7200CBB1100CA098A /* CustomClasses */,
+				CE24ECC02020B38B00318194 /* Today */,
 				06517ABA200DDCCA00CA098A /* Constants */,
 				CE1C0F642006151300AE430A /* Extensions */,
 				0636E5E620037E4D005E9282 /* Main.storyboard */,
 				06517A46200BD6BF00CA098A /* LoginVC.swift */,
 				06517AA5200BEA7D00CA098A /* RegistrationVC.swift */,
-				CE24ECC02020B38B00318194 /* Today */,
 				CEA03E80201F4C37002F4DD5 /* HealthKitSeupAssistant.swift */,
 				06517A49200BD88500CA098A /* Keychain.swift */,
 				0636E5DE20037E4D005E9282 /* AppDelegate.swift */,
@@ -287,6 +293,7 @@
 			children = (
 				06517AB8200CBB2A00CA098A /* MyMDCFloatingButton.swift */,
 				CE7885DF2017594B0026A640 /* MyMDCRaisedButton.swift */,
+				CEB555B820298EC8004B7BC9 /* GradientView.swift */,
 				CE24ECCA2021BF2F00318194 /* ActivityIndicator.swift */,
 				CEA03E79201F279A002F4DD5 /* MyButton.swift */,
 			);
@@ -345,6 +352,8 @@
 				CE1C0F652006152600AE430A /* UIColor + hex.swift */,
 				06517AA7200BEF4100CA098A /* ViewController + hideKeyboard.swift */,
 				CE1C0F672006155500AE430A /* UIView + rotate.swift */,
+				CEB555BA2029A25E004B7BC9 /* UIView + Blur.swift */,
+				CE93780D202ADCD6008B2BFD /* UINavigationBar+Gradient.swift */,
 				0690BE70200E448300B70259 /* SearchBar + UIColore.swift */,
 				CE165A582010930F005B56C2 /* UIImage +CircleCrop.swift */,
 				CEA03E7B201F3869002F4DD5 /* UIButton + setBackgroundColor.swift */,
@@ -728,6 +737,7 @@
 				CE8470C9200F329900CB7D57 /* Colors.swift in Sources */,
 				CE04B9F32004B085004EABE2 /* ExpandableCellForFood.swift in Sources */,
 				CEA03E7C201F3869002F4DD5 /* UIButton + setBackgroundColor.swift in Sources */,
+				CEB555BB2029A25E004B7BC9 /* UIView + Blur.swift in Sources */,
 				CE1C0F6C2006161000AE430A /* SearchFoodVC.swift in Sources */,
 				CE04B9EE2004A907004EABE2 /* ExpandedDetailsCell.swift in Sources */,
 				06517AAC200C8BF700CA098A /* FoodMenuTVC.swift in Sources */,
@@ -744,11 +754,13 @@
 				06917D7B20039A6300C1F624 /* FoodListModel.swift in Sources */,
 				CEA03E83201F60B9002F4DD5 /* StatisticsVC.swift in Sources */,
 				CE7885E02017594B0026A640 /* MyMDCRaisedButton.swift in Sources */,
+				CEB555B920298EC8004B7BC9 /* GradientView.swift in Sources */,
 				CEA640132018D36A00EC2F2E /* ProfileVC.swift in Sources */,
 				CE24ECC42020B5C500318194 /* DailyFoodSingleton.swift in Sources */,
 				06517AB0200CAA3A00CA098A /* FoodMealModel.swift in Sources */,
 				CE24ECC92020B7C000318194 /* HealthKitHelper.swift in Sources */,
 				06517A47200BD6BF00CA098A /* LoginVC.swift in Sources */,
+				CE93780E202ADCD6008B2BFD /* UINavigationBar+Gradient.swift in Sources */,
 				CEA64EDC20077A9B0002A87E /* FoodDetailsVC.swift in Sources */,
 				06517AA8200BEF4200CA098A /* ViewController + hideKeyboard.swift in Sources */,
 				CE1C0F6E2006292700AE430A /* CustomCell.swift in Sources */,

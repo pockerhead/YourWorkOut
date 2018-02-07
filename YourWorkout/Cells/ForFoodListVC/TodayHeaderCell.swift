@@ -13,12 +13,18 @@ class TodayHeaderCell: UITableViewHeaderFooterView {
     
     @IBOutlet weak var deleteButton: MyMDCRaisedButton!
     @IBOutlet weak var headerTitle: UILabel!
+    @IBOutlet weak var backgroundViewForHeader: UIView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        deleteButton.backgroundColor = FoodColors.deleteColor
+        deleteButton.backgroundColor = NewWaveColors.orangeColor
         deleteButton.setTitle("Удалить", for: .normal)
         deleteButton.sizeToFit()
+        deleteButton.layer.cornerRadius = 8
+        self.backgroundViewForHeader.backgroundColor = UIColor.clear
+        self.backgroundViewForHeader.blurView.setup(style: .dark, alpha: 0.6).enable()
     }
     override func prepareForReuse() {
         super.prepareForReuse()

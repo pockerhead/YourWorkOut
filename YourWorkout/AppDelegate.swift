@@ -15,9 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        application.statusBarStyle =  .lightContent
+        UIApplication.shared.statusBarStyle = .lightContent
+
         NetworkManager.shared.startNetworkReachabilityObserver()
         HealthSingletone.shared.updateDistance()
+
         authorizeHealthKit()
         return true
     }

@@ -17,7 +17,8 @@ class FoodItemCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = FoodColors.primaryColor
+        self.backgroundColor = UIColor.clear
+        
     }
     
 
@@ -25,6 +26,7 @@ class FoodItemCell: UITableViewCell {
         super.prepareForReuse()
         button.didTouchUpInside = nil
         deleteButton.didTouchUpInside = nil
+        self.button.setBackgroundColor(NewWaveColors.violetColor)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

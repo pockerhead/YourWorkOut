@@ -27,12 +27,12 @@ class FoodTodayVC: UIViewController  {
     var navItemTitle : String?
     var activityIndicator = UIActivityIndicatorView()
     var strLabel = UILabel()
-    
+    var oldContentOffset : CGFloat = 0
     let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+ 
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.backgroundColor = FoodColors.primaryColor
@@ -42,28 +42,52 @@ class FoodTodayVC: UIViewController  {
         let foodCellNib = UINib(nibName: "ExpandedDetailsCell", bundle: nil)
         let headerCellNub = UINib(nibName: "TodayHeaderCell", bundle: nil)
         
-        
         self.tableView.register( addItemCellNib, forCellReuseIdentifier: "AddItemCell")
         self.tableView.register( foodCellNib, forCellReuseIdentifier: "FoodCell")
         self.tableView.register( headerCellNub, forHeaderFooterViewReuseIdentifier: "HeaderCell")
+        self.tableView.separatorStyle = .singleLine
         self.backViewForLabels.layer.cornerRadius = 8
+        self.view.backgroundColor = UIColor(hexString: "000000")
         if let nav = self.navItemTitle{
             self.navigationItem.title = nav
         } else {
-            self.navigationItem.title = "Сегодня"
+            self.navigationItem.title = "Питание"
         }
         
-        
+        self.backViewForLabels.blurView.setup(style: .dark, alpha: 0.8).enable()
+        self.backViewForLabels.blurView.blurContentView?.layer.cornerRadius = 9
+        self.backViewForLabels.blurView.vibrancyContentView?.layer.cornerRadius = 9
+
         self.activityIndicatorInit("Загрузка")
         
         self.getCurrentJournal()
-        //        self.uploadWithAlamofire()
         self.tableView.reloadData()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let tabBarHeight = self.tabBarController?.tabBar.layer.frame.size.height
+
         self.tabBarController?.tabBar.isHidden = true
+        let primary = UIColor(hexString: "000000")
+        let secondary = UIColor(hexString: "AC2244")
+        //        self.tableView.layer.insertSublayer(gradient, at: 0)
+        let gradientBackgroundColors = [primary.cgColor, secondary.cgColor]
+        let gradientLocations = [0.0,1.0]
+        let tableViewFrame = CGRect(x: self.tableView.frame.origin.x, y: self.tableView.frame.origin.x, width: self.tableView.frame.size.width, height: self.tableView.frame.size.height + tabBarHeight!)
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientBackgroundColors
+        gradientLayer.locations = gradientLocations as [NSNumber]
+        
+        gradientLayer.frame = tableViewFrame
+        let backgroundView = UIView(frame: tableViewFrame)
+        backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+//        self.tableView.backgroundView = backgroundView
+        
+//        tableView.setNeedsLayout()
+//        tableView.layoutIfNeeded()
+//        let indexPath = IndexPath(row: 0, section: 0)
+//        tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+//
         
     }
     
@@ -218,9 +242,9 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section >= self.todayMeal.foodMeals.count{
-            return 55
+            return 4
         } else {
-            return 55
+            return 45
         }
     }
     
@@ -277,6 +301,10 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
             
             cell.button.setTitle("Доб. прием пищи", for: .normal)
             cell.button.sizeToFit()
+            cell.button.setBackgroundColor(NewWaveColors.violetColor)
+            cell.button.layer.cornerRadius = 8
+
+            cell.selectionStyle = .none
             cell.deleteButton.isHidden = true
             cell.button.didTouchUpInside = { MyButton in
                 let alertController = UIAlertController(title: "Новый прием пищи", message: "", preferredStyle: .alert)
@@ -329,7 +357,8 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
         } else {
             if indexPath.row >= self.todayMeal.foodMeals[indexPath.section].mealList.count{
                 let cell1 = tableView.dequeueReusableCell(withIdentifier: "AddItemCell") as! FoodItemCell
-                
+                cell1.selectionStyle = .none
+
                 cell1.deleteButton.isHidden = true
                 cell1.deleteButton.setTitle("- прием", for: .normal)
                 
@@ -367,6 +396,9 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
                 
                 cell1.button.setTitle("+ продукт", for: .normal)
                 cell1.button.sizeToFit()
+                cell1.button.setBackgroundColor(NewWaveColors.violetColor)
+                cell1.button.layer.cornerRadius = 8
+
                 cell1.button.didTouchUpInside = { sender in
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchFoodVC") as! SearchFoodVC
                     self.selectedMeal = self.todayMeal.foodMeals[indexPath.section]
@@ -378,7 +410,12 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
                 return cell1
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "FoodCell") as! ExpandedDetailsCell
+                cell.selectionStyle = .none
+
                 let oneMeal = self.todayMeal.foodMeals[indexPath.section].mealList[indexPath.row]
+                
+//                cell.backView.layer.cornerRadius = 9
+                
                 cell.nameLabel.text = oneMeal.name
                 cell.proteinsLabel.text = String(format:"%.1f",oneMeal.protein)
                 cell.fatsLabel.text = String(format:"%.1f",oneMeal.fat)
@@ -450,6 +487,58 @@ extension FoodTodayVC: UITableViewDelegate, UITableViewDataSource{
                 
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let button = UITableViewRowAction(style: .default, title: "Удалить") { (action, indexPath) in
+            DispatchQueue.main.async {
+                self.todayMeal.foodMeals[indexPath.section].mealList.remove(at: indexPath.row)
+                
+                self.tableView.beginUpdates()
+                
+                self.tableView.deleteRows(at: [indexPath], with: .right)
+                self.tableView.reloadSections(IndexSet.init(integer: indexPath.section), with: .left)
+                self.tableView.endUpdates()
+                self.updateCurrentJournal()
+                
+            }
+        }
+        button.backgroundColor = NewWaveColors.orangeColor
+        return [button]
+    }
+    
+    @available(iOS 8.0, *)
+//    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+//        let button1 = UITableViewRowAction(style: .delete, title: "Happy!") { action, indexPath in
+//            print("button1 pressed!")
+//        }
+//        button1.backgroundColor = UIColor.blueColor()
+//        let button2 = UITableViewRowAction(style: .Default, title: "Exuberant!") { action, indexPath in
+//            print("button2 pressed!")
+//        }
+//        button2.backgroundColor = UIColor.redColor()
+//        return [button1, button2]
+//    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentOffsetY = scrollView.contentOffset.y
+        let height = scrollView.contentSize.height - scrollView.frame.size.height
+
+        if contentOffsetY > 0 && contentOffsetY < height {
+            if contentOffsetY > self.oldContentOffset {
+                UIView.animate(withDuration: 0.2, delay: 0.2, options: .curveEaseOut,
+                               animations: {self.backViewForLabels.alpha = 0},
+                               completion: { _ in self.backViewForLabels.isHidden = true
+                })
+            } else {
+                UIView.animate(withDuration: 0.2, delay: 0.2, options: .curveEaseOut,
+                               animations: {self.backViewForLabels.alpha = 1},
+                               completion: { _ in self.backViewForLabels.isHidden = false
+                })
+            }
+        }
+ 
+        self.oldContentOffset = scrollView.contentOffset.y
     }
     
 }
