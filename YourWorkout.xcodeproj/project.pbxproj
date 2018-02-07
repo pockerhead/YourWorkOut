@@ -33,6 +33,8 @@
 		0E11E9ADD2D57D1570CBE8CC /* Pods_YourWorkout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FFD4313F8A8B38F08246A85 /* Pods_YourWorkout.framework */; };
 		65FF2DBA1386D83F500C5906 /* Pods_YourWorkoutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 802B52A4CCC937F1BDA03EE4 /* Pods_YourWorkoutTests.framework */; };
 		74EF98393941B8A1FEEAFD90 /* Pods_YourWorkoutUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 562AFD5BCC8F0114693CD4A5 /* Pods_YourWorkoutUITests.framework */; };
+		CE0248C5202B4CDE00849AE7 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0248C3202B4CDE00849AE7 /* MenuItemCell.swift */; };
+		CE0248C6202B4CDE00849AE7 /* MenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE0248C4202B4CDE00849AE7 /* MenuItemCell.xib */; };
 		CE04B9EE2004A907004EABE2 /* ExpandedDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE04B9EC2004A907004EABE2 /* ExpandedDetailsCell.swift */; };
 		CE04B9EF2004A908004EABE2 /* ExpandedDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE04B9ED2004A907004EABE2 /* ExpandedDetailsCell.xib */; };
 		CE04B9F32004B085004EABE2 /* ExpandableCellForFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE04B9F12004B085004EABE2 /* ExpandableCellForFood.swift */; };
@@ -120,6 +122,8 @@
 		82AD7DD7C8A0C81F43A7486B /* Pods-YourWorkoutUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourWorkoutUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YourWorkoutUITests/Pods-YourWorkoutUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		937950208CE6F9F2CAF10418 /* Pods-YourWorkoutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourWorkoutTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YourWorkoutTests/Pods-YourWorkoutTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1EC514A0597A50111B36FDF /* Pods-YourWorkoutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourWorkoutTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YourWorkoutTests/Pods-YourWorkoutTests.release.xcconfig"; sourceTree = "<group>"; };
+		CE0248C3202B4CDE00849AE7 /* MenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
+		CE0248C4202B4CDE00849AE7 /* MenuItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemCell.xib; sourceTree = "<group>"; };
 		CE04B9EC2004A907004EABE2 /* ExpandedDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedDetailsCell.swift; sourceTree = "<group>"; };
 		CE04B9ED2004A907004EABE2 /* ExpandedDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandedDetailsCell.xib; sourceTree = "<group>"; };
 		CE04B9F12004B085004EABE2 /* ExpandableCellForFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableCellForFood.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 		06B3BDE92003F61B00AD5B49 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				CE0248C2202B4CB000849AE7 /* ForTodayMenu */,
 				CE04B9F02004ADA6004EABE2 /* ForFoodListVC */,
 			);
 			path = Cells;
@@ -326,6 +331,15 @@
 				562AFD5BCC8F0114693CD4A5 /* Pods_YourWorkoutUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE0248C2202B4CB000849AE7 /* ForTodayMenu */ = {
+			isa = PBXGroup;
+			children = (
+				CE0248C3202B4CDE00849AE7 /* MenuItemCell.swift */,
+				CE0248C4202B4CDE00849AE7 /* MenuItemCell.xib */,
+			);
+			path = ForTodayMenu;
 			sourceTree = "<group>";
 		};
 		CE04B9F02004ADA6004EABE2 /* ForFoodListVC */ = {
@@ -532,6 +546,7 @@
 				0636E5ED20037E4D005E9282 /* LaunchScreen.storyboard in Resources */,
 				06B3BDED2004000D00AD5B49 /* ExpandedFoodCell.xib in Resources */,
 				0636E5EA20037E4D005E9282 /* Assets.xcassets in Resources */,
+				CE0248C6202B4CDE00849AE7 /* MenuItemCell.xib in Resources */,
 				0636E5E820037E4D005E9282 /* Main.storyboard in Resources */,
 				CE04B9EF2004A908004EABE2 /* ExpandedDetailsCell.xib in Resources */,
 				CE8470CD200F4A0900CB7D57 /* TodayHeaderCell.xib in Resources */,
@@ -769,6 +784,7 @@
 				06517AA6200BEA7D00CA098A /* RegistrationVC.swift in Sources */,
 				CEA03E81201F4C37002F4DD5 /* HealthKitSeupAssistant.swift in Sources */,
 				CE8470CC200F4A0900CB7D57 /* TodayHeaderCell.swift in Sources */,
+				CE0248C5202B4CDE00849AE7 /* MenuItemCell.swift in Sources */,
 				0690BE71200E448300B70259 /* SearchBar + UIColore.swift in Sources */,
 				06517A4B200BD88600CA098A /* Keychain.swift in Sources */,
 			);
