@@ -39,3 +39,16 @@ struct NewWaveColors {
     
     static let blueColor = UIColor(hexString:"01AAB0")
 }
+
+
+struct TodayMenuColors {
+   static let FoodTopColor = UIColor(hexString:"00FFBE")
+   static let FoodBottomColor = UIColor(hexString:"002A8A")
+    
+   static let WorkoutTopColor = UIColor(hexString:"E40059")
+   static let WorkoutBottomColor = UIColor(hexString:"3A006F")
+    
+    static let ActivityTopColor = UIColor(hexString:"F88E6E")
+    static let ActivityBottomColor = UIColor(hexString:"E40059")
+    
+}

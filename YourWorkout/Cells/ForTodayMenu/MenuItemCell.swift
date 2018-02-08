@@ -10,15 +10,12 @@ import UIKit
 
 class MenuItemCell: UITableViewCell {
 
-    let FoodTopColor = UIColor(hexString:"00FFBE")
-    let FoodBottomColor = UIColor(hexString:"002A8A")
-
-    let WorkoutTopColor = UIColor(hexString:"E40059")
-    let WorkoutBottomColor = UIColor(hexString:"3A006F")
-
+    
     @IBOutlet weak var gradientView: GradientView!
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var firstDetailLabel: UILabel!
+    @IBOutlet weak var secondDetailLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

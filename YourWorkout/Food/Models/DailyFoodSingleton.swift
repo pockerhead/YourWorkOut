@@ -35,7 +35,12 @@ class DailyFood {
         ]
         Alamofire.request(URL.init(string: "\(API_URL)/food/getjournalbydate")!, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: {
             responce in
-            
+//            switch (responce.result){
+//            case .success:
+//                break
+//            case .failure(let error):
+//                break
+//            }
             if let json = responce.result.value as? [String:Any]{
                 let json = JSON(json)
                 if let responce = json["dailyFoods"].dictionary {
@@ -43,13 +48,13 @@ class DailyFood {
                     if let calories = responce["calories"]?.float{
                         self.calories = calories
                     }
-                    if let carbonhydrates = responce["carbonhydrates"]?.float{
+                    if let carbonhydrates = responce["carbonhydrate"]?.float{
                         self.carbonhydrates = carbonhydrates
                     }
-                    if let proteins = responce["proteins"]?.float{
+                    if let proteins = responce["protein"]?.float{
                         self.proteins = proteins
                     }
-                    if let fats = responce["fats"]?.float{
+                    if let fats = responce["fat"]?.float{
                         self.fats = fats
                     }
                     completion()

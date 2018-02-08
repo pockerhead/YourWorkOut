@@ -40,16 +40,17 @@ class HealthSingletone {
     static let shared = HealthSingletone()
     
     let healthParser = HealthParser()
-    
     private init(){
         
     }
     
     var distance = 0.0
-    
+    var burnedCallories = 0.0
+
    public func updateDistance(){
         self.healthParser.getTodaysDistance(completion: {distance in
             self.distance = distance/1000
+            self.burnedCallories = 0.5 * 74 * self.distance
         })
     }
 }
