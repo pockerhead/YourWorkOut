@@ -57,7 +57,68 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RFy-QE-pQA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2580" y="-1056"/>
+            <point key="canvasLocation" x="2981" y="2515"/>
+        </scene>
+        <!--Workout TodayVC-->
+        <scene sceneID="YNh-Iv-rDx">
+            <objects>
+                <viewController id="vz6-uZ-N2b" customClass="WorkoutTodayVC" customModule="YourWorkout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZZo-Vf-mza">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3T1-af-oMM">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="3T1-af-oMM" secondAttribute="bottom" id="CFm-g2-4gv"/>
+                            <constraint firstItem="qId-TD-sm4" firstAttribute="trailing" secondItem="3T1-af-oMM" secondAttribute="trailing" id="bNc-NO-f2c"/>
+                            <constraint firstItem="3T1-af-oMM" firstAttribute="leading" secondItem="qId-TD-sm4" secondAttribute="leading" id="g4b-2q-sCN"/>
+                            <constraint firstItem="3T1-af-oMM" firstAttribute="top" secondItem="qId-TD-sm4" secondAttribute="top" id="vXV-Fb-VTf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qId-TD-sm4"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="3T1-af-oMM" id="dQd-rB-9rl"/>
+                        <segue destination="Kdd-Ne-uaU" kind="show" identifier="toWorkoutSearch" id="5R3-EQ-W6d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tFq-0q-M0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2580" y="-232"/>
+        </scene>
+        <!--Search ExercisesVC-->
+        <scene sceneID="zt4-d1-bOv">
+            <objects>
+                <viewController storyboardIdentifier="SearchExercisesVC" id="Kdd-Ne-uaU" customClass="SearchExercisesVC" customModule="YourWorkout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zWv-nF-FlO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Oto-Lf-q1u">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SCK-q0-vaE" firstAttribute="trailing" secondItem="Oto-Lf-q1u" secondAttribute="trailing" id="ECF-k2-ONu"/>
+                            <constraint firstItem="Oto-Lf-q1u" firstAttribute="top" secondItem="SCK-q0-vaE" secondAttribute="top" id="Gv2-ZF-yo9"/>
+                            <constraint firstItem="Oto-Lf-q1u" firstAttribute="leading" secondItem="SCK-q0-vaE" secondAttribute="leading" id="KdP-gW-01O"/>
+                            <constraint firstAttribute="bottom" secondItem="Oto-Lf-q1u" secondAttribute="bottom" id="YCn-eF-8zk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SCK-q0-vaE"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Oto-Lf-q1u" id="ICj-Vg-fgt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V3h-oN-12D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3526" y="-232"/>
         </scene>
         <!--Сегодня-->
         <scene sceneID="ir7-IZ-Gup">
@@ -86,11 +147,12 @@
                     <connections>
                         <outlet property="tableView" destination="as7-p8-B0u" id="YoL-Bv-oYV"/>
                         <segue destination="ocS-lw-agl" kind="show" identifier="toToday" id="Ywc-Jl-ayA"/>
+                        <segue destination="vz6-uZ-N2b" kind="show" identifier="toWorkoutToday" id="cPw-9X-HWr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3D-7E-Whc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1718" y="-320"/>
+            <point key="canvasLocation" x="1719" y="462"/>
         </scene>
         <!--Animator Delegate-->
         <scene sceneID="kx0-fd-cgN">
@@ -138,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBP-wt-b5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2580" y="-320"/>
+            <point key="canvasLocation" x="2580" y="1267"/>
         </scene>
         <!--Food TodayVC-->
         <scene sceneID="jQ8-Lx-qN8">
@@ -152,7 +214,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="n7c-JD-Zit">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="n7c-JD-Zit">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n7c-JD-Zit" id="oul-25-oFt">
@@ -296,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z4s-ek-b8P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2580" y="462.67605633802816"/>
+            <point key="canvasLocation" x="2580" y="462"/>
         </scene>
         <!--Профиль-->
         <scene sceneID="ZAK-vM-DGx">
@@ -327,7 +389,7 @@
                                 <rect key="frame" x="16" y="164" width="382" height="552"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="m2p-bA-KKJ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="m2p-bA-KKJ">
                                         <rect key="frame" x="0.0" y="55.333333333333336" width="382" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m2p-bA-KKJ" id="TB1-Th-peb">
@@ -448,7 +510,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCB-Is-puc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1521" y="-1086"/>
+            <point key="canvasLocation" x="1719" y="2099"/>
         </scene>
         <!--Food DetailsVC-->
         <scene sceneID="Hrm-hU-Isg">
@@ -555,7 +617,7 @@
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.99827070453528455" green="1" blue="0.99012832120558569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.3377535343170166" green="0.0027476022951304913" blue="0.47578257322311401" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.63529411764705879" green="0.0" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>

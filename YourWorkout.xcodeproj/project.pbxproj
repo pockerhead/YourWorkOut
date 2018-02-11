@@ -22,6 +22,10 @@
 		06517AB0200CAA3A00CA098A /* FoodMealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06517AAF200CAA3A00CA098A /* FoodMealModel.swift */; };
 		06517AB9200CBB2A00CA098A /* MyMDCFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06517AB8200CBB2A00CA098A /* MyMDCFloatingButton.swift */; };
 		06517ABC200DDCD900CA098A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06517ABB200DDCD900CA098A /* Network.swift */; };
+		0668D35D2030B6560036256A /* WorkoutTodayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0668D35C2030B6560036256A /* WorkoutTodayVC.swift */; };
+		0668D3602030B6680036256A /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0668D35F2030B6680036256A /* WorkoutModel.swift */; };
+		0668D3652030C9E80036256A /* TodayWorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0668D3642030C9E80036256A /* TodayWorkoutManager.swift */; };
+		0668D3672030D0900036256A /* SearchExercisesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0668D3662030D0900036256A /* SearchExercisesVC.swift */; };
 		068BF392200E0E7A006EBBAB /* JournalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068BF391200E0E7A006EBBAB /* JournalVC.swift */; };
 		0690BE71200E448300B70259 /* SearchBar + UIColore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0690BE70200E448300B70259 /* SearchBar + UIColore.swift */; };
 		06917D792003879900C1F624 /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06917D782003879900C1F624 /* FoodModel.swift */; };
@@ -106,6 +110,10 @@
 		06517AAF200CAA3A00CA098A /* FoodMealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMealModel.swift; sourceTree = "<group>"; };
 		06517AB8200CBB2A00CA098A /* MyMDCFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMDCFloatingButton.swift; sourceTree = "<group>"; };
 		06517ABB200DDCD900CA098A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		0668D35C2030B6560036256A /* WorkoutTodayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTodayVC.swift; sourceTree = "<group>"; };
+		0668D35F2030B6680036256A /* WorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModel.swift; sourceTree = "<group>"; };
+		0668D3642030C9E80036256A /* TodayWorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWorkoutManager.swift; sourceTree = "<group>"; };
+		0668D3662030D0900036256A /* SearchExercisesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchExercisesVC.swift; sourceTree = "<group>"; };
 		068BF391200E0E7A006EBBAB /* JournalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalVC.swift; sourceTree = "<group>"; };
 		0690BE70200E448300B70259 /* SearchBar + UIColore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchBar + UIColore.swift"; sourceTree = "<group>"; };
 		06917D782003879900C1F624 /* FoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodModel.swift; sourceTree = "<group>"; };
@@ -290,6 +298,9 @@
 		06517AB6200CAA8200CA098A /* Gym */ = {
 			isa = PBXGroup;
 			children = (
+				0668D3632030C9CF0036256A /* Managers */,
+				0668D3612030C2680036256A /* ViewControllers */,
+				0668D35E2030B65A0036256A /* Models */,
 			);
 			path = Gym;
 			sourceTree = "<group>";
@@ -313,6 +324,31 @@
 				CE8470C8200F329900CB7D57 /* Colors.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		0668D35E2030B65A0036256A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0668D35F2030B6680036256A /* WorkoutModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0668D3612030C2680036256A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0668D35C2030B6560036256A /* WorkoutTodayVC.swift */,
+				0668D3662030D0900036256A /* SearchExercisesVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0668D3632030C9CF0036256A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0668D3642030C9E80036256A /* TodayWorkoutManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		06B3BDE92003F61B00AD5B49 /* Cells */ = {
@@ -764,12 +800,15 @@
 				CE165A592010930F005B56C2 /* UIImage +CircleCrop.swift in Sources */,
 				06517ABC200DDCD900CA098A /* Network.swift in Sources */,
 				06917D792003879900C1F624 /* FoodModel.swift in Sources */,
+				0668D3602030B6680036256A /* WorkoutModel.swift in Sources */,
 				06B3BDE72003F60000AD5B49 /* FoodItemCell.swift in Sources */,
 				06517AB9200CBB2A00CA098A /* MyMDCFloatingButton.swift in Sources */,
 				06B3BDEC2004000D00AD5B49 /* ExpandedFoodCell.swift in Sources */,
 				06517AAE200CA8CE00CA098A /* FoodTodayVC.swift in Sources */,
 				CE24ECC22020B3A200318194 /* TodayVC.swift in Sources */,
 				CE1C0F662006152600AE430A /* UIColor + hex.swift in Sources */,
+				0668D3672030D0900036256A /* SearchExercisesVC.swift in Sources */,
+				0668D3652030C9E80036256A /* TodayWorkoutManager.swift in Sources */,
 				06917D7B20039A6300C1F624 /* FoodListModel.swift in Sources */,
 				CEA03E83201F60B9002F4DD5 /* StatisticsVC.swift in Sources */,
 				CE7885E02017594B0026A640 /* MyMDCRaisedButton.swift in Sources */,
@@ -780,6 +819,7 @@
 				CE24ECC92020B7C000318194 /* HealthKitHelper.swift in Sources */,
 				06517A47200BD6BF00CA098A /* LoginVC.swift in Sources */,
 				CE93780E202ADCD6008B2BFD /* UINavigationBar+Gradient.swift in Sources */,
+				0668D35D2030B6560036256A /* WorkoutTodayVC.swift in Sources */,
 				CEA64EDC20077A9B0002A87E /* FoodDetailsVC.swift in Sources */,
 				06517AA8200BEF4200CA098A /* ViewController + hideKeyboard.swift in Sources */,
 				CE1C0F6E2006292700AE430A /* CustomCell.swift in Sources */,

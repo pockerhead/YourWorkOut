@@ -79,6 +79,7 @@ class RegistrationVC: UIViewController {
                     DispatchQueue.main.async { // Correct
                         //segue to main view, etc.
                         if(self.reg == false){
+                            User.shared.username = self.username.text!
                             self.keychain.setPasscode(identifier: "MPPassword", passcode: self.password.text!)
                             self.keychain.setPasscode(identifier: "MPUsername", passcode: self.username.text!)
                             self.performSegue(withIdentifier: "LogSeg", sender: self)

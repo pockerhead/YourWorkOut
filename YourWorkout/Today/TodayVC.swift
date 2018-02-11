@@ -13,7 +13,8 @@ import HealthKit
 class TodayVC: UIViewController {
     var menuStruct = [
         ["name":"workout",
-         "title":"Дневник \nтренировок",],
+         "title":"Дневник \nтренировок",
+         "segue":"toWorkoutToday"],
         ["name":"food",
          "title":"Дневник \nпитания",
          "segue":"toToday"],
@@ -98,7 +99,7 @@ extension TodayVC : UITableViewDelegate, UITableViewDataSource{
                 cell.gradientView.endColor = TodayMenuColors.ActivityBottomColor
                 cell.iconImage.image = #imageLiteral(resourceName: "activityIcon")
                 cell.nameLabel.text = self.menuStruct[indexPath.row]["title"]
-                cell.firstDetailLabel.text = String(format: "Пройдено: %.1f км", HealthSingletone.shared.distance)
+                cell.firstDetailLabel.text = String(format: "Пройдено: %.3f км", HealthSingletone.shared.distance)
                 cell.secondDetailLabel.text = String(format: "Расход калорий: %.1f Ккал", HealthSingletone.shared.burnedCallories)
                 return cell
             case "food"?:
@@ -107,8 +108,8 @@ extension TodayVC : UITableViewDelegate, UITableViewDataSource{
                 cell.gradientView.endColor = TodayMenuColors.FoodBottomColor
                 cell.iconImage.image = #imageLiteral(resourceName: "foddIcon")
                 cell.nameLabel.text = self.menuStruct[indexPath.row]["title"]
-                cell.firstDetailLabel.text = "Б:\(DailyFood.shared.proteins) Ж:\(DailyFood.shared.fats) У:\(DailyFood.shared.carbonhydrates)"
-                cell.secondDetailLabel.text = "Калорийность: \(DailyFood.shared.calories) Ккал"
+                cell.firstDetailLabel.text = String(format: "Б:%.1f Ж:%.1f У:%.1f", DailyFood.shared.proteins,DailyFood.shared.fats,DailyFood.shared.carbonhydrates)
+                cell.secondDetailLabel.text = String(format:"Калорийность: %.1f Ккал",DailyFood.shared.calories)
                 return cell
             case "workout"?:
                 
@@ -134,22 +135,30 @@ extension TodayVC : UITableViewDelegate, UITableViewDataSource{
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return self.cellHeight
+        var viewHeight = self.view.frame.size.height
+        var tabbarHeight = self.tabBarController?.tabBar.frame.size.height ?? 0
+        var height =  (viewHeight - tabbarHeight) / CGFloat(self.menuStruct.count)
+//        return self.cellHeight
+        return 123
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch self.menuStruct[indexPath.row]["name"] {
-        case "activity"?:
-            break
-        case "food"?:
-            self.performSegue(withIdentifier: self.menuStruct[indexPath.row]["segue"]!, sender: self)
-            break
-        case "workout"?:
-            break
-        default:
-            break
+        if let segue = self.menuStruct[indexPath.row]["segue"]{
+            self.performSegue(withIdentifier: segue, sender: self)
         }
+//        switch self.menuStruct[indexPath.row]["name"] {
+//        case "activity"?:
+//            self.performSegue(withIdentifier: self.menuStruct[indexPath.row]["segue"]!, sender: self)
+//            break
+//        case "food"?:
+//            self.performSegue(withIdentifier: self.menuStruct[indexPath.row]["segue"]!, sender: self)
+//            break
+//        case "workout"?:
+//            self.performSegue(withIdentifier: self.menuStruct[indexPath.row]["segue"]!, sender: self)
+//            break
+//        default:
+//            break
+//        }
         
     }
     

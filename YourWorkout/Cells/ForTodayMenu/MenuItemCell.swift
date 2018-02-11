@@ -16,10 +16,15 @@ class MenuItemCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var firstDetailLabel: UILabel!
     @IBOutlet weak var secondDetailLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.gradientPressed(_:)))
+        
+//        self.gradientView.addGestureRecognizer(tap)
+        
+        self.gradientView.isUserInteractionEnabled = true
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,4 +33,22 @@ class MenuItemCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    
+    @objc func gradientPressed(_ sender : UITapGestureRecognizer) {
+        UIView.animate(withDuration: 0.4) {
+            let intPointX = self.gradientView.startPointX
+            let intPointY = self.gradientView.startPointY
+            self.gradientView.startPointX = self.gradientView.endPointX
+            self.gradientView.startPointY = self.gradientView.endPointY
+            self.gradientView.endPointX = intPointX
+            self.gradientView.endPointY = intPointY
+        }
+            print("pressed")
+    }
+
+    
+    // function which is triggered when handleTap is called
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        print("Hello World")
+    }
 }
