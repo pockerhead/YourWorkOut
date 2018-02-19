@@ -123,7 +123,7 @@
         <!--Сегодня-->
         <scene sceneID="ir7-IZ-Gup">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="cMz-Ki-TMx" customClass="TodayVC" customModule="YourWorkout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cMz-Ki-TMx" customClass="TodayVC" customModule="YourWorkout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pSp-vv-lUL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,7 +163,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awh-cm-mQZ" customClass="CVCalendarView" customModule="CVCalendar">
-                                <rect key="frame" x="0.0" y="52" width="414" height="684"/>
+                                <rect key="frame" x="0.0" y="96" width="414" height="591"/>
                                 <color key="backgroundColor" red="0.92578125" green="0.91513020836196091" blue="0.91100907802834152" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="animatorDelegate" destination="bKk-vd-Dfm" id="Z47-0m-m7D"/>
@@ -172,7 +172,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WH6-hk-iC3" customClass="CVCalendarMenuView" customModule="CVCalendar">
-                                <rect key="frame" x="0.0" y="20" width="414" height="32"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="32"/>
                                 <color key="backgroundColor" red="0.84085501269035534" green="0.83118104084039746" blue="0.82743796103728617" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="menuViewDelegate" destination="bKk-vd-Dfm" id="ED0-bj-xOn"/>
@@ -192,6 +192,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YZM-dX-eKK"/>
                     </view>
+                    <navigationItem key="navigationItem" id="g0b-Sa-0eN"/>
                     <connections>
                         <outlet property="calendarMenuView" destination="WH6-hk-iC3" id="8PY-to-8en"/>
                         <outlet property="calendarView" destination="awh-cm-mQZ" id="1Y5-tt-laR"/>
@@ -200,18 +201,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBP-wt-b5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2580" y="1267"/>
+            <point key="canvasLocation" x="1719" y="1220"/>
         </scene>
         <!--Food TodayVC-->
         <scene sceneID="jQ8-Lx-qN8">
             <objects>
                 <viewController id="ocS-lw-agl" customClass="FoodTodayVC" customModule="YourWorkout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17Z-2d-WD8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5y4-yO-WaP">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="n7c-JD-Zit">
@@ -225,7 +226,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R9z-qm-Auf">
-                                <rect key="frame" x="0.0" y="626" width="414" height="46"/>
+                                <rect key="frame" x="0.0" y="690" width="414" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Б:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSg-aB-r98">
                                         <rect key="frame" x="8" y="13" width="17" height="21"/>
@@ -375,7 +376,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPf-87-A6a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="746" y="1267"/>
+            <point key="canvasLocation" x="3096" y="1932"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="YRg-hn-Gji">
@@ -431,7 +432,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pbq-z9-bKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1719" y="1267"/>
+            <point key="canvasLocation" x="4146" y="1764"/>
+        </scene>
+        <!--Журнал-->
+        <scene sceneID="Wrq-5R-WeI">
+            <objects>
+                <navigationController id="4Qt-tZ-2GE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Журнал" image="journal" id="pGz-MV-I6i"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1IR-Oi-yzA">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bKk-vd-Dfm" kind="relationship" relationship="rootViewController" id="CfO-2h-itt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UXY-dM-ajf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="967" y="1220"/>
         </scene>
         <!--Поиск-->
         <scene sceneID="kZs-bu-EF0">
@@ -465,52 +483,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pK9-JT-a7y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3527" y="463"/>
-        </scene>
-        <!--Еда-->
-        <scene sceneID="7wL-oA-HO8">
-            <objects>
-                <tableViewController id="swj-jW-EEN" customClass="FoodMenuTVC" customModule="YourWorkout" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ss4-OU-aXv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="267-Yp-Ngz">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="267-Yp-Ngz" id="hiS-9Y-Dva">
-                                    <rect key="frame" x="0.0" y="0.0" width="376" height="43.666666666666664"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="swj-jW-EEN" id="UZn-7K-05M"/>
-                            <outlet property="delegate" destination="swj-jW-EEN" id="7Hz-D3-yMI"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Еда" largeTitleDisplayMode="always" id="QDF-m9-AaN">
-                        <barButtonItem key="backBarButtonItem" title="Назад" id="rre-tF-Cdv"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="BsM-bI-UF5">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T2n-nj-Edn">
-                                <rect key="frame" x="16" y="4.5" width="35" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="21"/>
-                                <connections>
-                                    <action selector="profileButtonWasPressed:" destination="swj-jW-EEN" eventType="touchUpInside" id="Ghx-eV-9w4"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="profileButton" destination="T2n-nj-Edn" id="V3V-eX-WkJ"/>
-                        <segue destination="bKk-vd-Dfm" kind="show" identifier="toJournal" id="dWK-Hk-7Au"/>
-                        <segue destination="9kp-HD-MMf" kind="show" identifier="toStatistics" id="6jo-gw-5of"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hCB-Is-puc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1719" y="2099"/>
         </scene>
         <!--Food DetailsVC-->
         <scene sceneID="Hrm-hU-Isg">
@@ -612,7 +584,7 @@
         <scene sceneID="4Hz-Bq-vqJ">
             <objects>
                 <navigationController id="5st-pF-2bt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Сегодня" id="E0T-ot-9eP"/>
+                    <tabBarItem key="tabBarItem" title="Сегодня" image="todayTabBarIcon" id="E0T-ot-9eP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="am0-gh-eVm">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -625,6 +597,9 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6Ec-GZ-p43">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="cMz-Ki-TMx" kind="relationship" relationship="rootViewController" id="jDP-Q5-nhH"/>
                     </connections>
@@ -788,6 +763,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="5st-pF-2bt" kind="relationship" relationship="viewControllers" id="G7p-Q4-jAQ"/>
+                        <segue destination="4Qt-tZ-2GE" kind="relationship" relationship="viewControllers" id="ReG-WY-pPw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j9H-Zt-Ozy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -796,10 +772,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="journal" width="22" height="27"/>
+        <image name="todayTabBarIcon" width="54" height="54"/>
         <image name="Назад" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="iVK-1c-AJ7"/>
-        <segue reference="Ywc-Jl-ayA"/>
+        <segue reference="WBh-1k-MmB"/>
     </inferredMetricsTieBreakers>
 </document>

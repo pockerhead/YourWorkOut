@@ -18,11 +18,14 @@ class JournalVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBarController?.tabBar.isHidden = true
         
         self.navigationItem.title = getMonthName()
+        self.tabBarController?.tabBar.isHidden = false
 
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
