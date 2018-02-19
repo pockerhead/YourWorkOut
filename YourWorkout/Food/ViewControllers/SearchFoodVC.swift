@@ -19,7 +19,6 @@ protocol SearchFoodVCDelegate {
 class SearchFoodVC: UIViewController {
     
     let disposeBag = DisposeBag()
-    var foodData = FoodListModel.sharedInstance
     let searchController = UISearchController(searchResultsController: nil)
     var filteredFood = FoodListModel.sharedInstance.foodList
     var heightAtIndexPath = NSMutableDictionary()
@@ -46,6 +45,7 @@ class SearchFoodVC: UIViewController {
         self.searchController.obscuresBackgroundDuringPresentation = false
         self.searchController.searchBar.placeholder = "Введите название продукта"
         self.searchController.searchBar.barStyle = .black
+        self.navigationItem.hidesSearchBarWhenScrolling = false
         self.searchController.hidesNavigationBarDuringPresentation = false;
         self.searchController.searchBar
             .rx.text // Observable property thanks to RxCocoa
@@ -197,7 +197,7 @@ extension SearchFoodVC: UITableViewDelegate, UITableViewDataSource {
         cell1.initWithFood(protein: foodItem.protein, fat: foodItem.fat, carbonhydrates: foodItem.carbonhydrate, calories: foodItem.calories,name:foodItem.name!)
         cell1.addButton.didTouchUpInside = {sender in
             self.searchController.setEditing(false, animated: false)
-            let foodName = self.foodData.foodList[indexPath.row].name!
+            let foodName = self.filteredFood[indexPath.row].name!
             let calories = cell1.caloriesOnChange
             let protein = cell1.proteinsOnChange
             let carbonhydrate = cell1.carbonhydratesOnChange
