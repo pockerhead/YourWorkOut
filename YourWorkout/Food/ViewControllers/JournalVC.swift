@@ -21,7 +21,11 @@ class JournalVC: UIViewController {
         
         self.navigationItem.title = getMonthName()
         self.tabBarController?.tabBar.isHidden = false
-
+        var colors = [UIColor]()
+        colors.append(FoodColors.barTopColor)
+        colors.append(FoodColors.barBottomColor)
+        navigationController?.navigationBar.setGradientBackground(colors: colors)
+        navigationController?.navigationBar.tintColor = UIColor.white
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {

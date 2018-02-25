@@ -21,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         HealthSingletone.shared.updateDistance()
 
         authorizeHealthKit()
+        UINavigationBar.appearance().tintColor = UIColor.white
+
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+
         return true
     }
 
