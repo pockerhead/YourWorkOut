@@ -46,14 +46,10 @@ class ExpandedFoodCell: UITableViewCell {
         let maskLayer = CAShapeLayer()
         maskLayer.path = path.cgPath
         self.layer.mask = maskLayer
-//        self.backgroundColor = FoodColors.primaryColor
         self.contentView.backgroundColor = FoodColors.primaryColor
-//        self.portionStepper.backgroundColor = FoodColors.secondaryColor
         self.portionStepper.tintColor = UIColor.white
         self.backGroundView.isHidden = true
         self.nameButton.titleLabel?.numberOfLines = 0
-//        self.addButton.setBackgroundColor(color: NewWaveColors.violetColor, for: .normal)
-//        self.addButton.sizeToFit()
         self.portionStepper.backgroundColor = NewWaveColors.blueColor
         self.infoButton.tintColor = NewWaveColors.violetColor
 

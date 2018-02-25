@@ -40,7 +40,7 @@ class SearchFoodVC: UIViewController {
         
         self.activityIndicator.initIndicator("Loading", from: self)
         
-        
+        self.navigationItem.hidesSearchBarWhenScrolling = false
         self.searchController.searchBar.backgroundColor = FoodColors.barBottomColor
         self.searchController.obscuresBackgroundDuringPresentation = false
         self.searchController.searchBar.placeholder = "Введите название продукта"

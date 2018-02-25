@@ -17,18 +17,21 @@ class Workout{
     var exercises : [Exercise] = []
     
     init(json: JSON) {
-        if let name = json["name"].string{
-            self.name = name
+        if let workout = json["workout"].dictionary{
+            if let name = workout["name"]?.string{
+                self.name = name
+            }
+            if let exercises = workout["exercises"]?.array{
+                self.exercises = exercises.flatMap({Exercise(json:$0)})
+            }
+            if let durability = workout["durability"]?.float{
+                self.durability = durability
+            }
+            if let calloriesBurned = workout["calloriesBurned"]?.float{
+                self.calloriesBurned = calloriesBurned
+            }
         }
-        if let exercises = json["exercises"].array{
-            self.exercises = exercises.flatMap({Exercise(json:$0)})
-        }
-        if let durability = json["durability"].float{
-            self.durability = durability
-        }
-        if let calloriesBurned = json["calloriesBurned"].float{
-            self.calloriesBurned = calloriesBurned
-        }
+        
     }
 }
 
@@ -67,6 +70,14 @@ class Exercise{
         if let approaches = json["approaches"].array{
             self.approaches = approaches.flatMap({Approach.init(json:$0)})
         }
+    }
+    
+    init(name:String,main:[String],sec:[String],stuff:[String]) {
+        self.title = name
+        self.mainMuscleGroup = main
+        self.secondaryMuscleGroup = sec
+        self.sportStuff = stuff
+        self.approaches = [Approach]()
     }
     
 }

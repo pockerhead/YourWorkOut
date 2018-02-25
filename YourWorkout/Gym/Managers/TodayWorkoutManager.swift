@@ -23,6 +23,7 @@ class WorkoutNetworkManager{
             case .success:
                 if let resp = responce.result.value{
                     let json = JSON(resp)
+                    print(resp)
                     let result = Workout(json: json)
                     completion(result, nil)
                 }
@@ -34,4 +35,29 @@ class WorkoutNetworkManager{
             }
         }
     }
+    
+    func updateWorkoutBy(date:String,workout:Workout,completion:@escaping (_ result:Workout?,_ error:Error?)->Void){
+        let json = JSONSerializer.toJson(workout)
+        let parameters : Parameters = [
+            "date" : date,
+            "username" : User.shared.username,
+            "workout": json
+        ]
+        Alamofire.request(URL.init(string: "\(API_URL)/workout/update")!, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (responce) in
+            switch responce.result{
+            case .success:
+                if let resp = responce.result.value{
+                    let json = JSON(resp)
+                    let result = Workout(json: json)
+                    completion(result, nil)
+                }
+                break
+            case .failure(let error):
+                print(error)
+                completion(nil,error)
+                break
+            }
+        }
+    }
+    
 }
