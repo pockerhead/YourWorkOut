@@ -12,6 +12,8 @@ class WorkoutTodayVC: UIViewController {
     
     var TodayWorkout : Workout?
     var date : Date?
+    var openedCells = [Int]()
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,16 +72,6 @@ class WorkoutTodayVC: UIViewController {
         
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 extension WorkoutTodayVC: UITableViewDelegate, UITableViewDataSource{
@@ -88,7 +80,22 @@ extension WorkoutTodayVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        
+        if let workout = self.TodayWorkout{
+            let count = workout.exercises.count
+            if count > indexPath.row{
+                if self.openedCells.contains(indexPath.row){
+                    let ex = workout.exercises[indexPath.row]
+                    return 70 + 65 * CGFloat(ex.approaches.count)
+                } else {
+                    return 70
+                }
+                
+            }
+        }
+        
+        
+        return 50
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -100,11 +107,54 @@ extension WorkoutTodayVC: UITableViewDelegate, UITableViewDataSource{
         if indexPath.row < self.TodayWorkout?.exercises.count ?? 0{
             if let cell = self.tableView.dequeueReusableCell(withIdentifier: "ExerciseCell") as? ExerciseCell{
                 let index = indexPath.row + 1
-                let item = self.TodayWorkout?.exercises[indexPath.row]
-                let title = item?.title
-                let main = item?.mainMuscleGroup
-                cell.indexLabel.text = "\(index) \(title!)"
-                cell.detailLabel.text = main?[0] ?? ""
+                cell.index = index
+                
+                if let item = self.TodayWorkout?.exercises[indexPath.row] {
+                    cell.detailLabel.text = item.mainMuscleGroup[0]
+                    cell.indexLabel.text = "\(index) \(item.title)"
+                    cell.exercise = item
+                }
+                
+                cell.initUI()
+                cell.didEditExercise = { ex in
+                    self.TodayWorkout?.exercises[indexPath.row] = ex
+                    self.updateWorkout()
+                    if !self.openedCells.contains(indexPath.row) {
+                        self.openedCells.append(indexPath.row)
+                    }
+                    if ex.approaches.isEmpty{
+                        self.openedCells = self.openedCells.filter({$0 != indexPath.row})
+                    }
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+
+                }
+                cell.didEditApproach = { ex in
+                    self.TodayWorkout?.exercises[indexPath.row] = ex
+                    self.updateWorkout()
+                }
+                
+                cell.openButton.didTouchUpInside = {button in
+                    if self.openedCells.contains(indexPath.row) {
+                        self.openedCells = self.openedCells.filter({$0 != indexPath.row})
+                    } else {
+                        self.openedCells.append(indexPath.row)
+                    }
+                    cell.viewBackground.backgroundColor = FoodColors.barBottomColor
+                    cell.indexLabel.textColor = UIColor.white
+                    cell.detailLabel.textColor = UIColor.white
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+                
+                if self.openedCells.contains(indexPath.row){
+                    cell.viewBackground.backgroundColor = FoodColors.barBottomColor
+                    cell.indexLabel.textColor = UIColor.white
+                    cell.detailLabel.textColor = UIColor.white
+                } else {
+                    cell.viewBackground.backgroundColor = UIColor.clear
+                    cell.indexLabel.textColor = UIColor.black
+                    cell.detailLabel.textColor = UIColor.black
+                }
+                
                 return cell
             }
             

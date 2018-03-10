@@ -94,6 +94,11 @@ class Approach{
             self.weigth = weigth
         }
     }
+    init(repeats: Int, weigth: Float) {
+        self.repeats = repeats
+        self.weigth = weigth
+    }
+
 }
 
 class SearchExercise{

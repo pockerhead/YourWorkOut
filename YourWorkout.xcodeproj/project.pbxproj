@@ -26,6 +26,9 @@
 		0668D3602030B6680036256A /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0668D35F2030B6680036256A /* WorkoutModel.swift */; };
 		0668D3652030C9E80036256A /* TodayWorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0668D3642030C9E80036256A /* TodayWorkoutManager.swift */; };
 		0668D3672030D0900036256A /* SearchExercisesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0668D3662030D0900036256A /* SearchExercisesVC.swift */; };
+		067EFC4620544A1400A03CC0 /* ApproachCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067EFC4420544A1400A03CC0 /* ApproachCell.swift */; };
+		067EFC4720544A1400A03CC0 /* ApproachCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 067EFC4520544A1400A03CC0 /* ApproachCell.xib */; };
+		067EFC492054812500A03CC0 /* UITextField+ Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067EFC482054812500A03CC0 /* UITextField+ Keyboard.swift */; };
 		068BF392200E0E7A006EBBAB /* JournalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068BF391200E0E7A006EBBAB /* JournalVC.swift */; };
 		0690BE71200E448300B70259 /* SearchBar + UIColore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0690BE70200E448300B70259 /* SearchBar + UIColore.swift */; };
 		06917D792003879900C1F624 /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06917D782003879900C1F624 /* FoodModel.swift */; };
@@ -119,6 +122,9 @@
 		0668D35F2030B6680036256A /* WorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModel.swift; sourceTree = "<group>"; };
 		0668D3642030C9E80036256A /* TodayWorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWorkoutManager.swift; sourceTree = "<group>"; };
 		0668D3662030D0900036256A /* SearchExercisesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchExercisesVC.swift; sourceTree = "<group>"; };
+		067EFC4420544A1400A03CC0 /* ApproachCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproachCell.swift; sourceTree = "<group>"; };
+		067EFC4520544A1400A03CC0 /* ApproachCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApproachCell.xib; sourceTree = "<group>"; };
+		067EFC482054812500A03CC0 /* UITextField+ Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+ Keyboard.swift"; sourceTree = "<group>"; };
 		068BF391200E0E7A006EBBAB /* JournalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalVC.swift; sourceTree = "<group>"; };
 		0690BE70200E448300B70259 /* SearchBar + UIColore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchBar + UIColore.swift"; sourceTree = "<group>"; };
 		06917D782003879900C1F624 /* FoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodModel.swift; sourceTree = "<group>"; };
@@ -374,6 +380,8 @@
 		06F00CA52042A70300DC23B0 /* ForGym */ = {
 			isa = PBXGroup;
 			children = (
+				067EFC4420544A1400A03CC0 /* ApproachCell.swift */,
+				067EFC4520544A1400A03CC0 /* ApproachCell.xib */,
 				06C0FCBF2042B6E8002022DC /* ExerciseCell.swift */,
 				06C0FCC02042B6E8002022DC /* ExerciseCell.xib */,
 				06F00CA62042A72700DC23B0 /* SearchExCell.swift */,
@@ -428,6 +436,7 @@
 				CE1C0F672006155500AE430A /* UIView + rotate.swift */,
 				CEB555BA2029A25E004B7BC9 /* UIView + Blur.swift */,
 				CE93780D202ADCD6008B2BFD /* UINavigationBar+Gradient.swift */,
+				067EFC482054812500A03CC0 /* UITextField+ Keyboard.swift */,
 				0690BE70200E448300B70259 /* SearchBar + UIColore.swift */,
 				CE165A582010930F005B56C2 /* UIImage +CircleCrop.swift */,
 				CEA03E7B201F3869002F4DD5 /* UIButton + setBackgroundColor.swift */,
@@ -607,6 +616,7 @@
 				06B3BDE82003F60000AD5B49 /* FoodItemCell.xib in Resources */,
 				0636E5ED20037E4D005E9282 /* LaunchScreen.storyboard in Resources */,
 				06F00CA92042A72700DC23B0 /* SearchExCell.xib in Resources */,
+				067EFC4720544A1400A03CC0 /* ApproachCell.xib in Resources */,
 				06B3BDED2004000D00AD5B49 /* ExpandedFoodCell.xib in Resources */,
 				0636E5EA20037E4D005E9282 /* Assets.xcassets in Resources */,
 				CE0248C6202B4CDE00849AE7 /* MenuItemCell.xib in Resources */,
@@ -833,6 +843,7 @@
 				06B3BDEC2004000D00AD5B49 /* ExpandedFoodCell.swift in Sources */,
 				06517AAE200CA8CE00CA098A /* FoodTodayVC.swift in Sources */,
 				CE24ECC22020B3A200318194 /* TodayVC.swift in Sources */,
+				067EFC4620544A1400A03CC0 /* ApproachCell.swift in Sources */,
 				CE1C0F662006152600AE430A /* UIColor + hex.swift in Sources */,
 				0668D3672030D0900036256A /* SearchExercisesVC.swift in Sources */,
 				0668D3652030C9E80036256A /* TodayWorkoutManager.swift in Sources */,
@@ -849,6 +860,7 @@
 				CE93780E202ADCD6008B2BFD /* UINavigationBar+Gradient.swift in Sources */,
 				0668D35D2030B6560036256A /* WorkoutTodayVC.swift in Sources */,
 				CEA64EDC20077A9B0002A87E /* FoodDetailsVC.swift in Sources */,
+				067EFC492054812500A03CC0 /* UITextField+ Keyboard.swift in Sources */,
 				06517AA8200BEF4200CA098A /* ViewController + hideKeyboard.swift in Sources */,
 				CE1C0F6E2006292700AE430A /* CustomCell.swift in Sources */,
 				068BF392200E0E7A006EBBAB /* JournalVC.swift in Sources */,
