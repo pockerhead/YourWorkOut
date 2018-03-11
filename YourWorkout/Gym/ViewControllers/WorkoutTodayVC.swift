@@ -86,9 +86,9 @@ extension WorkoutTodayVC: UITableViewDelegate, UITableViewDataSource{
             if count > indexPath.row{
                 if self.openedCells.contains(indexPath.row){
                     let ex = workout.exercises[indexPath.row]
-                    return 70 + 65 * CGFloat(ex.approaches.count)
+                    return 100 + 65 * CGFloat(ex.approaches.isEmpty ? 1 : ex.approaches.count)
                 } else {
-                    return 70
+                    return 100
                 }
                 
             }
@@ -122,9 +122,9 @@ extension WorkoutTodayVC: UITableViewDelegate, UITableViewDataSource{
                     if !self.openedCells.contains(indexPath.row) {
                         self.openedCells.append(indexPath.row)
                     }
-                    if ex.approaches.isEmpty{
-                        self.openedCells = self.openedCells.filter({$0 != indexPath.row})
-                    }
+//                    if ex.approaches.isEmpty{
+//                        self.openedCells = self.openedCells.filter({$0 != indexPath.row})
+//                    }
                     self.tableView.reloadRows(at: [indexPath], with: .automatic)
 
                 }
@@ -153,6 +153,16 @@ extension WorkoutTodayVC: UITableViewDelegate, UITableViewDataSource{
                     cell.viewBackground.backgroundColor = UIColor.clear
                     cell.indexLabel.textColor = UIColor.black
                     cell.detailLabel.textColor = UIColor.black
+                }
+                
+                cell.deleteExerciseButton.didTouchUpInside = { button in
+                    if let workout = self.TodayWorkout{
+                        AlertHelper.showAlertWith(title: nil, message: "Удалить упражнение \(workout.exercises[indexPath.row].title)", from: self, withCancelButtonTitle: "Отмена", cancelButtonPressed: nil, actionButtonTitle: "OK", actionButtonPressed: {
+                            workout.exercises.remove(at: indexPath.row)
+                            self.updateWorkout()
+                            self.tableView.reloadSections(IndexSet.init(integer: indexPath.section), with: .automatic)
+                        })
+                    }
                 }
                 
                 return cell

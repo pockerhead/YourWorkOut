@@ -20,17 +20,25 @@ class ExerciseCell: UITableViewCell {
 
     @IBOutlet weak var viewBackground: UIView!
     
-
+    @IBOutlet weak var deleteExerciseButton: MyMDCRaisedButton!
+    
     var index: Int = 0
     var exercise : Exercise?
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
-       
+        self.tableView.isScrollEnabled = false
+        let approachNib = UINib(nibName: "ApproachCell", bundle: nil)
         
+        self.tableView.register(approachNib, forCellReuseIdentifier: "ApproachCell")
+        self.addAproachButton.setBackgroundColor(NewWaveColors.blueColor, for: .normal)
+        self.addAproachButton.setTitleColor(UIColor.white, for: .normal)
+        self.addAproachButton.sizeToFit()
         
+        self.deleteExerciseButton.setBackgroundColor(NewWaveColors.orangeColor, for: .normal)
+        self.deleteExerciseButton.setTitleColor(UIColor.white, for: .normal)
+        self.deleteExerciseButton.sizeToFit()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -42,24 +50,19 @@ class ExerciseCell: UITableViewCell {
     func initUI(){
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.isScrollEnabled = false
-        let approachNib = UINib(nibName: "ApproachCell", bundle: nil)
         
-        self.tableView.register(approachNib, forCellReuseIdentifier: "ApproachCell")
-        self.addAproachButton.setBackgroundColor(NewWaveColors.blueColor, for: .normal)
-        self.addAproachButton.setTitleColor(UIColor.white, for: .normal)
-        self.addAproachButton.sizeToFit()
         
         self.tableView.reloadData()
         
         self.addAproachButton.didTouchUpInside = { button in
             let approach = Approach.init(repeats: 0, weigth: 0)
             if let exercise = self.exercise{
-                exercise.approaches.append(approach)
+                
                 self.tableView.performBatchUpdates({
-                    let indexPath = IndexPath(row: exercise.approaches.count - 1, section: 0)
-                    self.tableView.insertRows(at:[indexPath], with: .fade)
+//                    let indexPath = IndexPath(row: exercise.approaches.count, section: 0)
+//                    self.tableView.reloadSections(IndexSet.init(integer: indexPath.section), with: .automatic)
                 }, completion: { compl in
+                    exercise.approaches.append(approach)
                     self.didEditExercise?(exercise)
                 })
             }
@@ -81,12 +84,24 @@ extension ExerciseCell: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.exercise?.approaches.count ?? 0
+        if let exercise = self.exercise{
+            if exercise.approaches.isEmpty{
+                return 1
+            } else {
+                return exercise.approaches.count
+            }
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = self.tableView.dequeueReusableCell(withIdentifier: "ApproachCell") as? ApproachCell {
             if let exercise = self.exercise{
+                if exercise.approaches.isEmpty{
+                    let cell = UITableViewCell()
+                    cell.textLabel?.text = "Подходов нет"
+                    return cell
+                }
                 if indexPath.row < exercise.approaches.count{
                     let approachItem = exercise.approaches[indexPath.row]
                     cell.selectionStyle = .none
@@ -122,6 +137,11 @@ extension ExerciseCell: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if let ex = self.exercise{
+            if ex.approaches.isEmpty {
+                return false
+            }
+        }
        return true
     }
     
